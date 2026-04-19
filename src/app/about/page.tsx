@@ -13,18 +13,6 @@ export default function AboutPage() {
       role: 'Founder & Lead Technician',
       bio: 'Cyber Security Professional with Google Cybersecurity Certificate and MSC in Cybersecurity. 4.5 years of IT expertise across India and UK. Specializes in system diagnosis, repairs, and security solutions.',
       image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=center'
-    },
-    {
-      name: 'Udit',
-      role: 'Hardware & Repair Technician',
-      bio: 'Skilled technician dedicated to accurate diagnostics and professional laptop/PC repair services. Handles component replacement, data recovery, and system optimization with precision.',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=center'
-    },
-    {
-      name: 'Karan',
-      role: 'Support Technician & Operations',
-      bio: 'Customer support specialist ensuring smooth service delivery. Handles client communication, scheduling, pickup/drop services, and provides ongoing technical support.',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=center'
     }
   ]
 
