@@ -15,7 +15,7 @@ async function main() {
     console.log('🌱 Seeding database...\n')
 
     // Create default admin user
-    const adminEmail = process.env.ADMIN_EMAIL || 'admin@rditlab.co.uk'
+    const adminEmail = process.env.ADMIN_EMAIL || 'rudraxdevelopment98@gmail.com'
     const adminPassword = process.env.ADMIN_PASSWORD || 'ChangeMe123!'
 
     console.log(`📝 Creating admin user: ${adminEmail}`)
