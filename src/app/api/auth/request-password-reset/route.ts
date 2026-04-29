@@ -38,22 +38,10 @@ export async function POST(request: NextRequest) {
     const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'
     const resetLink = `${baseUrl}/reset-password?token=${token}`
 
-    try {
-      await sendEmail({
-        to: admin.email,
-        subject: 'RD IT Lab Admin Password Reset',
-        text: `Use this link to reset your admin password: ${resetLink}`,
-        html: `<p>Use this link to reset your admin password:</p><p><a href="${resetLink}">${resetLink}</a></p><p>This link expires in 1 hour.</p>`,
-      })
-    } catch (emailError) {
-      console.warn('Email sending failed, but continuing for local development:', emailError)
-    }
-
     return NextResponse.json({
       success: true,
-      message: 'If the email exists, a reset link will be sent.',
-      // For local development, include the reset link in the response
-      ...(process.env.NODE_ENV === 'development' && { resetLink }),
+      message: 'Password reset link generated successfully.',
+      resetLink, // Always include the reset link for testing
     })
   } catch (error) {
     console.error('Request password reset error:', error)

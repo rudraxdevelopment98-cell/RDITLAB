@@ -9,10 +9,13 @@ export default function ForgotPasswordPage() {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
+  const [resetLink, setResetLink] = useState('')
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
     setMessage('')
+    setResetLink('')
     setLoading(true)
 
     try {
@@ -26,7 +29,10 @@ export default function ForgotPasswordPage() {
       if (!response.ok) {
         setError(data.error || 'Unable to send reset email')
       } else {
-        setMessage(data.message || 'If the email exists, a reset link has been sent.')
+        setMessage(data.message || 'Reset link generated successfully.')
+        if (data.resetLink) {
+          setResetLink(data.resetLink)
+        }
       }
     } catch (err) {
       setError('An error occurred. Please try again.')
@@ -53,6 +59,14 @@ export default function ForgotPasswordPage() {
           {message && (
             <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
               <p className="text-green-800 text-sm">{message}</p>
+              {resetLink && (
+                <div className="mt-3 p-3 bg-white border rounded">
+                  <p className="text-sm text-gray-600 mb-2">Your password reset link:</p>
+                  <a href={resetLink} className="text-blue-600 hover:text-blue-800 break-all text-sm">
+                    {resetLink}
+                  </a>
+                </div>
+              )}
             </div>
           )}
 
