@@ -12,19 +12,12 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    const { currentPassword, newPassword, confirmPassword } = await request.json()
+    const { currentPassword, newPassword } = await request.json()
 
     // Validate input
-    if (!currentPassword || !newPassword || !confirmPassword) {
+    if (!currentPassword || !newPassword) {
       return NextResponse.json(
         { error: 'All fields are required' },
-        { status: 400 }
-      )
-    }
-
-    if (newPassword !== confirmPassword) {
-      return NextResponse.json(
-        { error: 'New passwords do not match' },
         { status: 400 }
       )
     }
