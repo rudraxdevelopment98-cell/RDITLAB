@@ -4,6 +4,8 @@ import { comparePassword } from '@/lib/password'
 import { generateToken, setTokenCookie } from '@/lib/auth'
 import { sendAdminNotification } from '@/lib/email'
 
+export const dynamic = 'force-dynamic'
+
 export async function POST(request: NextRequest) {
   try {
     const { email, password } = await request.json()

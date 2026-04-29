@@ -4,6 +4,8 @@ import { prisma } from '@/lib/prisma'
 import { comparePassword, hashPassword, validatePasswordStrength } from '@/lib/password'
 import { sendAdminNotification } from '@/lib/email'
 
+export const dynamic = 'force-dynamic'
+
 export async function POST(request: NextRequest) {
   try {
     const admin = await getCurrentAdmin(request)
