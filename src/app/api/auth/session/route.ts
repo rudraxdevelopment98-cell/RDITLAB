@@ -2,9 +2,9 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getCurrentAdmin } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
-    const admin = await getCurrentAdmin()
+    const admin = await getCurrentAdmin(request)
 
     if (!admin) {
       return NextResponse.json({ authenticated: false }, { status: 401 })

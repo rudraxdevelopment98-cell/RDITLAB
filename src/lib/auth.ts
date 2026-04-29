@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken'
 import { cookies } from 'next/headers'
+import type { NextRequest } from 'next/server'
 
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-production'
 const JWT_EXPIRY = parseInt(process.env.JWT_EXPIRY || '24')
@@ -57,7 +58,11 @@ export async function clearTokenCookie() {
 /**
  * Get token from cookie
  */
-export async function getTokenFromCookie(): Promise<string | null> {
+export async function getTokenFromCookie(request?: NextRequest): Promise<string | null> {
+  if (request) {
+    return request.cookies.get('auth_token')?.value || null
+  }
+
   const cookieStore = await cookies()
   const token = cookieStore.get('auth_token')?.value
   return token || null
@@ -66,8 +71,8 @@ export async function getTokenFromCookie(): Promise<string | null> {
 /**
  * Get current admin from token
  */
-export async function getCurrentAdmin(): Promise<JwtPayload | null> {
-  const token = await getTokenFromCookie()
+export async function getCurrentAdmin(request?: NextRequest): Promise<JwtPayload | null> {
+  const token = await getTokenFromCookie(request)
   if (!token) return null
   return verifyToken(token)
 }

@@ -6,7 +6,7 @@ import { sendAdminNotification } from '@/lib/email'
 
 export async function POST(request: NextRequest) {
   try {
-    const admin = await getCurrentAdmin()
+    const admin = await getCurrentAdmin(request)
 
     if (!admin) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })

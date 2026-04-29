@@ -5,7 +5,7 @@ import { prisma } from '@/lib/prisma'
 export async function POST(request: NextRequest) {
   try {
     // Get current admin for audit log
-    const adminPayload = await getCurrentAdmin()
+    const adminPayload = await getCurrentAdmin(request)
 
     // Clear cookie
     await clearTokenCookie()
