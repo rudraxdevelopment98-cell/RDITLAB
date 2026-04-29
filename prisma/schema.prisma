@@ -11,13 +11,15 @@ datasource db {
 }
 
 model Admin {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  password  String   // Hashed password
-  name      String?
-  role      String   @default("admin")
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id                 String   @id @default(cuid())
+  email              String   @unique
+  password           String   // Hashed password
+  name               String?
+  role               String   @default("admin")
+  resetToken         String?
+  resetTokenExpires  DateTime?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
   
   // Relations
   auditLogs AuditLog[]

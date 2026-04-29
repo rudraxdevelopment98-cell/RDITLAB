@@ -105,7 +105,12 @@ export default function LoginPage() {
           </form>
 
           {/* Footer */}
-          <div className="mt-6 pt-6 border-t border-gray-200">
+          <div className="mt-6 pt-6 border-t border-gray-200 space-y-3">
+            <p className="text-center text-sm text-gray-600">
+              <Link href="/forgot-password" className="text-amber-600 hover:text-amber-700 font-medium">
+                Forgot password?
+              </Link>
+            </p>
             <p className="text-center text-sm text-gray-600">
               Not an admin?{' '}
               <Link href="/" className="text-amber-600 hover:text-amber-700 font-medium">
