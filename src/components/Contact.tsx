@@ -9,7 +9,7 @@ export default function Contact() {
   const faqs = [
     {
       question: 'How quickly can you respond to urgent IT issues?',
-      answer: "For critical systems, we offer same-day response through our 24/7 support team. Contact us immediately for urgent needs and we'll prioritize accordingly."
+      answer: "For critical systems, we offer same-day response through our 24/7 support team. Contact us immediately for urgent needs and we&apos;ll prioritize accordingly."
     },
     {
       question: 'Do you provide warranties on repairs and builds?',
@@ -30,7 +30,7 @@ export default function Contact() {
       <div className="container mx-auto max-w-7xl">
         <div className="mb-16 text-center">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-amber-700 mb-3">Get in touch</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900">Let's Discuss Your IT Needs</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900">Let&apos;s Discuss Your IT Needs</h2>
         </div>
 
         <div className="grid gap-12 lg:grid-cols-2 mb-16">

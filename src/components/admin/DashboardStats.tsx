@@ -129,7 +129,7 @@ export default function DashboardStats() {
       <div className="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-lg p-6">
         <h1 className="text-3xl font-bold text-gray-900">📊 Dashboard Overview</h1>
         <p className="text-gray-600 mt-2">
-          Welcome back! Here's a summary of your RDITLAB admin activities.
+          Welcome back! Here&apos;s a summary of your RDITLAB admin activities.
         </p>
         {stats?.lastLogin && (
           <p className="text-sm text-gray-500 mt-3">

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
 interface AuditLog {
   id: string
@@ -38,11 +38,7 @@ export default function AuditLogViewer() {
   const actions = ['CREATE', 'UPDATE', 'DELETE', 'LOGIN']
   const entities = ['Page', 'TeamMember', 'Admin']
 
-  useEffect(() => {
-    fetchLogs()
-  }, [currentPage, pageSize, filterAction, filterEntity])
-
-  const fetchLogs = async () => {
+  const fetchLogs = useCallback(async () => {
     try {
       setIsLoading(true)
       const params = new URLSearchParams()
@@ -64,7 +60,11 @@ export default function AuditLogViewer() {
     } finally {
       setIsLoading(false)
     }
-  }
+  }, [currentPage, pageSize, filterAction, filterEntity])
+
+  useEffect(() => {
+    fetchLogs()
+  }, [fetchLogs])
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString)

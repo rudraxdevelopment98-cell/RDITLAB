@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
@@ -21,11 +21,7 @@ export default function ProtectedAdmin({ children }: ProtectedAdminProps) {
   const [loading, setLoading] = useState(true)
   const [showLogout, setShowLogout] = useState(false)
 
-  useEffect(() => {
-    checkSession()
-  }, [])
-
-  const checkSession = async () => {
+  const checkSession = useCallback(async () => {
     try {
       const response = await fetch('/api/auth/session')
       const data = await response.json()
@@ -41,7 +37,11 @@ export default function ProtectedAdmin({ children }: ProtectedAdminProps) {
     } finally {
       setLoading(false)
     }
-  }
+  }, [router])
+
+  useEffect(() => {
+    checkSession()
+  }, [checkSession])
 
   const handleLogout = async () => {
     try {

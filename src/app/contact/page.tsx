@@ -111,7 +111,7 @@ export default function ContactPage() {
 
             {submitted && (
               <div className="mb-6 p-4 rounded-xl bg-green-50 border border-green-200 animate-slideDown">
-                <p className="text-green-800 font-semibold">✓ Message sent successfully! We'll get back to you soon.</p>
+                <p className="text-green-800 font-semibold">✓ Message sent successfully! We&apos;ll get back to you soon.</p>
               </div>
             )}
 

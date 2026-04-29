@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
 interface PageContent {
   id: string
@@ -24,11 +24,7 @@ export default function PagesManager() {
 
   const sections = ['hero', 'about', 'services', 'contact']
 
-  useEffect(() => {
-    fetchPages()
-  }, [])
-
-  const fetchPages = async () => {
+  const fetchPages = useCallback(async () => {
     try {
       setIsLoading(true)
       const url = selectedSection === 'all' 
@@ -45,7 +41,11 @@ export default function PagesManager() {
     } finally {
       setIsLoading(false)
     }
-  }
+  }, [selectedSection])
+
+  useEffect(() => {
+    fetchPages()
+  }, [fetchPages])
 
   const handleEdit = (page: PageContent) => {
     setEditingId(page.id)
