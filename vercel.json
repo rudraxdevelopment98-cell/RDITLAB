@@ -1,11 +1,5 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
-  "framework": "nextjs",
-  "env": {
-    "DATABASE_URL": "@rditlab_database_url",
-    "JWT_SECRET": "@rditlab_jwt_secret",
-    "ADMIN_EMAIL": "@rditlab_admin_email",
-    "ADMIN_PASSWORD": "@rditlab_admin_password"
-  }
+  "framework": "nextjs"
 }
