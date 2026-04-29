@@ -1,0 +1,62 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String   // Hashed password
+  name      String?
+  role      String   @default("admin")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Relations
+  auditLogs AuditLog[]
+}
+
+model Page {
+  id        String   @id @default(cuid())
+  title     String
+  section   String   // 'hero', 'about', 'services', 'contact'
+  content   String   // Long text content
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  createdBy String?
+  
+  // Unique constraint on title per section
+  @@unique([title, section])
+}
+
+model TeamMember {
+  id        String   @id @default(cuid())
+  name      String
+  role      String
+  bio       String   // Long text biography
+  image     String   // Image URL
+  order     Int      @default(0)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  createdBy String?
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  admin     Admin    @relation(fields: [adminId], references: [id], onDelete: Cascade)
+  adminId   String
+  action    String   // 'CREATE', 'UPDATE', 'DELETE'
+  entity    String   // 'Page', 'TeamMember', 'Admin'
+  entityId  String
+  oldData   String?  // JSON string of old data
+  newData   String?  // JSON string of new data
+  createdAt DateTime @default(now())
+}

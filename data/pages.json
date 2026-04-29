@@ -1,0 +1,44 @@
+[
+  {
+    "id": "home-hero-title",
+    "title": "RD IT Lab UK",
+    "section": "hero",
+    "content": "RD IT Lab UK",
+    "updatedAt": "2026-04-25T08:31:33.386Z"
+  },
+  {
+    "id": "home-hero-desc",
+    "title": "Hero Description",
+    "section": "hero",
+    "content": "Expert IT services for commercial and industrial clients, delivering laptop repair, PC builds, networking, lab setup, audits, and ongoing software support.",
+    "updatedAt": "2026-04-25T08:31:33.386Z"
+  },
+  {
+    "id": "about-mission",
+    "title": "Our Mission",
+    "section": "about",
+    "content": "We want to make the IT environment secure and safe for the public with strong privacy practices and excellent availability.",
+    "updatedAt": "2026-04-25T08:31:33.386Z"
+  },
+  {
+    "id": "about-expertise",
+    "title": "Our Expertise",
+    "section": "about",
+    "content": "With 4.5 years of experience (4 years in India, 1.5 years in UK), our team specializes in laptop and PC repairs, custom PC builds, data recovery, and networking solutions.",
+    "updatedAt": "2026-04-25T08:31:33.386Z"
+  },
+  {
+    "id": "about-approach",
+    "title": "Our Approach",
+    "section": "about",
+    "content": "We pride ourselves on quick response times, high-quality service, and instant availability.",
+    "updatedAt": "2026-04-25T08:31:33.386Z"
+  },
+  {
+    "id": "about-values",
+    "title": "Our Values",
+    "section": "about",
+    "content": "Trust, reliability, and customer satisfaction guide everything we do.",
+    "updatedAt": "2026-04-25T08:31:33.386Z"
+  }
+]
