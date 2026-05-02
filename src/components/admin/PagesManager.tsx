@@ -30,7 +30,7 @@ export default function PagesManager() {
       const url = selectedSection === 'all' 
         ? '/api/pages' 
         : `/api/pages?section=${selectedSection}`
-      const response = await fetch(url)
+      const response = await fetch(url, { credentials: 'include' })
       if (!response.ok) throw new Error('Failed to fetch pages')
       const data = await response.json()
       setPages(data)
@@ -67,6 +67,7 @@ export default function PagesManager() {
       if (editingId) {
         const response = await fetch('/api/pages', {
           method: 'PUT',
+          credentials: 'include',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ id: editingId, ...formData }),
         })
@@ -75,6 +76,7 @@ export default function PagesManager() {
       } else {
         const response = await fetch('/api/pages', {
           method: 'POST',
+          credentials: 'include',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData),
         })
@@ -93,7 +95,7 @@ export default function PagesManager() {
     if (!confirm('Are you sure you want to delete this page?')) return
 
     try {
-      const response = await fetch(`/api/pages?id=${id}`, { method: 'DELETE' })
+      const response = await fetch(`/api/pages?id=${id}`, { method: 'DELETE', credentials: 'include' })
       if (!response.ok) throw new Error('Failed to delete')
       await fetchPages()
       setError('')

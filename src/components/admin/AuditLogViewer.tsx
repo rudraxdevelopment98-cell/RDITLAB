@@ -47,7 +47,7 @@ export default function AuditLogViewer() {
       params.append('limit', pageSize.toString())
       params.append('offset', ((currentPage - 1) * pageSize).toString())
 
-      const response = await fetch(`/api/audit-logs?${params}`)
+      const response = await fetch(`/api/audit-logs?${params}`, { credentials: 'include' })
       if (!response.ok) throw new Error('Failed to fetch logs')
 
       const data: AuditResponse = await response.json()

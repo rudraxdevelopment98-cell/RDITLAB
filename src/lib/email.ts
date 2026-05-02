@@ -13,7 +13,7 @@ const isEmailConfigured = Boolean(
     EMAIL_PORT &&
     EMAIL_USER &&
     EMAIL_PASS &&
-    ALERT_EMAIL
+    EMAIL_FROM
 )
 
 function createTransporter() {

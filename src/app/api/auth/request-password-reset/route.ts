@@ -35,13 +35,22 @@ export async function POST(request: NextRequest) {
       },
     })
 
-    const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'
+    const host = request.headers.get('x-forwarded-host') || request.headers.get('host') || 'localhost:3000'
+    const protocol = request.headers.get('x-forwarded-proto') || 'https'
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL || `${protocol}://${host}`
     const resetLink = `${baseUrl}/reset-password?token=${token}`
+
+    await sendEmail({
+      to: admin.email,
+      subject: 'RD IT Lab Password Reset',
+      text: `You requested a password reset for RD IT Lab. Reset your password here: ${resetLink}`,
+      html: `<p>You requested a password reset for RD IT Lab.</p><p><a href="${resetLink}">Click here to reset your password</a></p>`,
+    })
 
     return NextResponse.json({
       success: true,
-      message: 'Password reset link generated successfully.',
-      resetLink, // Always include the reset link for testing
+      message: 'If the email exists, a reset link has been sent to the address provided.',
+      resetLink,
     })
   } catch (error) {
     console.error('Request password reset error:', error)

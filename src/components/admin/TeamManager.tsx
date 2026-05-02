@@ -32,7 +32,7 @@ export default function TeamManager() {
   const fetchTeam = async () => {
     try {
       setIsLoading(true)
-      const response = await fetch('/api/team')
+      const response = await fetch('/api/team', { credentials: 'include' })
       if (!response.ok) throw new Error('Failed to fetch team')
       const data = await response.json()
       setTeam(data)
@@ -56,6 +56,7 @@ export default function TeamManager() {
 
       const response = await fetch('/api/upload', {
         method: 'POST',
+        credentials: 'include',
         body: formDataToSend,
       })
 
@@ -92,6 +93,7 @@ export default function TeamManager() {
       if (editingId) {
         const response = await fetch('/api/team', {
           method: 'PUT',
+          credentials: 'include',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ id: editingId, ...formData }),
         })
@@ -100,6 +102,7 @@ export default function TeamManager() {
       } else {
         const response = await fetch('/api/team', {
           method: 'POST',
+          credentials: 'include',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData),
         })
@@ -118,7 +121,7 @@ export default function TeamManager() {
     if (!confirm('Are you sure you want to delete this team member?')) return
 
     try {
-      const response = await fetch(`/api/team?id=${id}`, { method: 'DELETE' })
+      const response = await fetch(`/api/team?id=${id}`, { method: 'DELETE', credentials: 'include' })
       if (!response.ok) throw new Error('Failed to delete')
       await fetchTeam()
       setError('')

@@ -37,7 +37,7 @@ export default function AdminSettings() {
   useEffect(() => {
     async function loadAdminSession() {
       try {
-        const response = await fetch('/api/auth/session')
+        const response = await fetch('/api/auth/session', { credentials: 'include' })
         if (response.ok) {
           const data = await response.json()
           setAdminEmail(data.admin?.email || '')
@@ -85,6 +85,7 @@ export default function AdminSettings() {
       setLoading(true)
       const response = await fetch('/api/auth/change-password', {
         method: 'POST',
+        credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           currentPassword,

@@ -23,7 +23,7 @@ export default function ProtectedAdmin({ children }: ProtectedAdminProps) {
 
   const checkSession = useCallback(async () => {
     try {
-      const response = await fetch('/api/auth/session')
+      const response = await fetch('/api/auth/session', { credentials: 'include' })
       const data = await response.json()
 
       if (data.authenticated && data.admin) {
@@ -45,7 +45,7 @@ export default function ProtectedAdmin({ children }: ProtectedAdminProps) {
 
   const handleLogout = async () => {
     try {
-      await fetch('/api/auth/logout', { method: 'POST' })
+      await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' })
       router.push('/login')
       router.refresh()
     } catch (error) {

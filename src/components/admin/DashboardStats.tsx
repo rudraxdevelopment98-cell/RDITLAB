@@ -25,9 +25,9 @@ export default function DashboardStats() {
   const fetchStats = async () => {
     try {
       const [pagesRes, teamRes, auditRes] = await Promise.all([
-        fetch('/api/pages'),
-        fetch('/api/team'),
-        fetch('/api/audit-logs?limit=1000'),
+        fetch('/api/pages', { credentials: 'include' }),
+        fetch('/api/team', { credentials: 'include' }),
+        fetch('/api/audit-logs?limit=1000', { credentials: 'include' }),
       ])
 
       if (!pagesRes.ok || !teamRes.ok || !auditRes.ok) {
