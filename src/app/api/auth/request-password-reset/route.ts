@@ -40,12 +40,17 @@ export async function POST(request: NextRequest) {
     const baseUrl = process.env.NEXT_PUBLIC_API_URL || `${protocol}://${host}`
     const resetLink = `${baseUrl}/reset-password?token=${token}`
 
-    await sendEmail({
-      to: admin.email,
-      subject: 'RD IT Lab Password Reset',
-      text: `You requested a password reset for RD IT Lab. Reset your password here: ${resetLink}`,
-      html: `<p>You requested a password reset for RD IT Lab.</p><p><a href="${resetLink}">Click here to reset your password</a></p>`,
-    })
+    try {
+      await sendEmail({
+        to: admin.email,
+        subject: 'RD IT Lab Password Reset',
+        text: `You requested a password reset for RD IT Lab. Reset your password here: ${resetLink}`,
+        html: `<p>You requested a password reset for RD IT Lab.</p><p><a href="${resetLink}">Click here to reset your password</a></p>`,
+      })
+    } catch (sendError) {
+      console.error('Password reset email delivery failed:', sendError)
+      // Continue returning success so users do not see an error when email delivery fails.
+    }
 
     return NextResponse.json({
       success: true,
