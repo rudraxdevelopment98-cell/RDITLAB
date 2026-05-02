@@ -1,32 +1,12 @@
-import nodemailer from 'nodemailer'
+import { Resend } from 'resend'
 
-const EMAIL_HOST = process.env.EMAIL_HOST
-const EMAIL_PORT = parseInt(process.env.EMAIL_PORT || '587', 10)
-const EMAIL_USER = process.env.EMAIL_USER
-const EMAIL_PASS = process.env.EMAIL_PASS
-const EMAIL_FROM = process.env.EMAIL_FROM || process.env.ADMIN_EMAIL || 'no-reply@rditlab.co.uk'
+const RESEND_API_KEY = process.env.RESEND_API_KEY
+const EMAIL_FROM = process.env.EMAIL_FROM || 'noreply@rditlab.co.uk'
 const ALERT_EMAIL = process.env.ALERT_EMAIL || process.env.ADMIN_EMAIL
-const EMAIL_SECURE = process.env.EMAIL_SECURE === 'true'
 
-const isEmailConfigured = Boolean(
-  EMAIL_HOST &&
-    EMAIL_PORT &&
-    EMAIL_USER &&
-    EMAIL_PASS &&
-    EMAIL_FROM
-)
+const isEmailConfigured = Boolean(RESEND_API_KEY && EMAIL_FROM)
 
-function createTransporter() {
-  return nodemailer.createTransport({
-    host: EMAIL_HOST,
-    port: EMAIL_PORT,
-    secure: EMAIL_SECURE,
-    auth: {
-      user: EMAIL_USER,
-      pass: EMAIL_PASS,
-    },
-  })
-}
+const resend = RESEND_API_KEY ? new Resend(RESEND_API_KEY) : null
 
 export interface SendEmailOptions {
   to: string
@@ -36,20 +16,28 @@ export interface SendEmailOptions {
 }
 
 export async function sendEmail(options: SendEmailOptions) {
-  if (!isEmailConfigured) {
-    console.warn('Email configuration is incomplete. Skipping sendEmail call.')
+  if (!isEmailConfigured || !resend) {
+    console.warn('Resend email configuration is incomplete. Skipping sendEmail call.')
     return
   }
 
-  const transporter = createTransporter()
+  try {
+    const result = await resend.emails.send({
+      from: EMAIL_FROM,
+      to: options.to,
+      subject: options.subject,
+      html: options.html || `<p>${options.text}</p>`,
+    })
 
-  await transporter.sendMail({
-    from: EMAIL_FROM,
-    to: options.to,
-    subject: options.subject,
-    text: options.text,
-    html: options.html,
-  })
+    if (result.error) {
+      console.error('Resend email error:', result.error)
+    }
+
+    return result
+  } catch (error) {
+    console.error('Failed to send email via Resend:', error)
+    throw error
+  }
 }
 
 export async function sendAdminNotification(subject: string, text: string, html?: string) {
