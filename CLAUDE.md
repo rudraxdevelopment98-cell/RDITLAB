@@ -38,15 +38,15 @@ node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 
 ### Data Layer — two coexisting implementations
 
-**Current**: `src/lib/prisma.ts` exports a singleton `prisma` client. All active API routes import and use this directly. The `normalizeDatabaseUrl()` function ensures SQLite `file:` paths are prefixed correctly when `DATABASE_URL` is not a known protocol — enabling SQLite in dev without changing code.
+**Current**: `src/lib/prisma.ts` exports a singleton `prisma` client. All active API routes import and use this directly. `normalizeDatabaseUrl()` defaults `DATABASE_URL` to `file:./prisma/dev.db` when the env var is not set, so local dev works with no `.env` file.
 
 **Legacy (do not use for new code)**: `src/lib/db.ts` is a JSON flat-file storage layer that reads/writes `data/pages.json` and `data/team.json`. It is no longer called by any API route but still initialises on import, creating those files if absent. The `scripts/migrate-data.ts` script was used to move this data into Prisma.
 
 ### Database
 
-- **Development**: SQLite (`prisma/dev.db`), set via `DATABASE_URL=file:./prisma/dev.db`
-- **Production**: PostgreSQL (Vercel Postgres or external), set via `DATABASE_URL`
-- Schema: `prisma/schema.prisma` — models are `Admin`, `Page`, `TeamMember`, `AuditLog`
+- **Development**: SQLite (`prisma/dev.db`). `schema.prisma` uses `provider = "sqlite"` and migrations in `prisma/migrations/` are SQLite syntax. Seed with `npx ts-node prisma/seed.ts`.
+- **Production (Vercel)**: Before deploying to PostgreSQL, change `schema.prisma` provider to `"postgresql"`, run `npx prisma migrate dev --name pg-init` to generate PostgreSQL-compatible migrations, set `DATABASE_URL` in Vercel env vars, then run `npx prisma migrate deploy` and `npx ts-node prisma/seed.ts` in the production environment.
+- Schema models: `Admin`, `Page`, `TeamMember`, `AuditLog`
 - `Page` has a unique constraint on `(title, section)` — Prisma error code `P2002` on conflict
 - `TeamMember.order` controls display order; `getNextOrder()` in the team route auto-increments it
 
