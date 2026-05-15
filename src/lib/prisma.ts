@@ -2,13 +2,9 @@ import { PrismaClient } from '@prisma/client'
 
 const globalForPrisma = global as unknown as { prisma: PrismaClient }
 
-function normalizeDatabaseUrl() {
-  if (!process.env.DATABASE_URL) {
-    process.env.DATABASE_URL = 'file:./prisma/dev.db'
-  }
+if (!process.env.DATABASE_URL) {
+  throw new Error('DATABASE_URL environment variable is not set')
 }
-
-normalizeDatabaseUrl()
 
 export const prisma =
   globalForPrisma.prisma ||
