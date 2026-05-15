@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && prisma migrate deploy && next build",
+    "build": "prisma generate && prisma migrate deploy && npx ts-node --compiler-options '{\"module\":\"commonjs\"}' prisma/seed.ts && next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -34,6 +34,7 @@
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.10",
     "@types/nodemailer": "^8.0.0",
-    "prisma": "^4.16.0"
+    "prisma": "^4.16.0",
+    "ts-node": "^10.9.2"
   }
 }

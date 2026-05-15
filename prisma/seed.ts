@@ -23,9 +23,7 @@ async function main() {
 
     const admin = await prisma.admin.upsert({
       where: { email: adminEmail },
-      update: {
-        password: hashedPassword,
-      },
+      update: {}, // preserve any password changes made via the admin panel
       create: {
         email: adminEmail,
         password: hashedPassword,
