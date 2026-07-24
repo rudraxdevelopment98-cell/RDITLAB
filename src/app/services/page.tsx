@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import PageHeader from '@/components/PageHeader'
 
 export default function ServicesPage() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
@@ -121,35 +122,23 @@ export default function ServicesPage() {
     <div className="min-h-screen bg-gradient-to-br from-white via-violet-50 to-gray-100 text-gray-900">
       <Navbar />
 
-      <main className="pt-24">
-        {/* Hero Section */}
-        <section className="bg-violet-50 px-6 py-16 md:px-12 md:py-24 animate-fade-in">
-          <div className="mx-auto max-w-7xl grid gap-12 lg:grid-cols-[1.3fr_1fr] items-center">
-            <div className="space-y-6">
-              <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold uppercase tracking-[0.3em] text-violet-700 shadow-sm">
-                Services overview
-              </span>
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900">Professional IT Services for Networks, Repair, and Support</h1>
-              <p className="max-w-2xl text-lg text-gray-700 leading-relaxed">
-                RD IT Lab UK delivers trusted solutions for laptop repair, PC build, network infrastructure, audit, and managed support. Click on any service below to explore detailed capabilities and benefits.
-              </p>
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="rounded-3xl bg-white p-6 shadow-sm border border-violet-100">
-                  <h2 className="text-xl font-semibold text-gray-900 mb-3">Trusted repair</h2>
-                  <p className="text-gray-600">Fast hardware diagnostics, secure data handling, and professional laptop/PC repairs.</p>
-                </div>
-                <div className="rounded-3xl bg-white p-6 shadow-sm border border-violet-100">
-                  <h2 className="text-xl font-semibold text-gray-900 mb-3">Network reliability</h2>
-                  <p className="text-gray-600">Design, secure, and manage networks with enterprise-grade performance and uptime.</p>
-                </div>
-              </div>
+      <main>
+        <PageHeader
+          eyebrow="Services overview"
+          title={<>Professional IT services for <span className="text-gradient-brand">repair, networks &amp; support</span></>}
+          subtitle="Trusted solutions for laptop &amp; PC repair, custom builds, network infrastructure, audits, and managed support. Explore any service below for detailed capabilities and pricing."
+        />
+
+        {/* Quick highlights */}
+        <section className="px-6 pt-16 md:px-12">
+          <div className="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2">
+            <div className="rounded-3xl border border-violet-100 bg-white p-6 shadow-sm">
+              <h2 className="mb-2 font-display text-xl font-semibold text-gray-900">Trusted repair</h2>
+              <p className="text-gray-600">Fast hardware diagnostics, secure data handling, and professional laptop/PC repairs.</p>
             </div>
-            <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-violet-200 via-violet-100 to-white p-6 shadow-xl animate-slide-in-right">
-              <img
-                src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1000&h=700&fit=crop&crop=center"
-                alt="IT services"
-                className="h-[420px] w-full rounded-[1.75rem] object-cover shadow-lg hover:scale-105 transition-transform duration-300"
-              />
+            <div className="rounded-3xl border border-violet-100 bg-white p-6 shadow-sm">
+              <h2 className="mb-2 font-display text-xl font-semibold text-gray-900">Network reliability</h2>
+              <p className="text-gray-600">Design, secure, and manage networks with enterprise-grade performance and uptime.</p>
             </div>
           </div>
         </section>

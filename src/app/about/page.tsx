@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import PageHeader from '@/components/PageHeader'
 
 export default function AboutPage() {
   const [expandedSection, setExpandedSection] = useState<string | null>('mission')
@@ -43,36 +44,26 @@ export default function AboutPage() {
     <div className="min-h-screen bg-gradient-to-br from-white via-violet-50 to-gray-100 text-gray-900">
       <Navbar />
 
-      <main className="pt-24">
-        {/* Hero Section */}
-        <section className="bg-gradient-to-r from-violet-50 to-white px-6 py-16 md:px-12 md:py-24">
-          <div className="mx-auto max-w-7xl">
-            <div className="animate-fadeIn space-y-6">
-              <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold uppercase tracking-[0.3em] text-violet-700 shadow-sm">
-                About RD IT Lab UK
-              </span>
-              <h1 className="text-5xl md:text-6xl font-bold text-gray-900">
-                Trusted IT Services for London & Surrounding Areas
-              </h1>
-              <p className="max-w-2xl text-xl text-gray-700 leading-relaxed">
-                Since establishing operations in the UK, we have been committed to providing professional, reliable IT support—from laptop and PC repairs to data recovery and networking solutions—for businesses and individuals across London and beyond.
-              </p>
-            </div>
+      <main>
+        <PageHeader
+          eyebrow="About RD IT Lab UK"
+          title={<>Trusted IT services for <span className="text-gradient-brand">London &amp; beyond</span></>}
+          subtitle="Since establishing operations in the UK, we've been committed to professional, reliable IT support—from laptop and PC repairs to data recovery and networking—for businesses and individuals across London and beyond."
+        />
 
-            <div className="grid gap-8 md:grid-cols-3">
-              <div className="rounded-2xl border border-violet-100 bg-white p-8 shadow-lg transition hover:-translate-y-2 hover:shadow-xl">
-                <div className="text-4xl font-bold text-violet-600 mb-2">200+</div>
-                <p className="text-gray-600">Clients Served</p>
+        {/* Stats band */}
+        <section className="px-6 py-16 md:px-12">
+          <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-3">
+            {[
+              { value: '200+', label: 'Clients Served' },
+              { value: '1–4 Days', label: 'Average Turnaround' },
+              { value: '24/7', label: 'Emergency Support' },
+            ].map((stat) => (
+              <div key={stat.label} className="rounded-2xl border border-violet-100 bg-white p-8 shadow-lg transition hover:-translate-y-2 hover:shadow-brand">
+                <div className="mb-2 font-display text-4xl font-bold text-violet-600">{stat.value}</div>
+                <p className="text-gray-600">{stat.label}</p>
               </div>
-              <div className="rounded-2xl border border-violet-100 bg-white p-8 shadow-lg transition hover:-translate-y-2 hover:shadow-xl">
-                <div className="text-4xl font-bold text-violet-600 mb-2">1-4 Days</div>
-                <p className="text-gray-600">Average Turnaround</p>
-              </div>
-              <div className="rounded-2xl border border-violet-100 bg-white p-8 shadow-lg transition hover:-translate-y-2 hover:shadow-xl">
-                <div className="text-4xl font-bold text-violet-600 mb-2">24/7</div>
-                <p className="text-gray-600">Emergency Support</p>
-              </div>
-            </div>
+            ))}
           </div>
         </section>
 

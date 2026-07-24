@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import PageHeader from '@/components/PageHeader'
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -69,23 +70,12 @@ export default function ContactPage() {
     <div className="min-h-screen bg-gradient-to-br from-white via-violet-50 to-gray-100 text-gray-900">
       <Navbar />
 
-      <main className="pt-24">
-        {/* Hero Section */}
-        <section className="bg-gradient-to-r from-violet-50 to-white px-6 py-16 md:px-12 md:py-24">
-          <div className="mx-auto max-w-7xl">
-            <div className="animate-fadeIn space-y-6 text-center">
-              <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold uppercase tracking-[0.3em] text-violet-700 shadow-sm">
-                Get in Touch
-              </span>
-              <h1 className="text-5xl md:text-6xl font-bold text-gray-900">
-                Contact RD IT Lab UK
-              </h1>
-              <p className="max-w-2xl mx-auto text-xl text-gray-700 leading-relaxed">
-                Have questions about our services? Need urgent support? Reach out to us anytime. We handle laptop repairs, PC builds, data recovery, and more with quick turnaround and professional service.
-              </p>
-            </div>
-          </div>
-        </section>
+      <main>
+        <PageHeader
+          eyebrow="Get in touch"
+          title={<>Let&apos;s talk about <span className="text-gradient-brand">your IT needs</span></>}
+          subtitle="Questions about our services or need urgent support? Reach out anytime. We handle repairs, builds, networking, websites and more — with quick turnaround and professional service."
+        />
 
         {/* Contact Info Cards */}
         <section className="mx-6 md:mx-12 my-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
