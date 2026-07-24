@@ -43,14 +43,14 @@ export default function ForgotPasswordPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-gray-100 flex items-center justify-center px-6 py-12">
+    <div className="min-h-screen bg-gradient-to-br from-violet-50 via-white to-gray-100 flex items-center justify-center px-6 py-12">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-amber-600">Forgot Password</h1>
+          <h1 className="text-4xl font-bold text-violet-600">Forgot Password</h1>
           <p className="text-gray-600 mt-2">Enter your admin email to receive a reset link.</p>
         </div>
 
-        <div className="bg-white rounded-2xl border border-amber-100 shadow-2xl p-8 md:p-10">
+        <div className="bg-white rounded-2xl border border-violet-100 shadow-2xl p-8 md:p-10">
           {error && (
             <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
               <p className="text-red-800 text-sm">{error}</p>
@@ -80,7 +80,7 @@ export default function ForgotPasswordPage() {
                 onChange={e => setEmail(e.target.value)}
                 disabled={loading}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent disabled:bg-gray-50"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent disabled:bg-gray-50"
                 placeholder="admin@rditlab.co.uk"
               />
             </div>
@@ -88,14 +88,14 @@ export default function ForgotPasswordPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 bg-amber-600 text-white font-semibold rounded-lg hover:bg-amber-700 transition disabled:bg-gray-400 disabled:cursor-not-allowed"
+              className="w-full py-3 bg-violet-600 text-white font-semibold rounded-lg hover:bg-violet-700 transition disabled:bg-gray-400 disabled:cursor-not-allowed"
             >
               {loading ? 'Sending...' : 'Send Reset Link'}
             </button>
           </form>
 
           <div className="mt-6 text-center text-sm text-gray-600">
-            <Link href="/login" className="text-amber-600 hover:text-amber-700 font-medium">
+            <Link href="/login" className="text-violet-600 hover:text-violet-700 font-medium">
               Back to Login
             </Link>
           </div>

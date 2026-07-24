@@ -57,7 +57,7 @@ export default function ProtectedAdmin({ children }: ProtectedAdminProps) {
     return (
       <div className="min-h-screen bg-gray-100 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-violet-600 mx-auto mb-4"></div>
           <p className="text-gray-600">Loading...</p>
         </div>
       </div>
@@ -75,7 +75,7 @@ export default function ProtectedAdmin({ children }: ProtectedAdminProps) {
         <div className="container mx-auto max-w-7xl px-6 py-4">
           <div className="flex justify-between items-center">
             <div>
-              <h1 className="text-3xl font-bold text-amber-600">RD IT Lab Admin</h1>
+              <h1 className="text-3xl font-bold text-violet-600">RD IT Lab Admin</h1>
               <p className="text-sm text-gray-600 mt-1">
                 Welcome, <span className="font-medium">{session.name || session.email}</span>
               </p>
@@ -85,7 +85,7 @@ export default function ProtectedAdmin({ children }: ProtectedAdminProps) {
                 onClick={() => setShowLogout(!showLogout)}
                 className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 transition"
               >
-                <div className="w-10 h-10 rounded-full bg-amber-600 flex items-center justify-center text-white font-bold">
+                <div className="w-10 h-10 rounded-full bg-violet-600 flex items-center justify-center text-white font-bold">
                   {session.name?.charAt(0).toUpperCase() || session.email.charAt(0).toUpperCase()}
                 </div>
                 <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">

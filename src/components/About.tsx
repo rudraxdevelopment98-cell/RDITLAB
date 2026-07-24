@@ -34,15 +34,15 @@ export default function About() {
   ]
 
   return (
-    <section id="about" className="pt-24 pb-24 px-6 md:px-12 bg-gradient-to-br from-white via-amber-50 to-gray-100">
+    <section id="about" className="pt-24 pb-24 px-6 md:px-12 bg-gradient-to-br from-white via-violet-50 to-gray-100">
       <div className="container mx-auto max-w-7xl">
         <div className="mb-16 text-center">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-amber-700 mb-3">About us</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-violet-700 mb-3">About us</p>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900">Who We Are & What We Do</h2>
         </div>
 
         <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] items-center mb-16">
-          <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-amber-200 via-amber-100 to-white p-6 shadow-xl">
+          <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-violet-200 via-violet-100 to-white p-6 shadow-xl">
             <img
               src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1000&h=700&fit=crop&crop=center"
               alt="Our team"
@@ -53,7 +53,7 @@ export default function About() {
             {sections.map((section, index) => (
               <div
                 key={index}
-                className="rounded-[1.5rem] border border-amber-100 bg-white shadow-lg transition-all duration-300 hover:shadow-xl"
+                className="rounded-[1.5rem] border border-violet-100 bg-white shadow-lg transition-all duration-300 hover:shadow-xl"
               >
                 <button
                   onClick={() => setExpandedSection(expandedSection === index ? -1 : index)}
@@ -61,7 +61,7 @@ export default function About() {
                 >
                   <h3 className="text-xl font-semibold text-gray-900 text-left">{section.title}</h3>
                   <span
-                    className={`text-2xl font-bold text-amber-600 transition-transform duration-300 ${
+                    className={`text-2xl font-bold text-violet-600 transition-transform duration-300 ${
                       expandedSection === index ? 'rotate-45' : ''
                     }`}
                   >
@@ -69,7 +69,7 @@ export default function About() {
                   </span>
                 </button>
                 {expandedSection === index && (
-                  <div className="animate-fadeIn border-t border-amber-100 px-6 pb-6">
+                  <div className="animate-fadeIn border-t border-violet-100 px-6 pb-6">
                     <p className="text-gray-700 leading-relaxed">{section.content}</p>
                   </div>
                 )}
@@ -78,7 +78,7 @@ export default function About() {
           </div>
         </div>
 
-        <div className="rounded-[2rem] border border-amber-100 bg-white shadow-xl p-10 md:p-12">
+        <div className="rounded-[2rem] border border-violet-100 bg-white shadow-xl p-10 md:p-12">
           <div className="mb-8 text-center">
             <h3 className="text-3xl font-bold text-gray-900 mb-3">Why Choose RD IT Lab UK?</h3>
             <p className="text-gray-600 max-w-2xl mx-auto">We combine technical expertise, reliability, and a genuine commitment to your business success.</p>
@@ -87,10 +87,10 @@ export default function About() {
             {benefits.map((benefit, index) => (
               <div
                 key={index}
-                className="group rounded-3xl border border-amber-100 bg-gradient-to-br from-amber-50 to-white p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg"
+                className="group rounded-3xl border border-violet-100 bg-gradient-to-br from-violet-50 to-white p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg"
               >
-                <div className="mb-3 h-10 w-10 rounded-full bg-amber-100 flex items-center justify-center group-hover:bg-amber-600 transition-colors duration-300">
-                  <span className="text-amber-600 group-hover:text-white font-bold">✓</span>
+                <div className="mb-3 h-10 w-10 rounded-full bg-violet-100 flex items-center justify-center group-hover:bg-violet-600 transition-colors duration-300">
+                  <span className="text-violet-600 group-hover:text-white font-bold">✓</span>
                 </div>
                 <p className="text-gray-900 font-medium">{benefit}</p>
               </div>

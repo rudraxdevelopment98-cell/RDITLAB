@@ -23,8 +23,8 @@ function AdminContent() {
               onClick={() => setActiveTab('dashboard')}
               className={`py-4 px-3 font-medium transition border-b-2 whitespace-nowrap ${
                 activeTab === 'dashboard'
-                  ? 'text-amber-600 border-amber-600'
-                  : 'text-gray-600 border-transparent hover:text-amber-600'
+                  ? 'text-violet-600 border-violet-600'
+                  : 'text-gray-600 border-transparent hover:text-violet-600'
               }`}
             >
               📊 Dashboard
@@ -34,8 +34,8 @@ function AdminContent() {
               onClick={() => setActiveTab('pages')}
               className={`py-4 px-3 font-medium transition border-b-2 whitespace-nowrap ${
                 activeTab === 'pages'
-                  ? 'text-amber-600 border-amber-600'
-                  : 'text-gray-600 border-transparent hover:text-amber-600'
+                  ? 'text-violet-600 border-violet-600'
+                  : 'text-gray-600 border-transparent hover:text-violet-600'
               }`}
             >
               📄 Pages & Content
@@ -45,8 +45,8 @@ function AdminContent() {
               onClick={() => setActiveTab('team')}
               className={`py-4 px-3 font-medium transition border-b-2 whitespace-nowrap ${
                 activeTab === 'team'
-                  ? 'text-amber-600 border-amber-600'
-                  : 'text-gray-600 border-transparent hover:text-amber-600'
+                  ? 'text-violet-600 border-violet-600'
+                  : 'text-gray-600 border-transparent hover:text-violet-600'
               }`}
             >
               👥 Team Members
@@ -56,8 +56,8 @@ function AdminContent() {
               onClick={() => setActiveTab('audit')}
               className={`py-4 px-3 font-medium transition border-b-2 whitespace-nowrap ${
                 activeTab === 'audit'
-                  ? 'text-amber-600 border-amber-600'
-                  : 'text-gray-600 border-transparent hover:text-amber-600'
+                  ? 'text-violet-600 border-violet-600'
+                  : 'text-gray-600 border-transparent hover:text-violet-600'
               }`}
             >
               📋 Audit Logs
@@ -67,8 +67,8 @@ function AdminContent() {
               onClick={() => setActiveTab('settings')}
               className={`py-4 px-3 font-medium transition border-b-2 whitespace-nowrap ${
                 activeTab === 'settings'
-                  ? 'text-amber-600 border-amber-600'
-                  : 'text-gray-600 border-transparent hover:text-amber-600'
+                  ? 'text-violet-600 border-violet-600'
+                  : 'text-gray-600 border-transparent hover:text-violet-600'
               }`}
             >
               ⚙️ Settings

@@ -113,7 +113,7 @@ export default function PagesManager() {
   return (
     <div className="space-y-6">
       <div className="bg-white p-6 rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold mb-4 text-amber-600">Pages Management</h2>
+        <h2 className="text-2xl font-bold mb-4 text-violet-600">Pages Management</h2>
 
         {error && (
           <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
@@ -130,7 +130,7 @@ export default function PagesManager() {
             }}
             className={`px-4 py-2 rounded transition ${
               selectedSection === 'all'
-                ? 'bg-amber-600 text-white'
+                ? 'bg-violet-600 text-white'
                 : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
             }`}
           >
@@ -142,7 +142,7 @@ export default function PagesManager() {
               onClick={() => setSelectedSection(section)}
               className={`px-4 py-2 rounded transition capitalize ${
                 selectedSection === section
-                  ? 'bg-amber-600 text-white'
+                  ? 'bg-violet-600 text-white'
                   : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
               }`}
             >
@@ -160,7 +160,7 @@ export default function PagesManager() {
                 type="text"
                 value={formData.title}
                 onChange={e => setFormData({ ...formData, title: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:amber-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:violet-500"
                 placeholder="Enter title"
               />
             </div>
@@ -170,7 +170,7 @@ export default function PagesManager() {
               <select
                 value={formData.section}
                 onChange={e => setFormData({ ...formData, section: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:amber-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:violet-500"
               >
                 <option value="">Select section</option>
                 {sections.map(section => (
@@ -186,7 +186,7 @@ export default function PagesManager() {
               <textarea
                 value={formData.content}
                 onChange={e => setFormData({ ...formData, content: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:amber-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:violet-500"
                 placeholder="Enter content"
                 rows={5}
               />
@@ -195,7 +195,7 @@ export default function PagesManager() {
             <div className="flex gap-2">
               <button
                 type="submit"
-                className="flex-1 px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition"
+                className="flex-1 px-4 py-2 bg-violet-600 text-white rounded-lg hover:bg-violet-700 transition"
               >
                 {editingId ? 'Update' : 'Create'} Page
               </button>
@@ -224,8 +224,8 @@ export default function PagesManager() {
                 key={page.id}
                 className={`p-4 border rounded-lg transition ${
                   editingId === page.id
-                    ? 'border-amber-600 bg-amber-50'
-                    : 'border-gray-200 hover:border-amber-300'
+                    ? 'border-violet-600 bg-violet-50'
+                    : 'border-gray-200 hover:border-violet-300'
                 }`}
               >
                 <div className="flex justify-between items-start">

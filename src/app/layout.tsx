@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter, Sora } from 'next/font/google'
 import './globals.css'
 
@@ -40,7 +40,10 @@ export const metadata: Metadata = {
     locale: 'en_GB',
     siteName: 'RD IT Lab UK',
   },
-  themeColor: '#d97706',
+}
+
+export const viewport: Viewport = {
+  themeColor: '#7c3aed',
 }
 
 export default function RootLayout({

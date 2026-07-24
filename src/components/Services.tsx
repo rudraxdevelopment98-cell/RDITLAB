@@ -61,12 +61,12 @@ export default function Services() {
       <div className="container mx-auto max-w-7xl">
         <Reveal className="flex flex-col items-center justify-between gap-6 md:flex-row md:items-end">
           <div className="text-center md:text-left">
-            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-amber-700">What we do</p>
+            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-violet-700">What we do</p>
             <h2 className="font-display text-4xl font-bold text-gray-900 md:text-5xl">Our Services</h2>
           </div>
           <a
             href="/services"
-            className="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-6 py-3 text-sm font-semibold text-amber-700 transition hover:bg-amber-100"
+            className="inline-flex items-center gap-2 rounded-full border border-violet-200 bg-violet-50 px-6 py-3 text-sm font-semibold text-violet-700 transition hover:bg-violet-100"
           >
             View full service page
             <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -80,9 +80,9 @@ export default function Services() {
             const Icon = icons[service.icon]
             return (
               <Reveal key={service.title} delay={(index % 3) * 90}>
-                <div className="group relative h-full overflow-hidden rounded-2xl border border-amber-100 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-amber-200 hover:shadow-brand">
-                  <div className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-amber-500 to-amber-700 transition-transform duration-300 group-hover:scale-x-100" />
-                  <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-50 text-amber-600 transition-colors duration-300 group-hover:bg-amber-600 group-hover:text-white">
+                <div className="group relative h-full overflow-hidden rounded-2xl border border-violet-100 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-violet-200 hover:shadow-brand">
+                  <div className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-violet-500 to-violet-700 transition-transform duration-300 group-hover:scale-x-100" />
+                  <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-violet-50 text-violet-600 transition-colors duration-300 group-hover:bg-violet-600 group-hover:text-white">
                     <Icon className="h-7 w-7" />
                   </div>
                   <h3 className="mb-2 font-display text-xl font-semibold text-gray-900">{service.title}</h3>
@@ -96,11 +96,11 @@ export default function Services() {
           <Reveal delay={90}>
             <a
               href="/contact"
-              className="group flex h-full flex-col justify-between rounded-2xl bg-gradient-to-br from-amber-600 to-amber-700 p-7 text-white shadow-brand transition-all duration-300 hover:-translate-y-1.5 hover:shadow-brand-lg"
+              className="group flex h-full flex-col justify-between rounded-2xl bg-gradient-to-br from-violet-600 to-violet-700 p-7 text-white shadow-brand transition-all duration-300 hover:-translate-y-1.5 hover:shadow-brand-lg"
             >
               <div>
                 <h3 className="font-display text-xl font-semibold">Need something else?</h3>
-                <p className="mt-2 leading-relaxed text-amber-50/90">
+                <p className="mt-2 leading-relaxed text-violet-50/90">
                   Tell us about your setup and we&apos;ll put together a tailored IT solution.
                 </p>
               </div>

@@ -139,7 +139,7 @@ export default function TeamManager() {
   return (
     <div className="space-y-6">
       <div className="bg-white p-6 rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold mb-4 text-amber-600">Team Members Management</h2>
+        <h2 className="text-2xl font-bold mb-4 text-violet-600">Team Members Management</h2>
 
         {error && (
           <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
@@ -156,7 +156,7 @@ export default function TeamManager() {
                 type="text"
                 value={formData.name}
                 onChange={e => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:amber-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:violet-500"
                 placeholder="Enter name"
               />
             </div>
@@ -167,7 +167,7 @@ export default function TeamManager() {
                 type="text"
                 value={formData.role}
                 onChange={e => setFormData({ ...formData, role: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:amber-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:violet-500"
                 placeholder="e.g., Lead Technician, Support Engineer"
               />
             </div>
@@ -177,7 +177,7 @@ export default function TeamManager() {
               <textarea
                 value={formData.bio}
                 onChange={e => setFormData({ ...formData, bio: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:amber-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:violet-500"
                 placeholder="Enter team member bio"
                 rows={4}
               />
@@ -210,7 +210,7 @@ export default function TeamManager() {
             <div className="flex gap-2">
               <button
                 type="submit"
-                className="flex-1 px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition"
+                className="flex-1 px-4 py-2 bg-violet-600 text-white rounded-lg hover:bg-violet-700 transition"
               >
                 {editingId ? 'Update' : 'Add'} Team Member
               </button>
@@ -239,8 +239,8 @@ export default function TeamManager() {
                 key={member.id}
                 className={`border rounded-lg overflow-hidden transition ${
                   editingId === member.id
-                    ? 'border-amber-600 bg-amber-50'
-                    : 'border-gray-200 hover:border-amber-300'
+                    ? 'border-violet-600 bg-violet-50'
+                    : 'border-gray-200 hover:border-violet-300'
                 }`}
               >
                 {member.image && (
@@ -252,7 +252,7 @@ export default function TeamManager() {
                 )}
                 <div className="p-4">
                   <h3 className="font-semibold text-gray-900 text-lg">{member.name}</h3>
-                  <p className="text-sm text-amber-600 font-medium mb-2">{member.role}</p>
+                  <p className="text-sm text-violet-600 font-medium mb-2">{member.role}</p>
                   <p className="text-gray-700 text-sm line-clamp-3 mb-3">{member.bio}</p>
                   <p className="text-xs text-gray-500 mb-4">
                     Updated: {new Date(member.updatedAt).toLocaleDateString()}

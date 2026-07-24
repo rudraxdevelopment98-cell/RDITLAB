@@ -26,43 +26,43 @@ export default function Contact() {
   ]
 
   return (
-    <section id="contact" className="pt-24 pb-24 px-6 md:px-12 bg-gradient-to-br from-white via-amber-50 to-gray-100">
+    <section id="contact" className="pt-24 pb-24 px-6 md:px-12 bg-gradient-to-br from-white via-violet-50 to-gray-100">
       <div className="container mx-auto max-w-7xl">
         <div className="mb-16 text-center">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-amber-700 mb-3">Get in touch</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-violet-700 mb-3">Get in touch</p>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900">Let&apos;s Discuss Your IT Needs</h2>
         </div>
 
         <div className="grid gap-12 lg:grid-cols-2 mb-16">
           <div className="space-y-6">
-            <div className="rounded-[2rem] border border-amber-100 bg-white shadow-xl p-8">
+            <div className="rounded-[2rem] border border-violet-100 bg-white shadow-xl p-8">
               <h3 className="text-2xl font-semibold text-gray-900 mb-6">Contact Information</h3>
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="mt-1 h-10 w-10 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
-                    <span className="text-amber-600 font-bold">✉</span>
+                  <div className="mt-1 h-10 w-10 rounded-full bg-violet-100 flex items-center justify-center flex-shrink-0">
+                    <span className="text-violet-600 font-bold">✉</span>
                   </div>
                   <div>
                     <p className="font-semibold text-gray-900">Email</p>
-                    <a href="mailto:rudraxdevelopment98@gmail.com" className="text-amber-600 hover:text-amber-700 transition-colors">
+                    <a href="mailto:rudraxdevelopment98@gmail.com" className="text-violet-600 hover:text-violet-700 transition-colors">
                       rudraxdevelopment98@gmail.com
                     </a>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="mt-1 h-10 w-10 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
-                    <span className="text-amber-600 font-bold">📞</span>
+                  <div className="mt-1 h-10 w-10 rounded-full bg-violet-100 flex items-center justify-center flex-shrink-0">
+                    <span className="text-violet-600 font-bold">📞</span>
                   </div>
                   <div>
                     <p className="font-semibold text-gray-900">Phone</p>
-                    <a href="tel:+447823912875" className="text-amber-600 hover:text-amber-700 transition-colors">
+                    <a href="tel:+447823912875" className="text-violet-600 hover:text-violet-700 transition-colors">
                       +44 7823912875
                     </a>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="mt-1 h-10 w-10 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
-                    <span className="text-amber-600 font-bold">📍</span>
+                  <div className="mt-1 h-10 w-10 rounded-full bg-violet-100 flex items-center justify-center flex-shrink-0">
+                    <span className="text-violet-600 font-bold">📍</span>
                   </div>
                   <div>
                     <p className="font-semibold text-gray-900">Location</p>
@@ -70,14 +70,14 @@ export default function Contact() {
                   </div>
                 </div>
               </div>
-              <div className="mt-8 pt-8 border-t border-amber-100">
+              <div className="mt-8 pt-8 border-t border-violet-100">
                 <p className="text-gray-600 mb-4">Follow us on Google and Instagram:</p>
                 <div className="flex gap-3">
                   <a
                     href="https://share.google/nMMOrlyJNoFbICUL5"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-700 px-6 py-3 rounded-full text-white font-semibold transition-all duration-300 hover:shadow-lg"
+                    className="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-700 px-6 py-3 rounded-full text-white font-semibold transition-all duration-300 hover:shadow-lg"
                   >
                     Google Reviews
                   </a>
@@ -94,7 +94,7 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="rounded-[2rem] border border-amber-100 bg-white shadow-xl p-8">
+          <div className="rounded-[2rem] border border-violet-100 bg-white shadow-xl p-8">
             <h3 className="text-2xl font-semibold text-gray-900 mb-6">Quick Message</h3>
             <form
               onSubmit={(e) => {
@@ -109,7 +109,7 @@ export default function Contact() {
                 <input
                   type="text"
                   placeholder="Your name"
-                  className="w-full rounded-full border border-gray-300 px-5 py-3 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all"
+                  className="w-full rounded-full border border-gray-300 px-5 py-3 focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all"
                   required
                 />
               </div>
@@ -118,7 +118,7 @@ export default function Contact() {
                 <input
                   type="email"
                   placeholder="your@email.com"
-                  className="w-full rounded-full border border-gray-300 px-5 py-3 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all"
+                  className="w-full rounded-full border border-gray-300 px-5 py-3 focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all"
                   required
                 />
               </div>
@@ -127,18 +127,18 @@ export default function Contact() {
                 <textarea
                   placeholder="Tell us about your IT needs..."
                   rows={4}
-                  className="w-full rounded-3xl border border-gray-300 px-5 py-3 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all resize-none"
+                  className="w-full rounded-3xl border border-gray-300 px-5 py-3 focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all resize-none"
                   required
                 />
               </div>
               <button
                 type="submit"
-                className="w-full bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 rounded-full transition-all duration-300 hover:shadow-lg active:scale-95"
+                className="w-full bg-violet-600 hover:bg-violet-700 text-white font-semibold py-3 rounded-full transition-all duration-300 hover:shadow-lg active:scale-95"
               >
                 Send Message
               </button>
               {formStatus && (
-                <p className="text-center text-amber-700 bg-amber-50 p-3 rounded-full text-sm animate-fadeIn">
+                <p className="text-center text-violet-700 bg-violet-50 p-3 rounded-full text-sm animate-fadeIn">
                   {formStatus}
                 </p>
               )}
@@ -146,7 +146,7 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="rounded-[2rem] border border-amber-100 bg-white shadow-xl p-10 md:p-12">
+        <div className="rounded-[2rem] border border-violet-100 bg-white shadow-xl p-10 md:p-12">
           <div className="mb-8 text-center">
             <h3 className="text-3xl font-bold text-gray-900">Frequently Asked Questions</h3>
           </div>
@@ -158,11 +158,11 @@ export default function Contact() {
               >
                 <button
                   onClick={() => setExpandedFAQ(expandedFAQ === index ? -1 : index)}
-                  className="w-full flex items-center justify-between p-6 hover:bg-amber-50 transition-colors duration-300"
+                  className="w-full flex items-center justify-between p-6 hover:bg-violet-50 transition-colors duration-300"
                 >
                   <p className="text-lg font-semibold text-gray-900 text-left">{faq.question}</p>
                   <span
-                    className={`text-2xl font-bold text-amber-600 transition-transform duration-300 flex-shrink-0 ml-4 ${
+                    className={`text-2xl font-bold text-violet-600 transition-transform duration-300 flex-shrink-0 ml-4 ${
                       expandedFAQ === index ? 'rotate-45' : ''
                     }`}
                   >

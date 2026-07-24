@@ -118,15 +118,15 @@ export default function ServicesPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-amber-50 to-gray-100 text-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-white via-violet-50 to-gray-100 text-gray-900">
       <Navbar />
 
       <main className="pt-24">
         {/* Hero Section */}
-        <section className="bg-amber-50 px-6 py-16 md:px-12 md:py-24 animate-fade-in">
+        <section className="bg-violet-50 px-6 py-16 md:px-12 md:py-24 animate-fade-in">
           <div className="mx-auto max-w-7xl grid gap-12 lg:grid-cols-[1.3fr_1fr] items-center">
             <div className="space-y-6">
-              <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold uppercase tracking-[0.3em] text-amber-700 shadow-sm">
+              <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold uppercase tracking-[0.3em] text-violet-700 shadow-sm">
                 Services overview
               </span>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900">Professional IT Services for Networks, Repair, and Support</h1>
@@ -134,17 +134,17 @@ export default function ServicesPage() {
                 RD IT Lab UK delivers trusted solutions for laptop repair, PC build, network infrastructure, audit, and managed support. Click on any service below to explore detailed capabilities and benefits.
               </p>
               <div className="grid gap-4 sm:grid-cols-2">
-                <div className="rounded-3xl bg-white p-6 shadow-sm border border-amber-100">
+                <div className="rounded-3xl bg-white p-6 shadow-sm border border-violet-100">
                   <h2 className="text-xl font-semibold text-gray-900 mb-3">Trusted repair</h2>
                   <p className="text-gray-600">Fast hardware diagnostics, secure data handling, and professional laptop/PC repairs.</p>
                 </div>
-                <div className="rounded-3xl bg-white p-6 shadow-sm border border-amber-100">
+                <div className="rounded-3xl bg-white p-6 shadow-sm border border-violet-100">
                   <h2 className="text-xl font-semibold text-gray-900 mb-3">Network reliability</h2>
                   <p className="text-gray-600">Design, secure, and manage networks with enterprise-grade performance and uptime.</p>
                 </div>
               </div>
             </div>
-            <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-amber-200 via-amber-100 to-white p-6 shadow-xl animate-slide-in-right">
+            <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-violet-200 via-violet-100 to-white p-6 shadow-xl animate-slide-in-right">
               <img
                 src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1000&h=700&fit=crop&crop=center"
                 alt="IT services"
@@ -155,10 +155,10 @@ export default function ServicesPage() {
         </section>
 
         {/* Services Accordion Section */}
-        <section className="mx-6 md:mx-12 my-16 rounded-[2rem] bg-white border border-amber-100 shadow-xl p-8 md:p-12">
+        <section className="mx-6 md:mx-12 my-16 rounded-[2rem] bg-white border border-violet-100 shadow-xl p-8 md:p-12">
           <div className="max-w-7xl mx-auto">
             <div className="mb-10 text-center animate-fade-in">
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-amber-700 mb-3">Our core offerings</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-violet-700 mb-3">Our core offerings</p>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Click to explore our services</h2>
             </div>
 
@@ -173,12 +173,12 @@ export default function ServicesPage() {
                     {/* Header / Accordion Button */}
                     <button
                       onClick={() => setExpandedIndex(isExpanded ? null : index)}
-                      className="w-full flex items-center justify-between p-6 bg-gradient-to-r from-white to-amber-50 hover:from-amber-50 hover:to-amber-100 transition-all duration-200"
+                      className="w-full flex items-center justify-between p-6 bg-gradient-to-r from-white to-violet-50 hover:from-violet-50 hover:to-violet-100 transition-all duration-200"
                     >
                       <div className="flex items-center gap-4 flex-1 text-left">
-                        <div className="flex-shrink-0 w-14 h-14 rounded-full bg-amber-100 flex items-center justify-center">
+                        <div className="flex-shrink-0 w-14 h-14 rounded-full bg-violet-100 flex items-center justify-center">
                           <svg
-                            className="w-7 h-7 text-amber-600"
+                            className="w-7 h-7 text-violet-600"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -193,7 +193,7 @@ export default function ServicesPage() {
                         </div>
                         <div>
                           <h3 className="text-xl md:text-2xl font-semibold text-gray-900">{service.title}</h3>
-                          <p className="text-lg font-semibold text-amber-600 mt-1">{service.price}</p>
+                          <p className="text-lg font-semibold text-violet-600 mt-1">{service.price}</p>
                         </div>
                       </div>
                       <div
@@ -202,7 +202,7 @@ export default function ServicesPage() {
                         }`}
                       >
                         <svg
-                          className="w-6 h-6 text-amber-600"
+                          className="w-6 h-6 text-violet-600"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -233,9 +233,9 @@ export default function ServicesPage() {
                               <p className="text-gray-700 leading-relaxed text-lg">{service.overview}</p>
                             </div>
                             <div className="grid gap-4 sm:grid-cols-2">
-                              <div className="rounded-3xl bg-amber-50 p-5 border border-amber-200">
-                                <h4 className="font-semibold text-amber-800 mb-3 flex items-center gap-2">
-                                  <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-600 text-white text-sm">
+                              <div className="rounded-3xl bg-violet-50 p-5 border border-violet-200">
+                                <h4 className="font-semibold text-violet-800 mb-3 flex items-center gap-2">
+                                  <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-violet-600 text-white text-sm">
                                     ✓
                                   </span>
                                   What we deliver
@@ -244,7 +244,7 @@ export default function ServicesPage() {
                                   {service.details.map((detail, detailIndex) => (
                                     <li
                                       key={detailIndex}
-                                      className="before:content-['•'] before:mr-2 before:text-amber-600 hover:translate-x-1 transition-transform"
+                                      className="before:content-['•'] before:mr-2 before:text-violet-600 hover:translate-x-1 transition-transform"
                                     >
                                       {detail}
                                     </li>
@@ -252,8 +252,8 @@ export default function ServicesPage() {
                                 </ul>
                               </div>
                               <div className="rounded-3xl bg-gray-50 p-5 border border-gray-200">
-                                <h4 className="font-semibold text-amber-800 mb-3 flex items-center gap-2">
-                                  <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-600 text-white text-sm">
+                                <h4 className="font-semibold text-violet-800 mb-3 flex items-center gap-2">
+                                  <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-violet-600 text-white text-sm">
                                     ★
                                   </span>
                                   Key benefits
@@ -262,7 +262,7 @@ export default function ServicesPage() {
                                   {service.benefits.map((benefit, benefitIndex) => (
                                     <li
                                       key={benefitIndex}
-                                      className="before:content-['→'] before:mr-2 before:text-amber-600 hover:translate-x-1 transition-transform"
+                                      className="before:content-['→'] before:mr-2 before:text-violet-600 hover:translate-x-1 transition-transform"
                                     >
                                       {benefit}
                                     </li>
@@ -282,18 +282,18 @@ export default function ServicesPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="mx-6 md:mx-12 mb-20 rounded-[2rem] border border-amber-100 bg-gradient-to-br from-amber-50 to-amber-100/50 p-10 shadow-xl animate-fade-in-up">
+        <section className="mx-6 md:mx-12 mb-20 rounded-[2rem] border border-violet-100 bg-gradient-to-br from-violet-50 to-violet-100/50 p-10 shadow-xl animate-fade-in-up">
           <div className="max-w-6xl mx-auto grid gap-8 lg:grid-cols-3">
             <div className="hover:translate-y-[-4px] transition-transform duration-300">
-              <h3 className="text-xl font-semibold text-amber-800 mb-3">Fast Response</h3>
+              <h3 className="text-xl font-semibold text-violet-800 mb-3">Fast Response</h3>
               <p className="text-gray-700 leading-relaxed">We minimise downtime with quick diagnostics, efficient repairs, and responsive support.</p>
             </div>
             <div className="hover:translate-y-[-4px] transition-transform duration-300">
-              <h3 className="text-xl font-semibold text-amber-800 mb-3">Professional Service</h3>
+              <h3 className="text-xl font-semibold text-violet-800 mb-3">Professional Service</h3>
               <p className="text-gray-700 leading-relaxed">Every engagement is delivered with clear communication, quality assurance, and reliable follow-through.</p>
             </div>
             <div className="hover:translate-y-[-4px] transition-transform duration-300">
-              <h3 className="text-xl font-semibold text-amber-800 mb-3">Commercial Focus</h3>
+              <h3 className="text-xl font-semibold text-violet-800 mb-3">Commercial Focus</h3>
               <p className="text-gray-700 leading-relaxed">Our services are tailored for UK businesses that need secure IT and strong infrastructure.</p>
             </div>
           </div>

@@ -8,6 +8,7 @@ const links = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
   { href: '/services', label: 'Services' },
+  { href: '/web-development', label: 'Web & Software' },
   { href: '/contact', label: 'Contact' },
 ]
 
@@ -31,17 +32,17 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 z-50 w-full transition-all duration-300 ${
           scrolled
-            ? 'glass border-b border-amber-100 shadow-md'
+            ? 'glass border-b border-violet-100 shadow-md'
             : 'bg-white/95 border-b border-transparent'
         }`}
       >
         <div className="container mx-auto flex items-center justify-between max-w-7xl py-4">
           <Link href="/" className="group flex items-center gap-2.5">
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 text-sm font-bold text-white shadow-brand transition-transform group-hover:scale-105">
+            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-violet-700 text-sm font-bold text-white shadow-brand transition-transform group-hover:scale-105">
               RD
             </span>
             <span className="font-display text-xl md:text-2xl font-bold tracking-tight text-gray-900">
-              IT Lab <span className="text-amber-600">UK</span>
+              IT Lab <span className="text-violet-600">UK</span>
             </span>
           </Link>
 
@@ -52,13 +53,13 @@ export default function Navbar() {
                   href={link.href}
                   className={`relative rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                     isActive(link.href)
-                      ? 'text-amber-700'
-                      : 'text-gray-600 hover:text-amber-600'
+                      ? 'text-violet-700'
+                      : 'text-gray-600 hover:text-violet-600'
                   }`}
                 >
                   {link.label}
                   {isActive(link.href) && (
-                    <span className="absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-amber-600" />
+                    <span className="absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-violet-600" />
                   )}
                 </Link>
               </li>
@@ -68,7 +69,7 @@ export default function Navbar() {
           <div className="hidden md:block">
             <Link
               href="/contact"
-              className="rounded-full bg-amber-600 px-5 py-2.5 text-sm font-semibold text-white shadow-brand transition hover:bg-amber-700 hover:shadow-brand-lg active:scale-95"
+              className="rounded-full bg-violet-600 px-5 py-2.5 text-sm font-semibold text-white shadow-brand transition hover:bg-violet-700 hover:shadow-brand-lg active:scale-95"
             >
               Get in touch
             </Link>
@@ -76,7 +77,7 @@ export default function Navbar() {
 
           <button
             onClick={() => setIsOpen((v) => !v)}
-            className="md:hidden rounded-lg p-2 text-gray-700 transition hover:text-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-600"
+            className="md:hidden rounded-lg p-2 text-gray-700 transition hover:text-violet-600 focus:outline-none focus:ring-2 focus:ring-violet-600"
             aria-label="Toggle menu"
             aria-expanded={isOpen}
           >
@@ -94,7 +95,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="fixed top-[68px] left-0 z-40 w-full glass border-b border-amber-100 shadow-lg md:hidden animate-slideDown">
+        <div className="fixed top-[68px] left-0 z-40 w-full glass border-b border-violet-100 shadow-lg md:hidden animate-slideDown">
           <div className="container mx-auto px-4 py-4">
             <ul className="space-y-1">
               {links.map((link) => (
@@ -104,8 +105,8 @@ export default function Navbar() {
                     onClick={() => setIsOpen(false)}
                     className={`block rounded-xl px-4 py-3 font-medium transition-colors ${
                       isActive(link.href)
-                        ? 'bg-amber-50 text-amber-700'
-                        : 'text-gray-700 hover:bg-amber-50 hover:text-amber-600'
+                        ? 'bg-violet-50 text-violet-700'
+                        : 'text-gray-700 hover:bg-violet-50 hover:text-violet-600'
                     }`}
                   >
                     {link.label}
@@ -113,11 +114,11 @@ export default function Navbar() {
                 </li>
               ))}
             </ul>
-            <div className="mt-3 border-t border-amber-100 pt-3">
+            <div className="mt-3 border-t border-violet-100 pt-3">
               <Link
                 href="/contact"
                 onClick={() => setIsOpen(false)}
-                className="block w-full rounded-full bg-amber-600 px-5 py-3 text-center font-semibold text-white transition hover:bg-amber-700"
+                className="block w-full rounded-full bg-violet-600 px-5 py-3 text-center font-semibold text-white transition hover:bg-violet-700"
               >
                 Get in touch
               </Link>

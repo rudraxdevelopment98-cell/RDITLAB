@@ -42,18 +42,18 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-gray-100 flex items-center justify-center px-6 py-12">
+    <div className="min-h-screen bg-gradient-to-br from-violet-50 via-white to-gray-100 flex items-center justify-center px-6 py-12">
       <div className="w-full max-w-md">
         {/* Logo/Header */}
         <div className="text-center mb-8">
           <Link href="/" className="inline-block mb-6">
-            <h1 className="text-4xl font-bold text-amber-600">RD IT Lab UK</h1>
+            <h1 className="text-4xl font-bold text-violet-600">RD IT Lab UK</h1>
           </Link>
           <p className="text-gray-600">Admin Portal</p>
         </div>
 
         {/* Login Card */}
-        <div className="bg-white rounded-2xl border border-amber-100 shadow-2xl p-8 md:p-10">
+        <div className="bg-white rounded-2xl border border-violet-100 shadow-2xl p-8 md:p-10">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Admin Login</h2>
 
           {error && (
@@ -73,7 +73,7 @@ export default function LoginPage() {
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 disabled={loading}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent disabled:bg-gray-50"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent disabled:bg-gray-50"
                 placeholder="admin@rditlab.co.uk"
                 required
               />
@@ -89,7 +89,7 @@ export default function LoginPage() {
                 value={password}
                 onChange={e => setPassword(e.target.value)}
                 disabled={loading}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent disabled:bg-gray-50"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent disabled:bg-gray-50"
                 placeholder="••••••••"
                 required
               />
@@ -99,7 +99,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 bg-amber-600 text-white font-semibold rounded-lg hover:bg-amber-700 transition disabled:bg-gray-400 disabled:cursor-not-allowed"
+              className="w-full py-3 bg-violet-600 text-white font-semibold rounded-lg hover:bg-violet-700 transition disabled:bg-gray-400 disabled:cursor-not-allowed"
             >
               {loading ? 'Logging in...' : 'Login'}
             </button>
@@ -108,13 +108,13 @@ export default function LoginPage() {
           {/* Footer */}
           <div className="mt-6 pt-6 border-t border-gray-200 space-y-3">
             <p className="text-center text-sm text-gray-600">
-              <Link href="/forgot-password" className="text-amber-600 hover:text-amber-700 font-medium">
+              <Link href="/forgot-password" className="text-violet-600 hover:text-violet-700 font-medium">
                 Forgot password?
               </Link>
             </p>
             <p className="text-center text-sm text-gray-600">
               Not an admin?{' '}
-              <Link href="/" className="text-amber-600 hover:text-amber-700 font-medium">
+              <Link href="/" className="text-violet-600 hover:text-violet-700 font-medium">
                 Back to Website
               </Link>
             </p>

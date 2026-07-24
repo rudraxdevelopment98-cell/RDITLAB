@@ -24,7 +24,7 @@ function NetworkVisualization() {
         <Float key={index} speed={1 + index * 0.15} rotationIntensity={0.2} floatIntensity={0.5}>
           <mesh position={node.pos as [number, number, number]}>
             <sphereGeometry args={[0.12, 18, 18]} />
-            <meshStandardMaterial color="#d4af37" emissive="#fcd34d" emissiveIntensity={0.4} />
+            <meshStandardMaterial color="#a78bfa" emissive="#8b5cf6" emissiveIntensity={0.6} />
           </mesh>
         </Float>
       ))}
@@ -37,7 +37,7 @@ function NetworkVisualization() {
         return (
           <line key={index}>
             <primitive attach="geometry" object={geometry} />
-            <lineBasicMaterial attach="material" color="#f59e0b" linewidth={2} />
+            <lineBasicMaterial attach="material" color="#7c3aed" linewidth={2} />
           </line>
         )
       })}
@@ -54,81 +54,79 @@ const stats = [
 
 export default function Hero() {
   return (
-    <section
-      id="home"
-      className="relative overflow-hidden bg-gradient-to-br from-white via-amber-50 to-gray-100 pt-6 md:pt-12"
-    >
-      {/* Decorative background */}
-      <div className="pointer-events-none absolute inset-0 bg-grid-faint [background-size:40px_40px] opacity-60" />
-      <div className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-amber-300/30 blur-3xl animate-blob" />
-      <div className="pointer-events-none absolute right-0 top-40 h-80 w-80 rounded-full bg-amber-200/40 blur-3xl animate-blob [animation-delay:4s]" />
+    <section id="home" className="relative overflow-hidden bg-ink-950 text-white">
+      {/* Ambient background */}
+      <div className="pointer-events-none absolute inset-0 bg-grid-dark [background-size:44px_44px]" />
+      <div className="pointer-events-none absolute -left-32 -top-24 h-96 w-96 rounded-full bg-violet-600/30 blur-[120px] animate-blob" />
+      <div className="pointer-events-none absolute right-0 top-32 h-[26rem] w-[26rem] rounded-full bg-indigo-500/25 blur-[120px] animate-blob [animation-delay:5s]" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-ink-950" />
 
-      <div className="container relative z-10 mx-auto max-w-7xl pb-14 md:pb-20">
-        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-12">
-          <div className="py-8 md:py-12 animate-fade-in-up">
-            <p className="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-100/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-amber-700 shadow-sm">
+      <div className="container relative z-10 mx-auto max-w-7xl pb-16 pt-10 md:pb-24 md:pt-16">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+          <div className="animate-fade-in-up">
+            <p className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-violet-200 backdrop-blur-sm">
               <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-500 opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-amber-600" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-violet-400 opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-violet-400" />
               </span>
-              IT Solutions for Industry
+              IT &amp; Software Solutions
             </p>
 
-            <h1 className="mt-5 font-display text-4xl font-bold leading-[1.05] tracking-tight text-gray-900 sm:text-5xl lg:text-6xl xl:text-7xl">
-              Reliable IT, <br className="hidden sm:block" />
-              <span className="text-gradient-brand">built to last.</span>
+            <h1 className="mt-6 font-display text-4xl font-bold leading-[1.03] tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl">
+              Build, fix &amp; ship <br className="hidden sm:block" />
+              <span className="text-gradient-brand">without the hassle.</span>
             </h1>
 
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-gray-600 sm:text-lg lg:text-xl">
-              Expert IT services for commercial and industrial clients — laptop &amp; PC repair,
-              custom builds, networking, lab setup, audits, and ongoing software support across the UK.
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg lg:text-xl">
+              From laptop &amp; PC repair and networking to custom websites and software — RD IT Lab UK
+              delivers secure, reliable technology for businesses across the UK.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
-                href="/services"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-amber-600 px-8 py-4 text-base font-semibold text-white shadow-brand transition hover:bg-amber-700 hover:shadow-brand-lg active:scale-95"
+                href="/web-development"
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 px-8 py-4 text-base font-semibold text-white shadow-brand transition hover:shadow-brand-lg active:scale-95"
               >
-                Explore Services
-                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                See our work &amp; plans
+                <svg className="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </a>
               <a
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-amber-200 bg-white px-8 py-4 text-base font-semibold text-amber-700 shadow-sm transition hover:border-amber-300 hover:bg-amber-50 active:scale-95"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-8 py-4 text-base font-semibold text-white backdrop-blur-sm transition hover:bg-white/10 active:scale-95"
               >
                 Get a quote
               </a>
             </div>
 
             {/* Trust stats */}
-            <dl className="mt-10 grid grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-4">
+            <dl className="mt-12 grid grid-cols-2 gap-x-6 gap-y-6 border-t border-white/10 pt-8 sm:grid-cols-4">
               {stats.map((stat) => (
                 <div key={stat.label}>
-                  <dt className="font-display text-2xl font-bold text-gray-900 sm:text-3xl">{stat.value}</dt>
-                  <dd className="mt-1 text-xs font-medium uppercase tracking-wide text-gray-500">{stat.label}</dd>
+                  <dt className="font-display text-2xl font-bold text-white sm:text-3xl">{stat.value}</dt>
+                  <dd className="mt-1 text-xs font-medium uppercase tracking-wide text-slate-400">{stat.label}</dd>
                 </div>
               ))}
             </dl>
           </div>
 
           {/* 3D card */}
-          <div className="relative hidden rounded-[2rem] border border-amber-100 bg-white/90 p-3 shadow-brand-lg backdrop-blur-sm md:p-4 lg:block">
-            <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-amber-100 to-white opacity-70" />
+          <div className="relative hidden rounded-[2rem] border border-white/10 bg-white/5 p-3 shadow-glow backdrop-blur-sm md:p-4 lg:block">
+            <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-violet-500/20 to-transparent" />
             <div className="relative h-[450px] overflow-hidden rounded-[1.75rem] lg:h-[520px]">
               <Canvas className="h-full w-full">
                 <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={1} />
-                <ambientLight intensity={0.8} />
-                <pointLight position={[5, 5, 5]} intensity={1} />
-                <pointLight position={[-5, -5, 5]} intensity={0.6} />
+                <ambientLight intensity={0.7} />
+                <pointLight position={[5, 5, 5]} intensity={1.1} color="#c4b5fd" />
+                <pointLight position={[-5, -5, 5]} intensity={0.7} color="#818cf8" />
                 <NetworkVisualization />
               </Canvas>
             </div>
-            <div className="absolute bottom-6 left-6 max-w-xs rounded-3xl border border-amber-100 glass px-6 py-4 shadow-xl">
-              <p className="text-xs uppercase tracking-[0.3em] text-amber-700">Network building</p>
-              <p className="mt-2 text-sm text-gray-700">
-                Nodes connecting in a live system map to show secure infrastructure growth.
+            <div className="absolute bottom-6 left-6 max-w-xs rounded-3xl border border-white/10 glass-dark px-6 py-4 shadow-xl">
+              <p className="text-xs uppercase tracking-[0.3em] text-violet-300">Secure by design</p>
+              <p className="mt-2 text-sm text-slate-300">
+                Live infrastructure map — nodes connecting to show secure, scalable systems.
               </p>
             </div>
           </div>

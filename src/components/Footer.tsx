@@ -7,11 +7,11 @@ export default function Footer() {
         <div className="mb-10 grid grid-cols-1 gap-10 md:grid-cols-4">
           <div className="md:col-span-2">
             <div className="flex items-center gap-2.5">
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 text-sm font-bold text-white">
+              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-violet-700 text-sm font-bold text-white">
                 RD
               </span>
               <span className="font-display text-xl font-bold">
-                IT Lab <span className="text-amber-400">UK</span>
+                IT Lab <span className="text-violet-400">UK</span>
               </span>
             </div>
             <p className="mt-4 max-w-sm leading-relaxed text-gray-400">
@@ -23,7 +23,7 @@ export default function Footer() {
                 href="https://share.google/nMMOrlyJNoFbICUL5"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full border border-gray-700 px-4 py-2 text-sm font-medium text-gray-300 transition hover:border-amber-400 hover:text-amber-400"
+                className="rounded-full border border-gray-700 px-4 py-2 text-sm font-medium text-gray-300 transition hover:border-violet-400 hover:text-violet-400"
               >
                 Google Reviews
               </a>
@@ -31,7 +31,7 @@ export default function Footer() {
                 href="https://www.instagram.com/rditlab.uk"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full border border-gray-700 px-4 py-2 text-sm font-medium text-gray-300 transition hover:border-amber-400 hover:text-amber-400"
+                className="rounded-full border border-gray-700 px-4 py-2 text-sm font-medium text-gray-300 transition hover:border-violet-400 hover:text-violet-400"
               >
                 Instagram
               </a>
@@ -48,7 +48,7 @@ export default function Footer() {
                 { href: '/contact', label: 'Contact' },
               ].map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-gray-400 transition-colors hover:text-amber-400">
+                  <Link href={link.href} className="text-gray-400 transition-colors hover:text-violet-400">
                     {link.label}
                   </Link>
                 </li>
@@ -60,12 +60,12 @@ export default function Footer() {
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gray-300">Contact</h4>
             <ul className="space-y-2.5 text-gray-400">
               <li>
-                <a href="mailto:rudraxdevelopment98@gmail.com" className="transition-colors hover:text-amber-400">
+                <a href="mailto:rudraxdevelopment98@gmail.com" className="transition-colors hover:text-violet-400">
                   rudraxdevelopment98@gmail.com
                 </a>
               </li>
               <li>
-                <a href="tel:+447823912875" className="transition-colors hover:text-amber-400">
+                <a href="tel:+447823912875" className="transition-colors hover:text-violet-400">
                   +44 7823 912875
                 </a>
               </li>
