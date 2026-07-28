@@ -43,14 +43,14 @@ export default function ForgotPasswordPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-violet-50 via-white to-gray-100 flex items-center justify-center px-6 py-12">
+    <div className="min-h-screen bg-gradient-to-br from-[var(--bg-elev)] via-white to-[var(--bg)] flex items-center justify-center px-6 py-12">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-violet-600">Forgot Password</h1>
-          <p className="text-gray-600 mt-2">Enter your admin email to receive a reset link.</p>
+          <p className="text-muted mt-2">Enter your admin email to receive a reset link.</p>
         </div>
 
-        <div className="bg-white rounded-2xl border border-violet-100 shadow-2xl p-8 md:p-10">
+        <div className="bg-[var(--bg-elev)] rounded-2xl border border-[var(--border)] shadow-2xl p-8 md:p-10">
           {error && (
             <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
               <p className="text-red-800 text-sm">{error}</p>
@@ -61,8 +61,8 @@ export default function ForgotPasswordPage() {
             <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
               <p className="text-green-800 text-sm">{message}</p>
               {resetLink && (
-                <div className="mt-3 p-3 bg-white border rounded">
-                  <p className="text-sm text-gray-600 mb-2">Your password reset link:</p>
+                <div className="mt-3 p-3 bg-[var(--bg-elev)] border rounded">
+                  <p className="text-sm text-muted mb-2">Your password reset link:</p>
                   <a href={resetLink} className="text-blue-600 hover:text-blue-800 break-all text-sm">
                     {resetLink}
                   </a>
@@ -73,14 +73,14 @@ export default function ForgotPasswordPage() {
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+              <label className="block text-sm font-medium text-muted mb-2">Email Address</label>
               <input
                 type="email"
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 disabled={loading}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent disabled:bg-gray-50"
+                className="w-full px-4 py-3 border border-[var(--border)] rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent disabled:bg-[var(--bg-elev)]"
                 placeholder="admin@rditlab.co.uk"
               />
             </div>
@@ -94,7 +94,7 @@ export default function ForgotPasswordPage() {
             </button>
           </form>
 
-          <div className="mt-6 text-center text-sm text-gray-600">
+          <div className="mt-6 text-center text-sm text-muted">
             <Link href="/login" className="text-violet-600 hover:text-violet-700 font-medium">
               Back to Login
             </Link>

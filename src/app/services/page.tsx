@@ -119,7 +119,7 @@ export default function ServicesPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-violet-50 to-gray-100 text-gray-900">
+    <div className="min-h-screen">
       <Navbar />
 
       <main>
@@ -132,23 +132,23 @@ export default function ServicesPage() {
         {/* Quick highlights */}
         <section className="px-6 pt-16 md:px-12">
           <div className="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2">
-            <div className="rounded-3xl border border-violet-100 bg-white p-6 shadow-sm">
-              <h2 className="mb-2 font-display text-xl font-semibold text-gray-900">Trusted repair</h2>
-              <p className="text-gray-600">Fast hardware diagnostics, secure data handling, and professional laptop/PC repairs.</p>
+            <div className="rounded-3xl border border-[var(--border)] bg-[var(--bg-elev)] p-6 shadow-sm">
+              <h2 className="mb-2 font-display text-xl font-semibold text-[var(--text)]">Trusted repair</h2>
+              <p className="text-muted">Fast hardware diagnostics, secure data handling, and professional laptop/PC repairs.</p>
             </div>
-            <div className="rounded-3xl border border-violet-100 bg-white p-6 shadow-sm">
-              <h2 className="mb-2 font-display text-xl font-semibold text-gray-900">Network reliability</h2>
-              <p className="text-gray-600">Design, secure, and manage networks with enterprise-grade performance and uptime.</p>
+            <div className="rounded-3xl border border-[var(--border)] bg-[var(--bg-elev)] p-6 shadow-sm">
+              <h2 className="mb-2 font-display text-xl font-semibold text-[var(--text)]">Network reliability</h2>
+              <p className="text-muted">Design, secure, and manage networks with enterprise-grade performance and uptime.</p>
             </div>
           </div>
         </section>
 
         {/* Services Accordion Section */}
-        <section className="mx-6 md:mx-12 my-16 rounded-[2rem] bg-white border border-violet-100 shadow-xl p-8 md:p-12">
+        <section className="mx-6 md:mx-12 my-16 rounded-[2rem] bg-[var(--bg-elev)] border border-[var(--border)] shadow-xl p-8 md:p-12">
           <div className="max-w-7xl mx-auto">
             <div className="mb-10 text-center animate-fade-in">
               <p className="text-sm font-semibold uppercase tracking-[0.3em] text-violet-700 mb-3">Our core offerings</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Click to explore our services</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-[var(--text)]">Click to explore our services</h2>
             </div>
 
             <div className="space-y-4">
@@ -157,12 +157,12 @@ export default function ServicesPage() {
                 return (
                   <article
                     key={index}
-                    className="rounded-[1.75rem] border border-gray-200 overflow-hidden transition-all duration-300 ease-in-out transform hover:shadow-lg"
+                    className="rounded-[1.75rem] border border-[var(--border)] overflow-hidden transition-all duration-300 ease-in-out transform hover:shadow-lg"
                   >
                     {/* Header / Accordion Button */}
                     <button
                       onClick={() => setExpandedIndex(isExpanded ? null : index)}
-                      className="w-full flex items-center justify-between p-6 bg-gradient-to-r from-white to-violet-50 hover:from-violet-50 hover:to-violet-100 transition-all duration-200"
+                      className="w-full flex items-center justify-between p-6 bg-gradient-to-r from-[var(--bg-elev)] to-violet-50 hover:from-[var(--bg-elev)] hover:to-violet-100 transition-all duration-200"
                     >
                       <div className="flex items-center gap-4 flex-1 text-left">
                         <div className="flex-shrink-0 w-14 h-14 rounded-full bg-violet-100 flex items-center justify-center">
@@ -181,7 +181,7 @@ export default function ServicesPage() {
                               </svg>
                         </div>
                         <div>
-                          <h3 className="text-xl md:text-2xl font-semibold text-gray-900">{service.title}</h3>
+                          <h3 className="text-xl md:text-2xl font-semibold text-[var(--text)]">{service.title}</h3>
                           <p className="text-lg font-semibold text-violet-600 mt-1">{service.price}</p>
                         </div>
                       </div>
@@ -208,7 +208,7 @@ export default function ServicesPage() {
 
                     {/* Expanded Content */}
                     {isExpanded && (
-                      <div className="px-6 pb-6 bg-white border-t border-gray-200 animate-fade-in">
+                      <div className="px-6 pb-6 bg-[var(--bg-elev)] border-t border-[var(--border)] animate-fade-in">
                         <div className="grid gap-6 md:grid-cols-[1fr_1.2fr] mt-6">
                           <div className="overflow-hidden rounded-3xl">
                             <img
@@ -219,17 +219,17 @@ export default function ServicesPage() {
                           </div>
                           <div className="space-y-5">
                             <div>
-                              <p className="text-gray-700 leading-relaxed text-lg">{service.overview}</p>
+                              <p className="text-muted leading-relaxed text-lg">{service.overview}</p>
                             </div>
                             <div className="grid gap-4 sm:grid-cols-2">
-                              <div className="rounded-3xl bg-violet-50 p-5 border border-violet-200">
-                                <h4 className="font-semibold text-violet-800 mb-3 flex items-center gap-2">
+                              <div className="rounded-3xl bg-[var(--bg-elev)] p-5 border border-violet-200">
+                                <h4 className="font-semibold text-[var(--text)] mb-3 flex items-center gap-2">
                                   <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-violet-600 text-white text-sm">
                                     ✓
                                   </span>
                                   What we deliver
                                 </h4>
-                                <ul className="space-y-2 text-gray-700 text-sm">
+                                <ul className="space-y-2 text-muted text-sm">
                                   {service.details.map((detail, detailIndex) => (
                                     <li
                                       key={detailIndex}
@@ -240,14 +240,14 @@ export default function ServicesPage() {
                                   ))}
                                 </ul>
                               </div>
-                              <div className="rounded-3xl bg-gray-50 p-5 border border-gray-200">
-                                <h4 className="font-semibold text-violet-800 mb-3 flex items-center gap-2">
+                              <div className="rounded-3xl bg-[var(--bg-elev)] p-5 border border-[var(--border)]">
+                                <h4 className="font-semibold text-[var(--text)] mb-3 flex items-center gap-2">
                                   <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-violet-600 text-white text-sm">
                                     ★
                                   </span>
                                   Key benefits
                                 </h4>
-                                <ul className="space-y-2 text-gray-700 text-sm">
+                                <ul className="space-y-2 text-muted text-sm">
                                   {service.benefits.map((benefit, benefitIndex) => (
                                     <li
                                       key={benefitIndex}
@@ -271,19 +271,19 @@ export default function ServicesPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="mx-6 md:mx-12 mb-20 rounded-[2rem] border border-violet-100 bg-gradient-to-br from-violet-50 to-violet-100/50 p-10 shadow-xl animate-fade-in-up">
+        <section className="mx-6 md:mx-12 mb-20 rounded-[2rem] border border-[var(--border)] bg-gradient-to-br from-[var(--bg-elev)] to-[var(--bg-elev)] p-10 shadow-xl animate-fade-in-up">
           <div className="max-w-6xl mx-auto grid gap-8 lg:grid-cols-3">
             <div className="hover:translate-y-[-4px] transition-transform duration-300">
-              <h3 className="text-xl font-semibold text-violet-800 mb-3">Fast Response</h3>
-              <p className="text-gray-700 leading-relaxed">We minimise downtime with quick diagnostics, efficient repairs, and responsive support.</p>
+              <h3 className="text-xl font-semibold text-[var(--text)] mb-3">Fast Response</h3>
+              <p className="text-muted leading-relaxed">We minimise downtime with quick diagnostics, efficient repairs, and responsive support.</p>
             </div>
             <div className="hover:translate-y-[-4px] transition-transform duration-300">
-              <h3 className="text-xl font-semibold text-violet-800 mb-3">Professional Service</h3>
-              <p className="text-gray-700 leading-relaxed">Every engagement is delivered with clear communication, quality assurance, and reliable follow-through.</p>
+              <h3 className="text-xl font-semibold text-[var(--text)] mb-3">Professional Service</h3>
+              <p className="text-muted leading-relaxed">Every engagement is delivered with clear communication, quality assurance, and reliable follow-through.</p>
             </div>
             <div className="hover:translate-y-[-4px] transition-transform duration-300">
-              <h3 className="text-xl font-semibold text-violet-800 mb-3">Commercial Focus</h3>
-              <p className="text-gray-700 leading-relaxed">Our services are tailored for UK businesses that need secure IT and strong infrastructure.</p>
+              <h3 className="text-xl font-semibold text-[var(--text)] mb-3">Commercial Focus</h3>
+              <p className="text-muted leading-relaxed">Our services are tailored for UK businesses that need secure IT and strong infrastructure.</p>
             </div>
           </div>
         </section>

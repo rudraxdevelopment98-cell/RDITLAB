@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -15,10 +16,9 @@ module.exports = {
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
         display: ['var(--font-sora)', 'var(--font-inter)', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
       },
       colors: {
-        // Semantic brand scale (violet/indigo). Mirrors Tailwind violet so
-        // existing violet-* utilities and brand-* stay in sync.
         brand: {
           50: '#f5f3ff',
           100: '#ede9fe',
@@ -32,24 +32,20 @@ module.exports = {
           900: '#4c1d95',
         },
         ink: {
-          // Deep backgrounds for dark sections
           950: '#08080f',
-          900: '#0d0d18',
-          800: '#141426',
-          700: '#1c1c33',
+          900: '#0c0c16',
+          800: '#12121f',
+          700: '#1a1a2b',
         },
       },
       boxShadow: {
-        brand: '0 20px 60px -15px rgba(124, 58, 237, 0.35)',
-        'brand-lg': '0 30px 90px -20px rgba(124, 58, 237, 0.5)',
-        glow: '0 0 40px -5px rgba(139, 92, 246, 0.5)',
+        glow: '0 0 50px -10px rgba(139, 92, 246, 0.55)',
+        brand: '0 20px 60px -18px rgba(124, 58, 237, 0.5)',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conical':
-          'conical-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        'grid-faint':
-          'linear-gradient(to right, rgba(124,58,237,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(124,58,237,0.07) 1px, transparent 1px)',
+        'grid-light':
+          'linear-gradient(to right, rgba(15,18,34,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(15,18,34,0.05) 1px, transparent 1px)',
         'grid-dark':
           'linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)',
       },
@@ -58,18 +54,21 @@ module.exports = {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-12px)' },
         },
-        blob: {
-          '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
-          '33%': { transform: 'translate(20px, -30px) scale(1.1)' },
-          '66%': { transform: 'translate(-20px, 20px) scale(0.95)' },
+        aurora: {
+          '0%, 100%': { transform: 'translate(0,0) scale(1)', opacity: '0.7' },
+          '33%': { transform: 'translate(40px,-30px) scale(1.15)', opacity: '0.9' },
+          '66%': { transform: 'translate(-30px,25px) scale(0.9)', opacity: '0.6' },
         },
-        shimmer: {
-          '100%': { transform: 'translateX(100%)' },
+        sheen: {
+          '0%': { transform: 'translateX(-120%) skewX(-15deg)' },
+          '60%, 100%': { transform: 'translateX(220%) skewX(-15deg)' },
         },
+        shimmer: { '100%': { transform: 'translateX(100%)' } },
       },
       animation: {
         float: 'float 6s ease-in-out infinite',
-        blob: 'blob 14s ease-in-out infinite',
+        aurora: 'aurora 18s ease-in-out infinite',
+        sheen: 'sheen 3.5s ease-in-out infinite',
         shimmer: 'shimmer 2s infinite',
       },
     },

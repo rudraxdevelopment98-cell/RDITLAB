@@ -5,25 +5,22 @@ type Props = {
   children?: React.ReactNode
 }
 
-/** Shared dark, premium header used at the top of inner pages for a cohesive look. */
+/** Shared page header with aurora backdrop — adapts to light and dark. */
 export default function PageHeader({ eyebrow, title, subtitle, children }: Props) {
   return (
-    <section className="relative overflow-hidden bg-ink-950 text-white">
-      <div className="pointer-events-none absolute inset-0 bg-grid-dark [background-size:44px_44px]" />
-      <div className="pointer-events-none absolute -left-24 -top-20 h-80 w-80 rounded-full bg-violet-600/30 blur-[120px] animate-blob" />
-      <div className="pointer-events-none absolute right-0 top-16 h-80 w-80 rounded-full bg-indigo-500/20 blur-[120px] animate-blob [animation-delay:5s]" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-ink-950" />
+    <section className="relative overflow-hidden">
+      <div className="absolute inset-0 -z-10 bg-grid-light dark:bg-grid-dark [background-size:44px_44px]" />
+      <div className="aurora left-[-8%] top-[-20%] h-80 w-80 animate-aurora" style={{ background: 'var(--aurora-1)' }} />
+      <div className="aurora right-[-6%] top-[0%] h-80 w-80 animate-aurora [animation-delay:5s]" style={{ background: 'var(--aurora-3)' }} />
 
       <div className="container relative z-10 mx-auto max-w-5xl px-6 py-20 text-center md:py-24">
-        <p className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-violet-200 backdrop-blur-sm">
+        <p className="glass glass-edge inline-flex items-center gap-2 rounded-full px-4 py-2 font-mono text-xs uppercase tracking-[0.2em] text-[var(--text)]">
           {eyebrow}
         </p>
-        <h1 className="mt-6 font-display text-4xl font-bold leading-[1.06] tracking-tight sm:text-5xl lg:text-6xl">
+        <h1 className="mt-6 font-display text-4xl font-bold leading-[1.06] tracking-tight text-[var(--text)] sm:text-5xl lg:text-6xl">
           {title}
         </h1>
-        {subtitle && (
-          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-slate-300">{subtitle}</p>
-        )}
+        {subtitle && <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted">{subtitle}</p>}
         {children}
       </div>
     </section>

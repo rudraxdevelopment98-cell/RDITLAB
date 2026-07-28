@@ -2,134 +2,136 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================================
+   Design tokens — light (default) and dark (.dark on <html>)
+   ========================================================================== */
+:root {
+  --bg: #f4f5fb;
+  --bg-elev: #ffffff;
+  --text: #0f1222;
+  --text-muted: #5b6172;
+  --border: rgba(15, 18, 34, 0.09);
+  --glass-bg: rgba(255, 255, 255, 0.62);
+  --glass-brd: rgba(255, 255, 255, 0.75);
+  --glass-shadow: 0 10px 40px -12px rgba(15, 18, 34, 0.22);
+  --neu-light: rgba(255, 255, 255, 0.9);
+  --neu-dark: rgba(15, 18, 34, 0.12);
+  --aurora-1: rgba(139, 92, 246, 0.5);
+  --aurora-2: rgba(34, 211, 238, 0.4);
+  --aurora-3: rgba(99, 102, 241, 0.45);
+}
+
+.dark {
+  --bg: #08080f;
+  --bg-elev: #12121f;
+  --text: #eef0f6;
+  --text-muted: #99a0b2;
+  --border: rgba(255, 255, 255, 0.09);
+  --glass-bg: rgba(22, 23, 40, 0.55);
+  --glass-brd: rgba(255, 255, 255, 0.12);
+  --glass-shadow: 0 18px 50px -12px rgba(0, 0, 0, 0.6);
+  --neu-light: rgba(255, 255, 255, 0.04);
+  --neu-dark: rgba(0, 0, 0, 0.5);
+  --aurora-1: rgba(139, 92, 246, 0.42);
+  --aurora-2: rgba(34, 211, 238, 0.28);
+  --aurora-3: rgba(99, 102, 241, 0.4);
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
+  background-color: var(--bg);
+  color: var(--text);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* Offset anchor jumps so fixed navbar doesn't cover section titles */
 section[id] {
   scroll-margin-top: 6rem;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes accordionOpen {
-  from {
-    opacity: 0;
-    transform: scaleY(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scaleY(1);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@layer utilities {
-  .animate-fade-in {
-    animation: fadeIn 0.6s ease-in-out;
-  }
-  .animate-fadeIn {
-    animation: fadeIn 0.6s ease-in-out;
-  }
-  .animate-slide-in-left {
-    animation: slideInLeft 0.7s ease-out;
-  }
-  .animate-slide-in-right {
-    animation: slideInRight 0.7s ease-out;
-  }
-  .animate-slideInRight {
-    animation: slideInRight 0.7s ease-out;
-  }
-  .animate-slideDown {
-    animation: slideInDown 0.45s ease-out;
-    transform-origin: top;
-  }
-  .animate-accordion-open {
-    animation: accordionOpen 0.3s ease-out;
-    transform-origin: top;
-  }
-  .animate-fade-in-up {
-    animation: fadeInUp 0.8s ease-out;
+/* ============================================================================
+   Component utilities
+   ========================================================================== */
+@layer components {
+  /* Liquid glass surface — for chrome, cards, floating controls */
+  .glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-brd);
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
   }
 
-  /* Violet gradient text for headlines */
+  /* Stronger glass for the top navigation */
+  .glass-nav {
+    background: var(--glass-bg);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+  }
+
+  /* Specular top edge that reads like light catching glass */
+  .glass-edge {
+    position: relative;
+  }
+  .glass-edge::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      160deg,
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0) 35%
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  .dark .glass-edge::before {
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0) 35%);
+  }
+
+  /* Soft neumorphic control (use sparingly — toggles, small buttons) */
+  .neu {
+    background: var(--bg);
+    box-shadow: -6px -6px 14px var(--neu-light), 6px 6px 16px var(--neu-dark);
+  }
+  .neu-inset {
+    background: var(--bg);
+    box-shadow: inset -4px -4px 10px var(--neu-light), inset 4px 4px 10px var(--neu-dark);
+  }
+
+  .text-muted {
+    color: var(--text-muted);
+  }
+
   .text-gradient-brand {
-    background-image: linear-gradient(120deg, #6d28d9 0%, #8b5cf6 45%, #c084fc 100%);
+    background-image: linear-gradient(115deg, #7c3aed 0%, #8b5cf6 40%, #22d3ee 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
 
-  /* Frosted glass surfaces */
-  .glass {
-    background-color: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-  }
-  .glass-dark {
-    background-color: rgba(20, 20, 38, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+  /* Aurora / mesh blob */
+  .aurora {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(90px);
+    pointer-events: none;
+    z-index: 0;
   }
 }
 
-/* Scroll-reveal: hidden until the .is-visible class is added by IntersectionObserver */
+/* ============================================================================
+   Motion
+   ========================================================================== */
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -142,18 +144,32 @@ section[id] {
   transform: none;
 }
 
-/* Respect users who prefer reduced motion */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideInDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@layer utilities {
+  .animate-fade-in-up { animation: fadeInUp 0.8s ease-out; }
+  .animate-fadeIn { animation: fadeIn 0.6s ease-in-out; }
+  .animate-fade-in { animation: fadeIn 0.6s ease-in-out; }
+  .animate-slideDown { animation: slideInDown 0.4s ease-out; transform-origin: top; }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
-  .reveal {
-    opacity: 1;
-    transform: none;
-  }
+  .reveal { opacity: 1; transform: none; }
 }

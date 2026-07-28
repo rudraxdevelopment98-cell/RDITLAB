@@ -13,7 +13,7 @@ export default async function Home() {
   const projects = await getProjects()
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-violet-50 to-gray-100 text-gray-900">
+    <div className="min-h-screen">
       <Navbar />
       <Hero />
       <About />

@@ -1,6 +1,6 @@
 export default function CTASection() {
   return (
-    <section className="bg-white px-6 py-20 md:px-12">
+    <section className="px-6 py-20 md:px-12">
       <div className="container mx-auto max-w-5xl">
         <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-violet-600 to-indigo-700 px-8 py-14 text-center text-white shadow-brand-lg md:px-16">
           <div className="pointer-events-none absolute inset-0 bg-grid-dark [background-size:34px_34px] opacity-40" />

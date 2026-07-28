@@ -57,17 +57,14 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="bg-gray-50 px-6 py-24 md:px-12">
+    <section id="services" className="relative px-6 py-24 md:px-12">
       <div className="container mx-auto max-w-7xl">
         <Reveal className="flex flex-col items-center justify-between gap-6 md:flex-row md:items-end">
           <div className="text-center md:text-left">
-            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-violet-700">What we do</p>
-            <h2 className="font-display text-4xl font-bold text-gray-900 md:text-5xl">Our Services</h2>
+            <p className="mb-3 font-mono text-xs uppercase tracking-[0.25em] text-gradient-brand">{'//'} what we do</p>
+            <h2 className="font-display text-4xl font-bold text-[var(--text)] md:text-5xl">Our Services</h2>
           </div>
-          <a
-            href="/services"
-            className="inline-flex items-center gap-2 rounded-full border border-violet-200 bg-violet-50 px-6 py-3 text-sm font-semibold text-violet-700 transition hover:bg-violet-100"
-          >
+          <a href="/services" className="glass glass-edge inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-[var(--text)] transition hover:scale-[1.02]">
             View full service page
             <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -80,31 +77,25 @@ export default function Services() {
             const Icon = icons[service.icon]
             return (
               <Reveal key={service.title} delay={(index % 3) * 90}>
-                <div className="group relative h-full overflow-hidden rounded-2xl border border-violet-100 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-violet-200 hover:shadow-brand">
-                  <div className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-violet-500 to-violet-700 transition-transform duration-300 group-hover:scale-x-100" />
-                  <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-violet-50 text-violet-600 transition-colors duration-300 group-hover:bg-violet-600 group-hover:text-white">
+                <div className="glass glass-edge group relative h-full overflow-hidden rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-glow">
+                  <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-indigo-600 text-white shadow-brand">
                     <Icon className="h-7 w-7" />
                   </div>
-                  <h3 className="mb-2 font-display text-xl font-semibold text-gray-900">{service.title}</h3>
-                  <p className="leading-relaxed text-gray-600">{service.description}</p>
+                  <h3 className="mb-2 font-display text-xl font-semibold text-[var(--text)]">{service.title}</h3>
+                  <p className="leading-relaxed text-muted">{service.description}</p>
                 </div>
               </Reveal>
             )
           })}
 
-          {/* CTA tile */}
           <Reveal delay={90}>
-            <a
-              href="/contact"
-              className="group flex h-full flex-col justify-between rounded-2xl bg-gradient-to-br from-violet-600 to-violet-700 p-7 text-white shadow-brand transition-all duration-300 hover:-translate-y-1.5 hover:shadow-brand-lg"
-            >
-              <div>
+            <a href="/contact" className="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl bg-gradient-to-br from-brand-600 to-indigo-700 p-7 text-white shadow-brand transition-all duration-300 hover:-translate-y-1.5 hover:shadow-glow">
+              <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/10 blur-2xl" />
+              <div className="relative">
                 <h3 className="font-display text-xl font-semibold">Need something else?</h3>
-                <p className="mt-2 leading-relaxed text-violet-50/90">
-                  Tell us about your setup and we&apos;ll put together a tailored IT solution.
-                </p>
+                <p className="mt-2 leading-relaxed text-white/85">Tell us about your setup and we&apos;ll put together a tailored IT solution.</p>
               </div>
-              <span className="mt-6 inline-flex items-center gap-2 font-semibold">
+              <span className="relative mt-6 inline-flex items-center gap-2 font-semibold">
                 Talk to us
                 <svg className="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />

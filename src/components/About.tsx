@@ -1,101 +1,68 @@
 'use client'
 
 import { useState } from 'react'
+import Reveal from './Reveal'
 
 export default function About() {
-  const [expandedSection, setExpandedSection] = useState(0)
+  const [expanded, setExpanded] = useState(0)
 
   const sections = [
-    {
-      title: 'Our Mission',
-      content: 'We want to make the IT environment secure and safe for the public with strong privacy practices and excellent availability. Our goal is to provide fast, reliable IT support that enables a modern, connected lifestyle for businesses and individuals across London and beyond.'
-    },
-    {
-      title: 'Our Expertise',
-      content: 'With 4.5 years of experience (4 years in India, 1.5 years in UK), our team specializes in laptop and PC repairs, custom PC builds, data recovery, and networking solutions. We bring technical expertise combined with cybersecurity knowledge to deliver secure, efficient IT solutions.'
-    },
-    {
-      title: 'Our Approach',
-      content: 'We pride ourselves on quick response times, high-quality service, and instant availability. Whether it\'s a simple repair or a complex networking setup, we listen to your needs, provide accurate diagnostics, and deliver solutions quickly. Our average turnaround is just 1-4 days.'
-    },
-    {
-      title: 'Our Values',
-      content: 'Trust, reliability, and customer satisfaction guide everything we do. We maintain open communication, offer competitive pricing, and back all our work with solid warranties (1 month to 1 year). We\'re committed to being your IT partner, not just a one-time service provider.'
-    }
+    { title: 'Our Mission', content: 'Make IT secure and reliable for businesses and people — fast, private, and dependable support that keeps you running.' },
+    { title: 'Our Expertise', content: '4.5 years of hands-on experience across India and the UK: laptop & PC repairs, custom builds, data recovery, networking, and cybersecurity.' },
+    { title: 'Our Approach', content: 'Quick response times, accurate diagnostics, and clear communication. Average turnaround is just 1–4 days.' },
+    { title: 'Our Values', content: 'Trust, reliability, and satisfaction. Transparent pricing, solid warranties (1 month to 1 year), and a genuine long-term partnership.' },
   ]
 
   const benefits = [
-    'Certified technicians (Google Cybersecurity, MSC Cybersecurity)',
-    'Fast turnaround: 1-4 days for most repairs',
+    'Certified technicians (Google & MSc Cybersecurity)',
+    'Fast turnaround: 1–4 days for most repairs',
     'Comprehensive warranty: 1 month to 1 year',
     '24/7 emergency support available',
     'Quick response and instant availability',
-    'Transparent pricing and on-site visits available'
+    'Transparent pricing and on-site visits',
   ]
 
   return (
-    <section id="about" className="pt-24 pb-24 px-6 md:px-12 bg-gradient-to-br from-white via-violet-50 to-gray-100">
+    <section id="about" className="relative px-6 py-24 md:px-12">
       <div className="container mx-auto max-w-7xl">
-        <div className="mb-16 text-center">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-violet-700 mb-3">About us</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900">Who We Are & What We Do</h2>
-        </div>
+        <Reveal className="mb-14 text-center">
+          <p className="mb-3 font-mono text-xs uppercase tracking-[0.25em] text-gradient-brand">{'//'} about us</p>
+          <h2 className="font-display text-4xl font-bold text-[var(--text)] md:text-5xl">Who we are &amp; what we do</h2>
+        </Reveal>
 
-        <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] items-center mb-16">
-          <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-violet-200 via-violet-100 to-white p-6 shadow-xl">
-            <img
-              src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1000&h=700&fit=crop&crop=center"
-              alt="Our team"
-              className="h-[420px] w-full rounded-[1.75rem] object-cover shadow-lg"
-            />
-          </div>
-          <div className="space-y-4">
+        <div className="grid items-start gap-8 lg:grid-cols-2">
+          <Reveal className="space-y-3">
             {sections.map((section, index) => (
-              <div
-                key={index}
-                className="rounded-[1.5rem] border border-violet-100 bg-white shadow-lg transition-all duration-300 hover:shadow-xl"
-              >
-                <button
-                  onClick={() => setExpandedSection(expandedSection === index ? -1 : index)}
-                  className="w-full flex items-center justify-between p-6 transition-all duration-300"
-                >
-                  <h3 className="text-xl font-semibold text-gray-900 text-left">{section.title}</h3>
-                  <span
-                    className={`text-2xl font-bold text-violet-600 transition-transform duration-300 ${
-                      expandedSection === index ? 'rotate-45' : ''
-                    }`}
-                  >
-                    +
-                  </span>
+              <div key={section.title} className="glass glass-edge overflow-hidden rounded-2xl">
+                <button onClick={() => setExpanded(expanded === index ? -1 : index)} className="flex w-full items-center justify-between p-6 text-left">
+                  <h3 className="font-display text-lg font-semibold text-[var(--text)]">{section.title}</h3>
+                  <span className={`text-2xl text-gradient-brand transition-transform duration-300 ${expanded === index ? 'rotate-45' : ''}`}>+</span>
                 </button>
-                {expandedSection === index && (
-                  <div className="animate-fadeIn border-t border-violet-100 px-6 pb-6">
-                    <p className="text-gray-700 leading-relaxed">{section.content}</p>
+                {expanded === index && (
+                  <div className="animate-fadeIn border-t border-[var(--border)] px-6 pb-6 pt-4">
+                    <p className="leading-relaxed text-muted">{section.content}</p>
                   </div>
                 )}
               </div>
             ))}
-          </div>
-        </div>
+          </Reveal>
 
-        <div className="rounded-[2rem] border border-violet-100 bg-white shadow-xl p-10 md:p-12">
-          <div className="mb-8 text-center">
-            <h3 className="text-3xl font-bold text-gray-900 mb-3">Why Choose RD IT Lab UK?</h3>
-            <p className="text-gray-600 max-w-2xl mx-auto">We combine technical expertise, reliability, and a genuine commitment to your business success.</p>
-          </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            {benefits.map((benefit, index) => (
-              <div
-                key={index}
-                className="group rounded-3xl border border-violet-100 bg-gradient-to-br from-violet-50 to-white p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg"
-              >
-                <div className="mb-3 h-10 w-10 rounded-full bg-violet-100 flex items-center justify-center group-hover:bg-violet-600 transition-colors duration-300">
-                  <span className="text-violet-600 group-hover:text-white font-bold">✓</span>
-                </div>
-                <p className="text-gray-900 font-medium">{benefit}</p>
-              </div>
-            ))}
-          </div>
+          <Reveal delay={120} className="glass glass-edge rounded-[2rem] p-8">
+            <h3 className="mb-2 font-display text-2xl font-bold text-[var(--text)]">Why choose RD IT Lab UK?</h3>
+            <p className="mb-6 text-muted">Technical expertise, reliability, and a genuine commitment to your success.</p>
+            <ul className="space-y-3">
+              {benefits.map((benefit) => (
+                <li key={benefit} className="flex items-start gap-3">
+                  <span className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-500 to-cyan-400 text-white">
+                    <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </span>
+                  <span className="text-[var(--text)]">{benefit}</span>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
         </div>
       </div>
     </section>

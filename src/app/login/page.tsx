@@ -42,19 +42,19 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-violet-50 via-white to-gray-100 flex items-center justify-center px-6 py-12">
+    <div className="min-h-screen bg-gradient-to-br from-[var(--bg-elev)] via-white to-[var(--bg)] flex items-center justify-center px-6 py-12">
       <div className="w-full max-w-md">
         {/* Logo/Header */}
         <div className="text-center mb-8">
           <Link href="/" className="inline-block mb-6">
             <h1 className="text-4xl font-bold text-violet-600">RD IT Lab UK</h1>
           </Link>
-          <p className="text-gray-600">Admin Portal</p>
+          <p className="text-muted">Admin Portal</p>
         </div>
 
         {/* Login Card */}
-        <div className="bg-white rounded-2xl border border-violet-100 shadow-2xl p-8 md:p-10">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Admin Login</h2>
+        <div className="bg-[var(--bg-elev)] rounded-2xl border border-[var(--border)] shadow-2xl p-8 md:p-10">
+          <h2 className="text-2xl font-bold text-[var(--text)] mb-6 text-center">Admin Login</h2>
 
           {error && (
             <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
@@ -65,7 +65,7 @@ export default function LoginPage() {
           <form onSubmit={handleSubmit} className="space-y-5">
             {/* Email */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-muted mb-2">
                 Email Address
               </label>
               <input
@@ -73,7 +73,7 @@ export default function LoginPage() {
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 disabled={loading}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent disabled:bg-gray-50"
+                className="w-full px-4 py-3 border border-[var(--border)] rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent disabled:bg-[var(--bg-elev)]"
                 placeholder="admin@rditlab.co.uk"
                 required
               />
@@ -81,7 +81,7 @@ export default function LoginPage() {
 
             {/* Password */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-muted mb-2">
                 Password
               </label>
               <input
@@ -89,7 +89,7 @@ export default function LoginPage() {
                 value={password}
                 onChange={e => setPassword(e.target.value)}
                 disabled={loading}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent disabled:bg-gray-50"
+                className="w-full px-4 py-3 border border-[var(--border)] rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent disabled:bg-[var(--bg-elev)]"
                 placeholder="••••••••"
                 required
               />
@@ -106,13 +106,13 @@ export default function LoginPage() {
           </form>
 
           {/* Footer */}
-          <div className="mt-6 pt-6 border-t border-gray-200 space-y-3">
-            <p className="text-center text-sm text-gray-600">
+          <div className="mt-6 pt-6 border-t border-[var(--border)] space-y-3">
+            <p className="text-center text-sm text-muted">
               <Link href="/forgot-password" className="text-violet-600 hover:text-violet-700 font-medium">
                 Forgot password?
               </Link>
             </p>
-            <p className="text-center text-sm text-gray-600">
+            <p className="text-center text-sm text-muted">
               Not an admin?{' '}
               <Link href="/" className="text-violet-600 hover:text-violet-700 font-medium">
                 Back to Website

@@ -1,184 +1,100 @@
 'use client'
 
 import { useState } from 'react'
+import Reveal from './Reveal'
 
 export default function Contact() {
   const [expandedFAQ, setExpandedFAQ] = useState(0)
   const [formStatus, setFormStatus] = useState('')
 
   const faqs = [
-    {
-      question: 'How quickly can you respond to urgent IT issues?',
-      answer: "For critical systems, we offer same-day response through our 24/7 support team. Contact us immediately for urgent needs and we&apos;ll prioritize accordingly."
-    },
-    {
-      question: 'Do you provide warranties on repairs and builds?',
-      answer: 'Yes, all repairs come with comprehensive warranties, and custom builds include parts and labor guarantees. Details are provided in your service agreement.'
-    },
-    {
-      question: 'What areas do you serve?',
-      answer: 'We service commercial and industrial clients throughout the UK with on-site and remote support options available based on your needs.'
-    },
-    {
-      question: 'Can you handle network setups for large offices?',
-      answer: 'Absolutely. We design and deploy scalable network infrastructure for businesses of all sizes, with redundancy and security built in from the start.'
-    }
+    { question: 'How quickly can you respond to urgent IT issues?', answer: 'For critical systems we offer same-day response through our 24/7 support. Contact us immediately for urgent needs and we’ll prioritise accordingly.' },
+    { question: 'Do you provide warranties on repairs and builds?', answer: 'Yes — all repairs come with comprehensive warranties, and custom builds include parts and labour guarantees.' },
+    { question: 'What areas do you serve?', answer: 'We serve commercial and industrial clients across the UK, with on-site and remote support options.' },
+    { question: 'Can you build websites and software too?', answer: 'Absolutely — from marketing sites to custom web apps. See our Web & Software page for plans, demos and templates.' },
+  ]
+
+  const contact = [
+    { icon: '✉', label: 'Email', value: 'rudraxdevelopment98@gmail.com', href: 'mailto:rudraxdevelopment98@gmail.com' },
+    { icon: '📞', label: 'Phone', value: '+44 7823 912875', href: 'tel:+447823912875' },
+    { icon: '📍', label: 'Location', value: 'Harrow, London, UK' },
   ]
 
   return (
-    <section id="contact" className="pt-24 pb-24 px-6 md:px-12 bg-gradient-to-br from-white via-violet-50 to-gray-100">
+    <section id="contact" className="relative px-6 py-24 md:px-12">
       <div className="container mx-auto max-w-7xl">
-        <div className="mb-16 text-center">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-violet-700 mb-3">Get in touch</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900">Let&apos;s Discuss Your IT Needs</h2>
-        </div>
+        <Reveal className="mb-14 text-center">
+          <p className="mb-3 font-mono text-xs uppercase tracking-[0.25em] text-gradient-brand">{'//'} get in touch</p>
+          <h2 className="font-display text-4xl font-bold text-[var(--text)] md:text-5xl">Let&apos;s discuss your project</h2>
+        </Reveal>
 
-        <div className="grid gap-12 lg:grid-cols-2 mb-16">
-          <div className="space-y-6">
-            <div className="rounded-[2rem] border border-violet-100 bg-white shadow-xl p-8">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">Contact Information</h3>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="mt-1 h-10 w-10 rounded-full bg-violet-100 flex items-center justify-center flex-shrink-0">
-                    <span className="text-violet-600 font-bold">✉</span>
-                  </div>
+        <div className="mb-14 grid gap-8 lg:grid-cols-2">
+          <Reveal className="glass glass-edge rounded-[2rem] p-8">
+            <h3 className="mb-6 font-display text-2xl font-semibold text-[var(--text)]">Contact information</h3>
+            <div className="space-y-5">
+              {contact.map((c) => (
+                <div key={c.label} className="flex items-start gap-4">
+                  <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-indigo-600 text-white">{c.icon}</span>
                   <div>
-                    <p className="font-semibold text-gray-900">Email</p>
-                    <a href="mailto:rudraxdevelopment98@gmail.com" className="text-violet-600 hover:text-violet-700 transition-colors">
-                      rudraxdevelopment98@gmail.com
-                    </a>
+                    <p className="font-semibold text-[var(--text)]">{c.label}</p>
+                    {c.href ? (
+                      <a href={c.href} className="text-muted transition-colors hover:text-[var(--text)]">{c.value}</a>
+                    ) : (
+                      <p className="text-muted">{c.value}</p>
+                    )}
                   </div>
                 </div>
-                <div className="flex items-start gap-4">
-                  <div className="mt-1 h-10 w-10 rounded-full bg-violet-100 flex items-center justify-center flex-shrink-0">
-                    <span className="text-violet-600 font-bold">📞</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900">Phone</p>
-                    <a href="tel:+447823912875" className="text-violet-600 hover:text-violet-700 transition-colors">
-                      +44 7823912875
-                    </a>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="mt-1 h-10 w-10 rounded-full bg-violet-100 flex items-center justify-center flex-shrink-0">
-                    <span className="text-violet-600 font-bold">📍</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900">Location</p>
-                    <p className="text-gray-600">Harrow, London, UK</p>
-                  </div>
-                </div>
-              </div>
-              <div className="mt-8 pt-8 border-t border-violet-100">
-                <p className="text-gray-600 mb-4">Follow us on Google and Instagram:</p>
-                <div className="flex gap-3">
-                  <a
-                    href="https://share.google/nMMOrlyJNoFbICUL5"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-700 px-6 py-3 rounded-full text-white font-semibold transition-all duration-300 hover:shadow-lg"
-                  >
-                    Google Reviews
-                  </a>
-                  <a
-                    href="https://www.instagram.com/rditlab.uk"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-pink-600 hover:bg-pink-700 px-6 py-3 rounded-full text-white font-semibold transition-all duration-300 hover:shadow-lg"
-                  >
-                    Instagram
-                  </a>
-                </div>
-              </div>
+              ))}
             </div>
-          </div>
+            <div className="mt-8 flex gap-3 border-t border-[var(--border)] pt-6">
+              <a href="https://share.google/nMMOrlyJNoFbICUL5" target="_blank" rel="noopener noreferrer" className="rounded-full bg-gradient-to-r from-brand-600 to-indigo-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:shadow-glow">Google Reviews</a>
+              <a href="https://www.instagram.com/rditlab.uk" target="_blank" rel="noopener noreferrer" className="glass glass-edge rounded-full px-5 py-2.5 text-sm font-semibold text-[var(--text)]">Instagram</a>
+            </div>
+          </Reveal>
 
-          <div className="rounded-[2rem] border border-violet-100 bg-white shadow-xl p-8">
-            <h3 className="text-2xl font-semibold text-gray-900 mb-6">Quick Message</h3>
+          <Reveal delay={120} className="glass glass-edge rounded-[2rem] p-8">
+            <h3 className="mb-6 font-display text-2xl font-semibold text-[var(--text)]">Quick message</h3>
             <form
               onSubmit={(e) => {
                 e.preventDefault()
-                setFormStatus('Thanks for reaching out! We will respond within 24 hours.')
+                setFormStatus('Thanks for reaching out! We’ll respond within 24 hours.')
                 setTimeout(() => setFormStatus(''), 5000)
               }}
               className="space-y-4"
             >
-              <div>
-                <label className="block text-sm font-semibold text-gray-800 mb-2">Name</label>
-                <input
-                  type="text"
-                  placeholder="Your name"
-                  className="w-full rounded-full border border-gray-300 px-5 py-3 focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all"
-                  required
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-semibold text-gray-800 mb-2">Email</label>
-                <input
-                  type="email"
-                  placeholder="your@email.com"
-                  className="w-full rounded-full border border-gray-300 px-5 py-3 focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all"
-                  required
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-semibold text-gray-800 mb-2">Message</label>
-                <textarea
-                  placeholder="Tell us about your IT needs..."
-                  rows={4}
-                  className="w-full rounded-3xl border border-gray-300 px-5 py-3 focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all resize-none"
-                  required
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full bg-violet-600 hover:bg-violet-700 text-white font-semibold py-3 rounded-full transition-all duration-300 hover:shadow-lg active:scale-95"
-              >
-                Send Message
+              <input required placeholder="Your name" className={field} />
+              <input required type="email" placeholder="your@email.com" className={field} />
+              <textarea required rows={4} placeholder="Tell us about your IT or software needs…" className={`${field} resize-none`} />
+              <button type="submit" className="w-full rounded-full bg-gradient-to-r from-brand-600 to-indigo-600 py-3.5 font-semibold text-white transition hover:shadow-glow active:scale-95">
+                Send message
               </button>
-              {formStatus && (
-                <p className="text-center text-violet-700 bg-violet-50 p-3 rounded-full text-sm animate-fadeIn">
-                  {formStatus}
-                </p>
-              )}
+              {formStatus && <p className="text-center text-sm text-gradient-brand">{formStatus}</p>}
             </form>
-          </div>
+          </Reveal>
         </div>
 
-        <div className="rounded-[2rem] border border-violet-100 bg-white shadow-xl p-10 md:p-12">
-          <div className="mb-8 text-center">
-            <h3 className="text-3xl font-bold text-gray-900">Frequently Asked Questions</h3>
-          </div>
-          <div className="space-y-4">
+        <Reveal className="glass glass-edge rounded-[2rem] p-8 md:p-10">
+          <h3 className="mb-6 text-center font-display text-2xl font-bold text-[var(--text)]">Frequently asked questions</h3>
+          <div className="mx-auto max-w-3xl space-y-3">
             {faqs.map((faq, index) => (
-              <div
-                key={index}
-                className="rounded-[1.5rem] border border-gray-200 bg-white overflow-hidden transition-all duration-300 hover:shadow-lg"
-              >
-                <button
-                  onClick={() => setExpandedFAQ(expandedFAQ === index ? -1 : index)}
-                  className="w-full flex items-center justify-between p-6 hover:bg-violet-50 transition-colors duration-300"
-                >
-                  <p className="text-lg font-semibold text-gray-900 text-left">{faq.question}</p>
-                  <span
-                    className={`text-2xl font-bold text-violet-600 transition-transform duration-300 flex-shrink-0 ml-4 ${
-                      expandedFAQ === index ? 'rotate-45' : ''
-                    }`}
-                  >
-                    +
-                  </span>
+              <div key={faq.question} className="overflow-hidden rounded-2xl border border-[var(--border)]">
+                <button onClick={() => setExpandedFAQ(expandedFAQ === index ? -1 : index)} className="flex w-full items-center justify-between p-5 text-left">
+                  <p className="font-semibold text-[var(--text)]">{faq.question}</p>
+                  <span className={`ml-4 text-2xl text-gradient-brand transition-transform ${expandedFAQ === index ? 'rotate-45' : ''}`}>+</span>
                 </button>
                 {expandedFAQ === index && (
-                  <div className="animate-fadeIn border-t border-gray-200 px-6 pb-6">
-                    <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+                  <div className="animate-fadeIn border-t border-[var(--border)] px-5 pb-5 pt-4">
+                    <p className="leading-relaxed text-muted">{faq.answer}</p>
                   </div>
                 )}
               </div>
             ))}
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   )
 }
+
+const field =
+  'w-full rounded-2xl border border-[var(--border)] bg-[var(--bg-elev)] px-5 py-3 text-[var(--text)] placeholder:text-[var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-brand-500/50'

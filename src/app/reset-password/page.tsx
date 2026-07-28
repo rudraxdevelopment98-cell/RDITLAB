@@ -47,14 +47,14 @@ export default function ResetPasswordPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-violet-50 via-white to-gray-100 flex items-center justify-center px-6 py-12">
+    <div className="min-h-screen bg-gradient-to-br from-[var(--bg-elev)] via-white to-[var(--bg)] flex items-center justify-center px-6 py-12">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-violet-600">Reset Password</h1>
-          <p className="text-gray-600 mt-2">Enter your new password below.</p>
+          <p className="text-muted mt-2">Enter your new password below.</p>
         </div>
 
-        <div className="bg-white rounded-2xl border border-violet-100 shadow-2xl p-8 md:p-10">
+        <div className="bg-[var(--bg-elev)] rounded-2xl border border-[var(--border)] shadow-2xl p-8 md:p-10">
           {error && (
             <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
               <p className="text-red-800 text-sm">{error}</p>
@@ -69,27 +69,27 @@ export default function ResetPasswordPage() {
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">New Password</label>
+              <label className="block text-sm font-medium text-muted mb-2">New Password</label>
               <input
                 type="password"
                 value={newPassword}
                 onChange={e => setNewPassword(e.target.value)}
                 disabled={loading}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent disabled:bg-gray-50"
+                className="w-full px-4 py-3 border border-[var(--border)] rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent disabled:bg-[var(--bg-elev)]"
                 placeholder="New password"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
+              <label className="block text-sm font-medium text-muted mb-2">Confirm Password</label>
               <input
                 type="password"
                 value={confirmPassword}
                 onChange={e => setConfirmPassword(e.target.value)}
                 disabled={loading}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent disabled:bg-gray-50"
+                className="w-full px-4 py-3 border border-[var(--border)] rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent disabled:bg-[var(--bg-elev)]"
                 placeholder="Confirm password"
               />
             </div>
@@ -103,7 +103,7 @@ export default function ResetPasswordPage() {
             </button>
           </form>
 
-          <div className="mt-6 text-center text-sm text-gray-600">
+          <div className="mt-6 text-center text-sm text-muted">
             <Link href="/login" className="text-violet-600 hover:text-violet-700 font-medium">
               Back to Login
             </Link>

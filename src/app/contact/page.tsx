@@ -67,7 +67,7 @@ export default function ContactPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-violet-50 to-gray-100 text-gray-900">
+    <div className="min-h-screen">
       <Navbar />
 
       <main>
@@ -82,13 +82,13 @@ export default function ContactPage() {
           {contactInfo.map((info, index) => (
             <div
               key={index}
-              className="rounded-2xl bg-white border border-violet-100 shadow-lg p-6 text-center transition hover:-translate-y-2 hover:shadow-xl animate-fadeIn"
+              className="rounded-2xl bg-[var(--bg-elev)] border border-[var(--border)] shadow-lg p-6 text-center transition hover:-translate-y-2 hover:shadow-xl animate-fadeIn"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="text-5xl mb-4">{info.icon}</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">{info.title}</h3>
+              <h3 className="text-xl font-semibold text-[var(--text)] mb-2">{info.title}</h3>
               <p className="text-violet-600 font-semibold mb-3">{info.details}</p>
-              <p className="text-gray-600 text-sm">{info.description}</p>
+              <p className="text-muted text-sm">{info.description}</p>
             </div>
           ))}
         </section>
@@ -96,8 +96,8 @@ export default function ContactPage() {
         {/* Contact Form & Info Grid */}
         <section className="mx-6 md:mx-12 mb-16 grid gap-12 lg:grid-cols-2">
           {/* Form */}
-          <div className="rounded-[2rem] bg-white border border-violet-100 shadow-xl p-8 md:p-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">Send us a message</h2>
+          <div className="rounded-[2rem] bg-[var(--bg-elev)] border border-[var(--border)] shadow-xl p-8 md:p-12">
+            <h2 className="text-3xl font-bold text-[var(--text)] mb-8">Send us a message</h2>
 
             {submitted && (
               <div className="mb-6 p-4 rounded-xl bg-green-50 border border-green-200 animate-slideDown">
@@ -107,38 +107,38 @@ export default function ContactPage() {
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="animate-fadeIn" style={{ animationDelay: '100ms' }}>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">Name</label>
+                <label className="block text-sm font-semibold text-[var(--text)] mb-2">Name</label>
                 <input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 placeholder-gray-500 transition focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-200"
+                  className="w-full px-4 py-3 rounded-xl border border-[var(--border)] bg-[var(--bg-elev)] text-[var(--text)] placeholder-gray-500 transition focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-200"
                   placeholder="Your name"
                 />
               </div>
 
               <div className="animate-fadeIn" style={{ animationDelay: '150ms' }}>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">Email</label>
+                <label className="block text-sm font-semibold text-[var(--text)] mb-2">Email</label>
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 placeholder-gray-500 transition focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-200"
+                  className="w-full px-4 py-3 rounded-xl border border-[var(--border)] bg-[var(--bg-elev)] text-[var(--text)] placeholder-gray-500 transition focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-200"
                   placeholder="your@email.com"
                 />
               </div>
 
               <div className="animate-fadeIn" style={{ animationDelay: '200ms' }}>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">Service Type</label>
+                <label className="block text-sm font-semibold text-[var(--text)] mb-2">Service Type</label>
                 <select
                   name="service"
                   value={formData.service}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 transition focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-200"
+                  className="w-full px-4 py-3 rounded-xl border border-[var(--border)] bg-[var(--bg-elev)] text-[var(--text)] transition focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-200"
                 >
                   <option value="">Select a service...</option>
                   {services.map((service, idx) => (
@@ -148,14 +148,14 @@ export default function ContactPage() {
               </div>
 
               <div className="animate-fadeIn" style={{ animationDelay: '250ms' }}>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">Message</label>
+                <label className="block text-sm font-semibold text-[var(--text)] mb-2">Message</label>
                 <textarea
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   required
                   rows={4}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 placeholder-gray-500 transition focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-200"
+                  className="w-full px-4 py-3 rounded-xl border border-[var(--border)] bg-[var(--bg-elev)] text-[var(--text)] placeholder-gray-500 transition focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-200"
                   placeholder="Tell us about your needs..."
                 />
               </div>
@@ -172,41 +172,41 @@ export default function ContactPage() {
 
           {/* Info Section */}
           <div className="space-y-8">
-            <div className="rounded-[2rem] bg-white border border-violet-100 shadow-xl p-8 md:p-12 animate-slideInRight">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Why contact us?</h2>
-              <ul className="space-y-4 text-gray-700">
+            <div className="rounded-[2rem] bg-[var(--bg-elev)] border border-[var(--border)] shadow-xl p-8 md:p-12 animate-slideInRight">
+              <h2 className="text-3xl font-bold text-[var(--text)] mb-6">Why contact us?</h2>
+              <ul className="space-y-4 text-muted">
                 <li className="flex items-start gap-3">
                   <span className="text-2xl text-violet-600">→</span>
                   <div>
-                    <p className="font-semibold text-gray-900">Quick Consultation</p>
+                    <p className="font-semibold text-[var(--text)]">Quick Consultation</p>
                     <p className="text-sm">Discuss your IT needs with our experts</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-2xl text-violet-600">→</span>
                   <div>
-                    <p className="font-semibold text-gray-900">Support Request</p>
+                    <p className="font-semibold text-[var(--text)]">Support Request</p>
                     <p className="text-sm">Get help with repairs, networking, or setup</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-2xl text-violet-600">→</span>
                   <div>
-                    <p className="font-semibold text-gray-900">Service Inquiry</p>
+                    <p className="font-semibold text-[var(--text)]">Service Inquiry</p>
                     <p className="text-sm">Learn more about a specific service offering</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-2xl text-violet-600">→</span>
                   <div>
-                    <p className="font-semibold text-gray-900">Emergency Support</p>
+                    <p className="font-semibold text-[var(--text)]">Emergency Support</p>
                     <p className="text-sm">Call us 24/7 for urgent network or system issues</p>
                   </div>
                 </li>
               </ul>
             </div>
 
-            <div className="rounded-[2rem] bg-violet-50 border border-violet-100 p-8 md:p-12 animate-slideInRight" style={{ animationDelay: '100ms' }}>
+            <div className="rounded-[2rem] bg-[var(--bg-elev)] border border-[var(--border)] p-8 md:p-12 animate-slideInRight" style={{ animationDelay: '100ms' }}>
               <h3 className="text-2xl font-bold text-violet-900 mb-4">Response Time</h3>
               <div className="space-y-3 text-violet-900">
                 <p><strong>Email:</strong> Within 24 hours</p>
@@ -218,17 +218,17 @@ export default function ContactPage() {
         </section>
 
         {/* Service Coverage */}
-        <section className="mx-6 md:mx-12 mb-16 rounded-[2rem] bg-white border border-violet-100 shadow-xl p-8 md:p-12">
+        <section className="mx-6 md:mx-12 mb-16 rounded-[2rem] bg-[var(--bg-elev)] border border-[var(--border)] shadow-xl p-8 md:p-12">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Services We Support</h2>
+            <h2 className="text-3xl font-bold text-[var(--text)] mb-8 text-center">Services We Support</h2>
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
               {services.map((service, index) => (
                 <div
                   key={index}
-                  className="rounded-xl bg-gradient-to-br from-violet-50 to-white border border-violet-100 p-6 transition hover:shadow-lg hover:-translate-y-1"
+                  className="rounded-xl bg-gradient-to-br from-[var(--bg-elev)] to-[var(--bg-elev)] border border-[var(--border)] p-6 transition hover:shadow-lg hover:-translate-y-1"
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
-                  <p className="text-gray-900 font-semibold">{service}</p>
+                  <p className="text-[var(--text)] font-semibold">{service}</p>
                   <p className="text-xs text-violet-600 mt-2">→ Click to inquire</p>
                 </div>
               ))}
