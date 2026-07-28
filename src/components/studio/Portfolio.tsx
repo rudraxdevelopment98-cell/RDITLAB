@@ -1,8 +1,8 @@
 import Reveal from '../Reveal'
 import { BrowserMock } from './BrowserMock'
-import { projects } from './data'
+import type { ResolvedProject } from '@/lib/studio'
 
-export default function Portfolio() {
+export default function Portfolio({ projects }: { projects: ResolvedProject[] }) {
   return (
     <section id="portfolio" className="relative overflow-hidden bg-ink-950 px-6 py-24 text-white md:px-12">
       <div className="pointer-events-none absolute inset-0 bg-grid-dark [background-size:44px_44px] opacity-70" />
@@ -19,9 +19,9 @@ export default function Portfolio() {
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (
-            <Reveal key={project.name} delay={(index % 3) * 90}>
+            <Reveal key={project.id} delay={(index % 3) * 90}>
               <div className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-violet-400/40 hover:bg-white/10">
-                <BrowserMock label={project.name} gradient={project.gradient} />
+                <BrowserMock label={project.name} gradient={project.gradient} image={project.image} />
                 <div className="flex flex-1 flex-col p-2 pt-5">
                   <div className="mb-2 flex items-center justify-between">
                     <h3 className="font-display text-lg font-semibold text-white">{project.name}</h3>

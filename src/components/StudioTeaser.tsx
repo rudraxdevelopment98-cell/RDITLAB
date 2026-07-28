@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Reveal from './Reveal'
 import { BrowserMock } from './studio/BrowserMock'
-import { projects } from './studio/data'
+import type { ResolvedProject } from '@/lib/studio'
 
 const highlights = [
   'Custom websites & web apps',
@@ -9,8 +9,12 @@ const highlights = [
   'Templates to start fast',
 ]
 
-export default function StudioTeaser() {
-  const featured = projects.slice(0, 3)
+export default function StudioTeaser({ projects }: { projects: ResolvedProject[] }) {
+  // Prefer featured projects, otherwise fall back to the first few.
+  const featured = (projects.filter((p) => p.featured).length
+    ? projects.filter((p) => p.featured)
+    : projects
+  ).slice(0, 3)
 
   return (
     <section className="relative overflow-hidden bg-ink-950 px-6 py-24 text-white md:px-12">
@@ -62,7 +66,7 @@ export default function StudioTeaser() {
           <Reveal delay={120} className="grid gap-4 sm:grid-cols-2">
             {featured.map((project, i) => (
               <div
-                key={project.name}
+                key={project.id}
                 className={`rounded-2xl border border-white/10 bg-white/5 p-3 backdrop-blur-sm ${
                   i === 0 ? 'sm:col-span-2' : ''
                 }`}

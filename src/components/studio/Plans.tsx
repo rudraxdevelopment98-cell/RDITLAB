@@ -1,5 +1,5 @@
 import Reveal from '../Reveal'
-import { plans } from './data'
+import type { ResolvedPlan } from '@/lib/studio'
 
 const check = (
   <svg className="mt-0.5 h-5 w-5 flex-shrink-0 text-violet-600" fill="none" stroke="currentColor" strokeWidth={2.2} viewBox="0 0 24 24">
@@ -7,7 +7,7 @@ const check = (
   </svg>
 )
 
-export default function Plans() {
+export default function Plans({ plans }: { plans: ResolvedPlan[] }) {
   return (
     <section id="plans" className="bg-white px-6 py-24 md:px-12">
       <div className="container mx-auto max-w-7xl">

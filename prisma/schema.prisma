@@ -56,9 +56,61 @@ model AuditLog {
   admin     Admin    @relation(fields: [adminId], references: [id], onDelete: Cascade)
   adminId   String
   action    String   // 'CREATE', 'UPDATE', 'DELETE'
-  entity    String   // 'Page', 'TeamMember', 'Admin'
+  entity    String   // 'Page', 'TeamMember', 'Admin', 'Project', 'Plan', 'Template'
   entityId  String
   oldData   String?  // JSON string of old data
   newData   String?  // JSON string of new data
   createdAt DateTime @default(now())
+}
+
+// Web & Software Studio — portfolio projects (managed from admin)
+model Project {
+  id          String   @id @default(cuid())
+  name        String
+  category    String
+  description String
+  tags        String   @default("") // comma-separated
+  demoUrl     String   @default("#")
+  image       String?  // optional thumbnail URL (overrides gradient)
+  gradient    String   @default("from-violet-500 to-indigo-600")
+  featured    Boolean  @default(false)
+  order       Int      @default(0)
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  createdBy   String?
+}
+
+// Web & Software Studio — pricing plans (managed from admin)
+model Plan {
+  id        String   @id @default(cuid())
+  name      String
+  tagline   String
+  price     String
+  period    String   @default("")
+  features  String   @default("") // newline-separated
+  cta       String   @default("Get started")
+  popular   Boolean  @default(false)
+  order     Int      @default(0)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  createdBy String?
+}
+
+// Web & Software Studio — starter templates (managed from admin)
+model Template {
+  id          String   @id @default(cuid())
+  name        String
+  category    String
+  price       String   @default("Free")
+  description String
+  image       String?  // optional thumbnail URL (overrides gradient)
+  gradient    String   @default("from-violet-500 to-indigo-600")
+  previewUrl  String   @default("#")
+  order       Int      @default(0)
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  createdBy   String?
 }

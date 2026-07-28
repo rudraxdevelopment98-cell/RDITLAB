@@ -5,12 +5,17 @@ import Link from 'next/link'
 import ProtectedAdmin from '@/components/admin/ProtectedAdmin'
 import PagesManager from '@/components/admin/PagesManager'
 import TeamManager from '@/components/admin/TeamManager'
+import ProjectsManager from '@/components/admin/ProjectsManager'
+import PlansManager from '@/components/admin/PlansManager'
+import TemplatesManager from '@/components/admin/TemplatesManager'
 import AuditLogViewer from '@/components/admin/AuditLogViewer'
 import AdminSettings from '@/components/admin/AdminSettings'
 import DashboardStats from '@/components/admin/DashboardStats'
 
+type Tab = 'dashboard' | 'pages' | 'team' | 'portfolio' | 'plans' | 'templates' | 'audit' | 'settings'
+
 function AdminContent() {
-  const [activeTab, setActiveTab] = useState<'dashboard' | 'pages' | 'team' | 'audit' | 'settings'>('dashboard')
+  const [activeTab, setActiveTab] = useState<Tab>('dashboard')
 
   return (
     <div>
@@ -52,6 +57,39 @@ function AdminContent() {
               👥 Team Members
             </button>
             <button
+              data-tab="portfolio"
+              onClick={() => setActiveTab('portfolio')}
+              className={`py-4 px-3 font-medium transition border-b-2 whitespace-nowrap ${
+                activeTab === 'portfolio'
+                  ? 'text-violet-600 border-violet-600'
+                  : 'text-gray-600 border-transparent hover:text-violet-600'
+              }`}
+            >
+              🚀 Portfolio
+            </button>
+            <button
+              data-tab="plans"
+              onClick={() => setActiveTab('plans')}
+              className={`py-4 px-3 font-medium transition border-b-2 whitespace-nowrap ${
+                activeTab === 'plans'
+                  ? 'text-violet-600 border-violet-600'
+                  : 'text-gray-600 border-transparent hover:text-violet-600'
+              }`}
+            >
+              💷 Plans
+            </button>
+            <button
+              data-tab="templates"
+              onClick={() => setActiveTab('templates')}
+              className={`py-4 px-3 font-medium transition border-b-2 whitespace-nowrap ${
+                activeTab === 'templates'
+                  ? 'text-violet-600 border-violet-600'
+                  : 'text-gray-600 border-transparent hover:text-violet-600'
+              }`}
+            >
+              🧩 Templates
+            </button>
+            <button
               data-tab="audit"
               onClick={() => setActiveTab('audit')}
               className={`py-4 px-3 font-medium transition border-b-2 whitespace-nowrap ${
@@ -82,6 +120,9 @@ function AdminContent() {
         {activeTab === 'dashboard' && <DashboardStats />}
         {activeTab === 'pages' && <PagesManager />}
         {activeTab === 'team' && <TeamManager />}
+        {activeTab === 'portfolio' && <ProjectsManager />}
+        {activeTab === 'plans' && <PlansManager />}
+        {activeTab === 'templates' && <TemplatesManager />}
         {activeTab === 'audit' && <AuditLogViewer />}
         {activeTab === 'settings' && <AdminSettings />}
       </main>

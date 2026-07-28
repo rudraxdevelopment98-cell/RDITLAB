@@ -1,8 +1,8 @@
 import Reveal from '../Reveal'
 import { BrowserMock } from './BrowserMock'
-import { templates } from './data'
+import type { ResolvedTemplate } from '@/lib/studio'
 
-export default function Templates() {
+export default function Templates({ templates }: { templates: ResolvedTemplate[] }) {
   return (
     <section id="templates" className="bg-slate-50 px-6 py-24 md:px-12">
       <div className="container mx-auto max-w-7xl">
@@ -18,10 +18,10 @@ export default function Templates() {
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {templates.map((template, index) => (
-            <Reveal key={template.name} delay={(index % 3) * 90}>
+            <Reveal key={template.id} delay={(index % 3) * 90}>
               <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-brand">
                 <div className="p-4 pb-0">
-                  <BrowserMock label={template.name} gradient={template.gradient} />
+                  <BrowserMock label={template.name} gradient={template.gradient} image={template.image} />
                 </div>
                 <div className="flex flex-1 flex-col p-6">
                   <div className="mb-2 flex items-center justify-between">
@@ -42,7 +42,9 @@ export default function Templates() {
                       {template.category}
                     </span>
                     <a
-                      href="/contact"
+                      href={template.preview || '/contact'}
+                      target={template.preview?.startsWith('http') ? '_blank' : undefined}
+                      rel={template.preview?.startsWith('http') ? 'noopener noreferrer' : undefined}
                       className="inline-flex items-center gap-1.5 text-sm font-semibold text-violet-700 transition group-hover:text-violet-800"
                     >
                       Preview
