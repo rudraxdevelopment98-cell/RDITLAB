@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
   if (!code) return fail('missing_code')
   if (!state || !cookieState || state !== cookieState) return fail('bad_state')
 
-  const clientId = process.env.GOOGLE_CLIENT_ID
+  const clientId = process.env.GOOGLE_CLIENT_ID || '48459596607-nk6kqfn2e5h1v8g6hfjcg8im41cbe0jb.apps.googleusercontent.com'
   const clientSecret = process.env.GOOGLE_CLIENT_SECRET
   if (!clientId || !clientSecret) return fail('google_not_configured')
 

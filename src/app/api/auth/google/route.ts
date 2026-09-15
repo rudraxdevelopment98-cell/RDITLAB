@@ -3,8 +3,12 @@ import crypto from 'crypto'
 
 export const dynamic = 'force-dynamic'
 
+// The OAuth Client ID is public (it's exposed in the browser during sign-in),
+// so it's safe to ship as a default. The Client SECRET must stay in an env var.
+const DEFAULT_CLIENT_ID = '48459596607-nk6kqfn2e5h1v8g6hfjcg8im41cbe0jb.apps.googleusercontent.com'
+
 export async function GET(request: NextRequest) {
-  const clientId = process.env.GOOGLE_CLIENT_ID
+  const clientId = process.env.GOOGLE_CLIENT_ID || DEFAULT_CLIENT_ID
   if (!clientId) {
     return NextResponse.redirect(new URL('/login?error=google_not_configured', request.url))
   }
