@@ -73,12 +73,34 @@ model Project {
   demoUrl     String   @default("#")
   image       String?  // optional thumbnail URL (overrides gradient)
   gradient    String   @default("from-violet-500 to-indigo-600")
+  overview    String   @default("") // long-form case-study overview (markdown-ish)
+  presentationUrl  String @default("") // link or uploaded file URL
+  presentationType String @default("") // 'link' | 'file' | 'embed' | ''
   featured    Boolean  @default(false)
   order       Int      @default(0)
   active      Boolean  @default(true)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   createdBy   String?
+}
+
+// Client testimonials (admin-managed + visitor submissions with approval)
+model Testimonial {
+  id        String   @id @default(cuid())
+  name      String
+  role      String   @default("")
+  company   String   @default("")
+  photo     String?  // avatar / company logo URL
+  rating    Int      @default(5)
+  quote     String
+  source    String   @default("admin") // 'admin' | 'visitor'
+  approved  Boolean  @default(false)
+  featured  Boolean  @default(false)
+  order     Int      @default(0)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  createdBy String?
 }
 
 // Web & Software Studio — pricing plans (managed from admin)

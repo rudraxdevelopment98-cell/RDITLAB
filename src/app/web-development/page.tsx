@@ -6,7 +6,8 @@ import Plans from '@/components/studio/Plans'
 import Portfolio from '@/components/studio/Portfolio'
 import Templates from '@/components/studio/Templates'
 import CTASection from '@/components/studio/CTASection'
-import { getPlans, getProjects, getTemplates } from '@/lib/studio'
+import Testimonials from '@/components/Testimonials'
+import { getPlans, getProjects, getTemplates, getTestimonials } from '@/lib/studio'
 
 export const metadata: Metadata = {
   title: 'Web & Software Development',
@@ -18,10 +19,11 @@ export const metadata: Metadata = {
 export const dynamic = 'force-dynamic'
 
 export default async function WebDevelopmentPage() {
-  const [plans, projects, templates] = await Promise.all([
+  const [plans, projects, templates, testimonials] = await Promise.all([
     getPlans(),
     getProjects(),
     getTemplates(),
+    getTestimonials(),
   ])
 
   return (
@@ -31,6 +33,7 @@ export default async function WebDevelopmentPage() {
       <Plans plans={plans} />
       <Portfolio projects={projects} />
       <Templates templates={templates} />
+      <Testimonials testimonials={testimonials} />
       <CTASection />
       <Footer />
     </div>

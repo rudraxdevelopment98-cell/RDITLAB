@@ -5,6 +5,24 @@ import type { NextRequest } from 'next/server'
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-production'
 const JWT_EXPIRY = parseInt(process.env.JWT_EXPIRY || '24')
 
+// Google accounts allowed to sign in as admin. Configurable via env
+// ADMIN_ALLOWED_EMAILS (comma-separated); defaults to the two owner accounts.
+const DEFAULT_ADMIN_EMAILS = [
+  'rudraxdevelopment98@gmail.com',
+  'kuldeepjotaniya83@gmail.com',
+]
+
+export function allowedAdminEmails(): string[] {
+  const raw = process.env.ADMIN_ALLOWED_EMAILS
+  const list = raw ? raw.split(',') : DEFAULT_ADMIN_EMAILS
+  return list.map((e) => e.trim().toLowerCase()).filter(Boolean)
+}
+
+export function isAllowedAdminEmail(email: string | null | undefined): boolean {
+  if (!email) return false
+  return allowedAdminEmails().includes(email.toLowerCase())
+}
+
 export interface JwtPayload {
   id: string
   email: string

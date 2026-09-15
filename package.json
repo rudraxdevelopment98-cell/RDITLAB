@@ -12,6 +12,7 @@
   "dependencies": {
     "@prisma/client": "^4.16.0",
     "@react-three/drei": "^9.105.6",
+    "@vercel/blob": "^0.27.3",
     "@react-three/fiber": "^8.16.8",
     "@types/node": "^20",
     "@types/react": "^18",

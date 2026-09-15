@@ -8,11 +8,12 @@ import TeamManager from '@/components/admin/TeamManager'
 import ProjectsManager from '@/components/admin/ProjectsManager'
 import PlansManager from '@/components/admin/PlansManager'
 import TemplatesManager from '@/components/admin/TemplatesManager'
+import TestimonialsManager from '@/components/admin/TestimonialsManager'
 import AuditLogViewer from '@/components/admin/AuditLogViewer'
 import AdminSettings from '@/components/admin/AdminSettings'
 import DashboardStats from '@/components/admin/DashboardStats'
 
-type Tab = 'dashboard' | 'pages' | 'team' | 'portfolio' | 'plans' | 'templates' | 'audit' | 'settings'
+type Tab = 'dashboard' | 'pages' | 'team' | 'portfolio' | 'plans' | 'templates' | 'testimonials' | 'audit' | 'settings'
 
 function AdminContent() {
   const [activeTab, setActiveTab] = useState<Tab>('dashboard')
@@ -90,6 +91,17 @@ function AdminContent() {
               🧩 Templates
             </button>
             <button
+              data-tab="testimonials"
+              onClick={() => setActiveTab('testimonials')}
+              className={`py-4 px-3 font-medium transition border-b-2 whitespace-nowrap ${
+                activeTab === 'testimonials'
+                  ? 'text-violet-600 border-violet-600'
+                  : 'text-gray-600 border-transparent hover:text-violet-600'
+              }`}
+            >
+              💬 Testimonials
+            </button>
+            <button
               data-tab="audit"
               onClick={() => setActiveTab('audit')}
               className={`py-4 px-3 font-medium transition border-b-2 whitespace-nowrap ${
@@ -123,6 +135,7 @@ function AdminContent() {
         {activeTab === 'portfolio' && <ProjectsManager />}
         {activeTab === 'plans' && <PlansManager />}
         {activeTab === 'templates' && <TemplatesManager />}
+        {activeTab === 'testimonials' && <TestimonialsManager />}
         {activeTab === 'audit' && <AuditLogViewer />}
         {activeTab === 'settings' && <AdminSettings />}
       </main>

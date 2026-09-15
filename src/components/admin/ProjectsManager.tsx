@@ -13,6 +13,9 @@ interface Project {
   demoUrl: string
   image: string | null
   gradient: string
+  overview: string
+  presentationUrl: string
+  presentationType: string
   featured: boolean
   order: number
   active: boolean
@@ -27,6 +30,9 @@ const empty = {
   demoUrl: '',
   image: '',
   gradient: 'from-violet-500 to-indigo-600',
+  overview: '',
+  presentationUrl: '',
+  presentationType: '',
   featured: false,
   active: true,
   order: 0,
@@ -77,6 +83,26 @@ export default function ProjectsManager() {
     }
   }
 
+  const [uploadingDeck, setUploadingDeck] = useState(false)
+  const uploadPresentation = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+    try {
+      setUploadingDeck(true)
+      const fd = new FormData()
+      fd.append('file', file)
+      const res = await fetch('/api/upload', { method: 'POST', credentials: 'include', body: fd })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'upload failed')
+      setForm((f) => ({ ...f, presentationUrl: data.url, presentationType: 'file' }))
+      setError('')
+    } catch (err: any) {
+      setError(err?.message || 'Presentation upload failed')
+    } finally {
+      setUploadingDeck(false)
+    }
+  }
+
   const edit = (p: Project) => {
     setEditingId(p.id)
     setForm({
@@ -87,6 +113,9 @@ export default function ProjectsManager() {
       demoUrl: p.demoUrl,
       image: p.image || '',
       gradient: p.gradient,
+      overview: p.overview || '',
+      presentationUrl: p.presentationUrl || '',
+      presentationType: p.presentationType || '',
       featured: p.featured,
       active: p.active,
       order: p.order,
@@ -163,6 +192,29 @@ export default function ProjectsManager() {
           <Field label="Description *">
             <textarea className={input} rows={2} value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} placeholder="Short description of the project" />
           </Field>
+
+          {/* Case study: full overview + presentation */}
+          <div className="rounded-lg border border-violet-200 bg-violet-50/50 p-4">
+            <p className="mb-3 text-sm font-semibold text-violet-700">Case study (optional)</p>
+            <Field label="Full overview">
+              <textarea className={input} rows={5} value={form.overview} onChange={(e) => setForm({ ...form, overview: e.target.value })} placeholder="The full project story — problem, what you built, results. Blank lines separate paragraphs." />
+            </Field>
+            <div className="mt-3 grid gap-4 md:grid-cols-2">
+              <Field label="Presentation link (Google Slides / Drive PDF / YouTube)">
+                <input className={input} value={form.presentationType === 'file' ? '' : form.presentationUrl} onChange={(e) => setForm({ ...form, presentationUrl: e.target.value, presentationType: e.target.value ? 'link' : '' })} placeholder="https://docs.google.com/presentation/..." />
+              </Field>
+              <Field label="…or upload a file (PDF / PPT)">
+                <input type="file" accept=".pdf,.ppt,.pptx,application/pdf" onChange={uploadPresentation} disabled={uploadingDeck} className="w-full rounded-lg border border-gray-300 px-3 py-2" />
+                {uploadingDeck && <span className="text-sm text-blue-600">Uploading…</span>}
+              </Field>
+            </div>
+            {form.presentationUrl && (
+              <p className="mt-2 text-xs text-gray-600">
+                Attached ({form.presentationType}): <a href={form.presentationUrl} target="_blank" rel="noopener noreferrer" className="text-violet-700 underline">view</a>{' '}
+                <button type="button" onClick={() => setForm({ ...form, presentationUrl: '', presentationType: '' })} className="ml-2 text-red-600 underline">remove</button>
+              </p>
+            )}
+          </div>
 
           <div className="grid gap-4 md:grid-cols-2">
             <Field label="Tags (comma separated)">

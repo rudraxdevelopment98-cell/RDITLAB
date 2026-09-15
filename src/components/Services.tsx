@@ -43,6 +43,18 @@ const icons: Record<string, (p: IconProps) => JSX.Element> = {
       <path strokeLinecap="round" strokeLinejoin="round" d="M8 9l-3 3 3 3m8-6l3 3-3 3M13 6l-2 12" />
     </svg>
   ),
+  web: ({ className }) => (
+    <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.7} viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9" />
+      <path strokeLinecap="round" d="M3 12h18M12 3c2.5 2.5 3.8 5.7 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.7-3.8-9S9.5 5.5 12 3z" />
+    </svg>
+  ),
+  ai: ({ className }) => (
+    <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.7} viewBox="0 0 24 24">
+      <rect x="5" y="7" width="14" height="12" rx="2.5" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v4M9 12h.01M15 12h.01M9 16h6" />
+    </svg>
+  ),
 }
 
 const services = [
@@ -53,6 +65,8 @@ const services = [
   { icon: 'lab', title: 'Lab Setup', description: 'Complete lab environments with specialised equipment, software installation, and configuration.' },
   { icon: 'audit', title: 'Audit', description: 'Thorough system audits to find vulnerabilities, boost performance, and ensure compliance.' },
   { icon: 'software', title: 'Software Support', description: 'Ongoing software maintenance, updates, troubleshooting, and custom software solutions.' },
+  { icon: 'web', title: 'Web Development', description: 'Custom websites and web apps — fast, secure, and built to convert, from landing pages to full platforms.' },
+  { icon: 'ai', title: 'AI Agent Development', description: 'Custom AI agents and automations — chatbots, assistants, and workflow bots wired into your tools and data.' },
 ]
 
 export default function Services() {

@@ -1,4 +1,4 @@
-const badges = ['Websites', 'Web apps', 'Custom software', 'E-commerce', 'Maintenance']
+const badges = ['Websites', 'Web apps', 'AI agents', 'Custom software', 'E-commerce', 'Maintenance']
 
 export default function StudioHero() {
   return (

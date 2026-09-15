@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import Reveal from '../Reveal'
 import { BrowserMock } from './BrowserMock'
 import type { ResolvedProject } from '@/lib/studio'
@@ -30,17 +31,24 @@ export default function Portfolio({ projects }: { projects: ResolvedProject[] })
                       <span key={tag} className="rounded-md border border-[var(--border)] px-2 py-0.5 font-mono text-xs text-muted">{tag}</span>
                     ))}
                   </div>
-                  <a
-                    href={project.demo}
-                    target={project.demo.startsWith('http') ? '_blank' : undefined}
-                    rel={project.demo.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-gradient-brand"
-                  >
-                    View demo
-                    <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </a>
+                  <div className="mt-5 flex items-center gap-4">
+                    <Link href={`/web-development/${project.id}`} className="inline-flex items-center gap-1.5 text-sm font-semibold text-gradient-brand">
+                      Case study
+                      <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </Link>
+                    {project.demo && project.demo !== '#' && (
+                      <a
+                        href={project.demo}
+                        target={project.demo.startsWith('http') ? '_blank' : undefined}
+                        rel={project.demo.startsWith('http') ? 'noopener noreferrer' : undefined}
+                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-muted hover:text-[var(--text)]"
+                      >
+                        Live site ↗
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             </Reveal>
