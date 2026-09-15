@@ -1,10 +1,11 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter, Sora, JetBrains_Mono } from 'next/font/google'
+import { Inter, Sora } from 'next/font/google'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter' })
 const sora = Sora({ subsets: ['latin'], display: 'swap', variable: '--font-sora' })
-const mono = JetBrains_Mono({ subsets: ['latin'], display: 'swap', variable: '--font-mono' })
+// Mono uses a system monospace stack (see tailwind font-mono) — no build-time
+// Google Fonts fetch, so deploys don't fail when fonts.gstatic.com is flaky.
 
 export const metadata: Metadata = {
   title: {
@@ -35,7 +36,7 @@ const themeScript = `(function(){try{var t=localStorage.getItem('theme');var d=t
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${sora.variable} ${mono.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${sora.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
