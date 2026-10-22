@@ -3,6 +3,7 @@ import Hero from '@/components/Hero'
 import About from '@/components/About'
 import Services from '@/components/Services'
 import StudioTeaser from '@/components/StudioTeaser'
+import LaunchesTeaser from '@/components/launches/LaunchesTeaser'
 import Testimonials from '@/components/Testimonials'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
@@ -19,6 +20,7 @@ export default async function Home() {
       <Hero />
       <About />
       <Services />
+      <LaunchesTeaser />
       <StudioTeaser projects={projects} />
       <Testimonials testimonials={testimonials} />
       <Contact />
