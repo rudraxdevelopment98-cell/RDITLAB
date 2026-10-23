@@ -5,239 +5,120 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import PageHeader from '@/components/PageHeader'
 
+const services = [
+  'AI agent or automation',
+  'Custom software / web app',
+  'Website',
+  'Digitalization of a process',
+  'IT support or repair',
+  'Networking / infrastructure',
+  'Something else',
+]
+
+const details = [
+  { label: 'Email', value: 'rudraxdevelopment98@gmail.com', href: 'mailto:rudraxdevelopment98@gmail.com' },
+  { label: 'Phone', value: '+44 7823 912875', href: 'tel:+447823912875' },
+  { label: 'Location', value: 'Harrow, London, UK' },
+  { label: 'Hours', value: 'Mon–Sat, 8am–10pm · 24/7 emergency' },
+]
+
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    service: '',
-    message: ''
-  })
+  const [form, setForm] = useState({ name: '', email: '', service: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const change = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
-    setFormData(prev => ({ ...prev, [name]: value }))
+    setForm((p) => ({ ...p, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const submit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Show success message
     setSubmitted(true)
-    // Reset form
-    setFormData({ name: '', email: '', service: '', message: '' })
-    // Hide message after 5 seconds
-    setTimeout(() => setSubmitted(false), 5000)
+    setForm({ name: '', email: '', service: '', message: '' })
+    setTimeout(() => setSubmitted(false), 6000)
   }
-
-  const contactInfo = [
-    {
-      icon: '📧',
-      title: 'Email',
-      details: 'rudraxdevelopment98@gmail.com',
-      description: 'We respond to all inquiries within 24 hours'
-    },
-    {
-      icon: '📞',
-      title: 'Phone',
-      details: '+44 7823912875',
-      description: 'Call for urgent support and inquiries'
-    },
-    {
-      icon: '📍',
-      title: 'Location',
-      details: 'Harrow, London, UK',
-      description: 'Serving London and surrounding areas online and on-site'
-    },
-    {
-      icon: '🕐',
-      title: 'Business Hours',
-      details: 'Mon-Sat: 8am-10pm',
-      description: '24/7 emergency support available (charges apply)'
-    }
-  ]
-
-  const services = [
-    'Network Infrastructure Design',
-    'Managed Networking & Security',
-    'Laptop & PC Repair',
-    'Custom PC Builds & Workstations',
-    'Lab Setup & IT Environments',
-    'IT Audit & Compliance',
-    'Software Deployment & Support'
-  ]
 
   return (
     <div className="min-h-screen">
       <Navbar />
-
       <main>
         <PageHeader
-          eyebrow="Get in touch"
-          title={<>Let&apos;s talk about <span className="text-gradient-brand">your IT needs</span></>}
-          subtitle="Questions about our services or need urgent support? Reach out anytime. We handle repairs, builds, networking, websites and more — with quick turnaround and professional service."
+          eyebrow="Contact"
+          title={<>Let&apos;s build something — <span className="text-[var(--accent)]">or get you unstuck.</span></>}
+          subtitle="Tell us about a project, or reach out for urgent IT support. We reply to every enquiry within 24 hours."
         />
 
-        {/* Contact Info Cards */}
-        <section className="mx-6 md:mx-12 my-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {contactInfo.map((info, index) => (
-            <div
-              key={index}
-              className="rounded-2xl bg-[var(--bg-elev)] border border-[var(--border)] shadow-lg p-6 text-center transition hover:-translate-y-2 hover:shadow-xl animate-fadeIn"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className="text-5xl mb-4">{info.icon}</div>
-              <h3 className="text-xl font-semibold text-[var(--text)] mb-2">{info.title}</h3>
-              <p className="text-brand-600 font-semibold mb-3">{info.details}</p>
-              <p className="text-muted text-sm">{info.description}</p>
-            </div>
-          ))}
-        </section>
-
-        {/* Contact Form & Info Grid */}
-        <section className="mx-6 md:mx-12 mb-16 grid gap-12 lg:grid-cols-2">
-          {/* Form */}
-          <div className="rounded-[2rem] bg-[var(--bg-elev)] border border-[var(--border)] shadow-xl p-8 md:p-12">
-            <h2 className="text-3xl font-bold text-[var(--text)] mb-8">Send us a message</h2>
-
-            {submitted && (
-              <div className="mb-6 p-4 rounded-xl bg-green-50 border border-green-200 animate-slideDown">
-                <p className="text-green-800 font-semibold">✓ Message sent successfully! We&apos;ll get back to you soon.</p>
-              </div>
-            )}
-
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="animate-fadeIn" style={{ animationDelay: '100ms' }}>
-                <label className="block text-sm font-semibold text-[var(--text)] mb-2">Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 rounded-xl border border-[var(--border)] bg-[var(--bg-elev)] text-[var(--text)] placeholder-gray-500 transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
-                  placeholder="Your name"
-                />
-              </div>
-
-              <div className="animate-fadeIn" style={{ animationDelay: '150ms' }}>
-                <label className="block text-sm font-semibold text-[var(--text)] mb-2">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 rounded-xl border border-[var(--border)] bg-[var(--bg-elev)] text-[var(--text)] placeholder-gray-500 transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
-                  placeholder="your@email.com"
-                />
-              </div>
-
-              <div className="animate-fadeIn" style={{ animationDelay: '200ms' }}>
-                <label className="block text-sm font-semibold text-[var(--text)] mb-2">Service Type</label>
-                <select
-                  name="service"
-                  value={formData.service}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl border border-[var(--border)] bg-[var(--bg-elev)] text-[var(--text)] transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
-                >
-                  <option value="">Select a service...</option>
-                  {services.map((service, idx) => (
-                    <option key={idx} value={service}>{service}</option>
-                  ))}
-                </select>
-              </div>
-
-              <div className="animate-fadeIn" style={{ animationDelay: '250ms' }}>
-                <label className="block text-sm font-semibold text-[var(--text)] mb-2">Message</label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={4}
-                  className="w-full px-4 py-3 rounded-xl border border-[var(--border)] bg-[var(--bg-elev)] text-[var(--text)] placeholder-gray-500 transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
-                  placeholder="Tell us about your needs..."
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full px-6 py-4 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 text-white font-semibold transition hover:from-brand-600 hover:to-brand-700 shadow-lg hover:shadow-xl transform hover:-translate-y-1 animate-fadeIn"
-                style={{ animationDelay: '300ms' }}
-              >
-                Send Message
-              </button>
-            </form>
-          </div>
-
-          {/* Info Section */}
-          <div className="space-y-8">
-            <div className="rounded-[2rem] bg-[var(--bg-elev)] border border-[var(--border)] shadow-xl p-8 md:p-12 animate-slideInRight">
-              <h2 className="text-3xl font-bold text-[var(--text)] mb-6">Why contact us?</h2>
-              <ul className="space-y-4 text-muted">
-                <li className="flex items-start gap-3">
-                  <span className="text-2xl text-brand-600">→</span>
-                  <div>
-                    <p className="font-semibold text-[var(--text)]">Quick Consultation</p>
-                    <p className="text-sm">Discuss your IT needs with our experts</p>
+        <section className="px-6 py-20 md:px-12">
+          <div className="mx-auto grid max-w-5xl gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+            {/* Details */}
+            <div>
+              <p className="eyebrow mb-8">Get in touch</p>
+              <dl className="divide-y divide-[var(--border)] border-y border-[var(--border)]">
+                {details.map((d) => (
+                  <div key={d.label} className="py-5">
+                    <dt className="text-xs uppercase tracking-wider text-muted">{d.label}</dt>
+                    <dd className="mt-1 text-[var(--text)]">
+                      {d.href ? (
+                        <a href={d.href} className="transition hover:text-[var(--accent)]">{d.value}</a>
+                      ) : (
+                        d.value
+                      )}
+                    </dd>
                   </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-2xl text-brand-600">→</span>
-                  <div>
-                    <p className="font-semibold text-[var(--text)]">Support Request</p>
-                    <p className="text-sm">Get help with repairs, networking, or setup</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-2xl text-brand-600">→</span>
-                  <div>
-                    <p className="font-semibold text-[var(--text)]">Service Inquiry</p>
-                    <p className="text-sm">Learn more about a specific service offering</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-2xl text-brand-600">→</span>
-                  <div>
-                    <p className="font-semibold text-[var(--text)]">Emergency Support</p>
-                    <p className="text-sm">Call us 24/7 for urgent network or system issues</p>
-                  </div>
-                </li>
-              </ul>
+                ))}
+              </dl>
+              <div className="mt-8 flex gap-3">
+                <a href="https://share.google/nMMOrlyJNoFbICUL5" target="_blank" rel="noopener noreferrer" className="rounded-full border border-[var(--border)] px-4 py-2 text-sm font-medium text-[var(--text)] transition hover:border-[var(--accent)] hover:text-[var(--accent)]">Google Reviews</a>
+                <a href="https://www.instagram.com/rditlab.uk" target="_blank" rel="noopener noreferrer" className="rounded-full border border-[var(--border)] px-4 py-2 text-sm font-medium text-[var(--text)] transition hover:border-[var(--accent)] hover:text-[var(--accent)]">Instagram</a>
+              </div>
             </div>
 
-            <div className="rounded-[2rem] bg-[var(--bg-elev)] border border-[var(--border)] p-8 md:p-12 animate-slideInRight" style={{ animationDelay: '100ms' }}>
-              <h3 className="text-2xl font-bold text-brand-900 mb-4">Response Time</h3>
-              <div className="space-y-3 text-brand-900">
-                <p><strong>Email:</strong> Within 24 hours</p>
-                <p><strong>Phone:</strong> Immediate for urgent support</p>
-                <p><strong>Emergency:</strong> On-call 24/7</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Service Coverage */}
-        <section className="mx-6 md:mx-12 mb-16 rounded-[2rem] bg-[var(--bg-elev)] border border-[var(--border)] shadow-xl p-8 md:p-12">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl font-bold text-[var(--text)] mb-8 text-center">Services We Support</h2>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-              {services.map((service, index) => (
-                <div
-                  key={index}
-                  className="rounded-xl bg-gradient-to-br from-[var(--bg-elev)] to-[var(--bg-elev)] border border-[var(--border)] p-6 transition hover:shadow-lg hover:-translate-y-1"
-                  style={{ animationDelay: `${index * 50}ms` }}
-                >
-                  <p className="text-[var(--text)] font-semibold">{service}</p>
-                  <p className="text-xs text-brand-600 mt-2">→ Click to inquire</p>
+            {/* Form */}
+            <div className="rounded-2xl border border-[var(--border)] bg-[var(--bg-elev)] p-8 shadow-card md:p-10">
+              {submitted && (
+                <div className="mb-6 rounded-xl border border-[var(--accent)]/30 bg-[var(--accent-weak)] p-4 text-sm text-[var(--accent-ink)]">
+                  ✓ Thanks — your message has been sent. We&apos;ll reply within 24 hours.
                 </div>
-              ))}
+              )}
+              <form onSubmit={submit} className="space-y-5">
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <Field label="Name">
+                    <input name="name" required value={form.name} onChange={change} placeholder="Your name" className={field} />
+                  </Field>
+                  <Field label="Email">
+                    <input name="email" type="email" required value={form.email} onChange={change} placeholder="you@email.com" className={field} />
+                  </Field>
+                </div>
+                <Field label="What do you need?">
+                  <select name="service" value={form.service} onChange={change} className={field}>
+                    <option value="">Select…</option>
+                    {services.map((s) => <option key={s} value={s}>{s}</option>)}
+                  </select>
+                </Field>
+                <Field label="Message">
+                  <textarea name="message" required rows={5} value={form.message} onChange={change} placeholder="Tell us a bit about your project or problem…" className={`${field} resize-none`} />
+                </Field>
+                <button type="submit" className="w-full rounded-full bg-[var(--accent)] py-3.5 font-semibold text-white transition hover:bg-[var(--accent-ink)]">
+                  Send message
+                </button>
+              </form>
             </div>
           </div>
         </section>
       </main>
-
       <Footer />
+    </div>
+  )
+}
+
+const field =
+  'w-full rounded-xl border border-[var(--border)] bg-[var(--bg)] px-4 py-3 text-[var(--text)] placeholder:text-[var(--text-muted)] focus:border-[var(--accent)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)]/20'
+
+function Field({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div>
+      <label className="mb-2 block text-xs font-semibold uppercase tracking-wider text-muted">{label}</label>
+      {children}
     </div>
   )
 }
