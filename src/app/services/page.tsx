@@ -1,296 +1,115 @@
-'use client'
-
-import { useState } from 'react'
+import type { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import PageHeader from '@/components/PageHeader'
+import CTASection from '@/components/studio/CTASection'
+
+export const metadata: Metadata = {
+  title: 'Services',
+  description:
+    'AI agents, automation, custom software, websites and digitalization — plus laptop/PC repair, networking and IT support across the UK.',
+}
+
+const primary = [
+  {
+    title: 'AI Agents',
+    blurb: 'Custom AI assistants wired into your tools, documents and data — so routine questions and tasks handle themselves.',
+    points: ['Knowledge-base assistants & chatbots', 'Lead qualification & support triage', 'Internal copilots for your team', 'Integrations with your existing tools'],
+  },
+  {
+    title: 'Automation & Workflows',
+    blurb: 'We remove repetitive work — connecting your apps so data moves and tasks run without anyone touching them.',
+    points: ['App-to-app & API integrations', 'Automated data entry & reporting', 'Scheduled pipelines & syncs', 'Alerts, approvals & notifications'],
+  },
+  {
+    title: 'Custom Software & Web Apps',
+    blurb: 'Full-stack applications, dashboards and internal tools — secure, scalable, and built around how you actually work.',
+    points: ['Dashboards & admin portals', 'Auth, databases & roles', 'Third-party & payment integrations', 'Cloud deployment & maintenance'],
+  },
+  {
+    title: 'Websites',
+    blurb: 'Fast, modern, conversion-focused websites — from a sharp landing page to a full platform with a CMS you control.',
+    points: ['Marketing sites & landing pages', 'Content management (edit it yourself)', 'SEO, analytics & performance', 'E-commerce & booking flows'],
+  },
+  {
+    title: 'Digitalization',
+    blurb: 'Take your business paperless — turn manual processes, forms and records into one secure, searchable system.',
+    points: ['Paperless processes & forms', 'Digital records & document stores', 'Cloud migration', 'Process mapping & rollout'],
+  },
+]
+
+const support = [
+  { title: 'Laptop & PC Repair', price: '£50 – £1,000', text: 'Screens, batteries, boards, diagnostics and upgrades — 1–4 day turnaround, up to 1-year warranty.' },
+  { title: 'Custom PC Builds', price: '£500 – £5,000', text: 'Tailored gaming, CAD and workstation builds with quality testing and warranty.' },
+  { title: 'Data Recovery', price: '£50 – £500', text: 'Recovery from damaged drives, SSDs and corrupted systems — confidential handling.' },
+  { title: 'Networking & Setup', price: '£200 – £10,000', text: 'Routers, switches, cabling, VLANs and security hardening for home and business.' },
+  { title: 'Lab Setup', price: 'On request', text: 'Virtualised, segmented lab environments with secure access and documentation.' },
+  { title: 'IT Audit & Security', price: 'On request', text: 'Vulnerability review, compliance gaps and an actionable remediation plan.' },
+]
 
 export default function ServicesPage() {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
-  const services = [
-    {
-      title: 'Laptop & PC Repair',
-      overview:
-        'Professional diagnostics and repair for all laptop and PC issues. Fast turnaround (1-4 days) with 1 year warranty on repairs.',
-      price: '£50 - £1,000',
-      details: [
-        'Component replacement (screens, batteries, keyboards)',
-        'Motherboard and power diagnostics',
-        'Data recovery and backup restoration',
-        'System health checks and performance upgrades'
-      ],
-      benefits: [
-        'Quick 1-4 day turnaround',
-        '1 year warranty on repairs',
-        'Secure data handling for sensitive devices'
-      ],
-      image: 'https://images.unsplash.com/photo-1587614295999-6c1f4c3f5b5a?w=900&h=700&fit=crop&crop=center'
-    },
-    {
-      title: 'Custom PC Builds & Workstations',
-      overview:
-        'High-performance custom builds tailored to your needs - from gaming rigs to professional workstations. Includes testing, setup, and 1 year warranty.',
-      price: '£500 - £5,000',
-      details: [
-        'Tailored builds for gaming, CAD, development, and analytics',
-        'Industrial-grade hardware and thermal management',
-        'Server and workstation assembly',
-        'Quality assurance testing and software tuning'
-      ],
-      benefits: [
-        'Expert component selection',
-        'Reliable hardware for long-term use',
-        '1 year comprehensive warranty'
-      ],
-      image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=900&h=700&fit=crop&crop=center'
-    },
-    {
-      title: 'Data Recovery',
-      overview:
-        'Professional data recovery from damaged drives, corrupted systems, or accidental deletion. Confidential and secure handling.',
-      price: '£50 - £500',
-      details: [
-        'Hard drive and SSD recovery',
-        'Accidental file deletion recovery',
-        'Corrupted partition recovery',
-        'Secure data handling and backup creation'
-      ],
-      benefits: [
-        'Fast recovery process',
-        'Confidential handling of sensitive data',
-        'Success-based pricing available'
-      ],
-      image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900&h=700&fit=crop&crop=center'
-    },
-    {
-      title: 'Network Installation & Setup',
-      overview:
-        'Professional network setup, configuration, and optimization for homes and businesses. Includes routers, switches, cabling, and security setup.',
-      price: '£200 - £10,000',
-      details: [
-        'Network design and planning',
-        'Router and switch installation and configuration',
-        'Structured cabling and fiber connections',
-        'VLAN setup, security hardening, and optimization'
-      ],
-      benefits: [
-        'Stable, secure connections',
-        'Optimized performance and reliability',
-        'Future-ready infrastructure'
-      ],
-      image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=900&h=700&fit=crop&crop=center'
-    },
-    {
-      title: 'Lab Setup & IT Environments',
-      overview:
-        'Complete lab environment setup with virtualization, segmented networks, and secure access for development and testing.',
-      price: 'Quote on request',
-      details: [
-        'Virtualization and lab network segmentation',
-        'Equipment staging and configuration',
-        'Secure access and isolation controls',
-        'Documentation and operational handover'
-      ],
-      benefits: [
-        'Controlled testing environments',
-        'Fast deployment for training',
-        'Professional documentation'
-      ],
-      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=900&h=700&fit=crop&crop=center'
-    },
-    {
-      title: 'IT Audit & Security Assessment',
-      overview:
-        'Comprehensive security audit to identify vulnerabilities, compliance gaps, and improvement opportunities in your IT systems.',
-      price: 'Quote on request',
-      details: [
-        'Asset inventory and lifecycle review',
-        'Vulnerability scans and remediation plans',
-        'Policy alignment and compliance support',
-        'Recommendations for security and continuity'
-      ],
-      benefits: [
-        'Better risk management',
-        'Compliance support',
-        'Actionable security recommendations'
-      ],
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&h=700&fit=crop&crop=center'
-    }
-  ]
-
   return (
     <div className="min-h-screen">
       <Navbar />
-
       <main>
         <PageHeader
-          eyebrow="Services overview"
-          title={<>Professional IT services for <span className="text-gradient-brand">repair, networks &amp; support</span></>}
-          subtitle="Trusted solutions for laptop &amp; PC repair, custom builds, network infrastructure, audits, and managed support. Explore any service below for detailed capabilities and pricing."
+          eyebrow="Services"
+          title={<>Software, AI &amp; automation — <span className="text-[var(--accent)]">plus the IT support to back it up.</span></>}
+          subtitle="We build the digital tools your business runs on, and keep your hardware and networks healthy. Here's how we can help."
         />
 
-        {/* Quick highlights */}
-        <section className="px-6 pt-16 md:px-12">
-          <div className="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2">
-            <div className="rounded-3xl border border-[var(--border)] bg-[var(--bg-elev)] p-6 shadow-sm">
-              <h2 className="mb-2 font-display text-xl font-semibold text-[var(--text)]">Trusted repair</h2>
-              <p className="text-muted">Fast hardware diagnostics, secure data handling, and professional laptop/PC repairs.</p>
-            </div>
-            <div className="rounded-3xl border border-[var(--border)] bg-[var(--bg-elev)] p-6 shadow-sm">
-              <h2 className="mb-2 font-display text-xl font-semibold text-[var(--text)]">Network reliability</h2>
-              <p className="text-muted">Design, secure, and manage networks with enterprise-grade performance and uptime.</p>
-            </div>
-          </div>
-        </section>
-
-        {/* Services Accordion Section */}
-        <section className="mx-6 md:mx-12 my-16 rounded-[2rem] bg-[var(--bg-elev)] border border-[var(--border)] shadow-xl p-8 md:p-12">
-          <div className="max-w-7xl mx-auto">
-            <div className="mb-10 text-center animate-fade-in">
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-brand-700 mb-3">Our core offerings</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-[var(--text)]">Click to explore our services</h2>
-            </div>
-
-            <div className="space-y-4">
-              {services.map((service, index) => {
-                const isExpanded = expandedIndex === index
-                return (
-                  <article
-                    key={index}
-                    className="rounded-[1.75rem] border border-[var(--border)] overflow-hidden transition-all duration-300 ease-in-out transform hover:shadow-lg"
-                  >
-                    {/* Header / Accordion Button */}
-                    <button
-                      onClick={() => setExpandedIndex(isExpanded ? null : index)}
-                      className="w-full flex items-center justify-between p-6 bg-gradient-to-r from-[var(--bg-elev)] to-brand-50 hover:from-[var(--bg-elev)] hover:to-brand-100 transition-all duration-200"
-                    >
-                      <div className="flex items-center gap-4 flex-1 text-left">
-                        <div className="flex-shrink-0 w-14 h-14 rounded-full bg-brand-100 flex items-center justify-center">
-                          <svg
-                            className="w-7 h-7 text-brand-600"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M13 10V3L4 14h7v7l9-11h-7z"
-                            />
-                              </svg>
-                        </div>
-                        <div>
-                          <h3 className="text-xl md:text-2xl font-semibold text-[var(--text)]">{service.title}</h3>
-                          <p className="text-lg font-semibold text-brand-600 mt-1">{service.price}</p>
-                        </div>
-                      </div>
-                      <div
-                        className={`flex-shrink-0 ml-4 transition-transform duration-300 ${
-                          isExpanded ? 'rotate-180' : ''
-                        }`}
-                      >
-                        <svg
-                          className="w-6 h-6 text-brand-600"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                          />
+        {/* Primary — digital services */}
+        <section className="px-6 py-20 md:px-12">
+          <div className="mx-auto max-w-5xl">
+            <p className="eyebrow mb-10">What we build</p>
+            <div className="divide-y divide-[var(--border)] border-y border-[var(--border)]">
+              {primary.map((s, i) => (
+                <div key={s.title} className="grid gap-6 py-10 md:grid-cols-[0.9fr_1.1fr] md:gap-12">
+                  <div className="flex items-start gap-5">
+                    <span className="font-display text-2xl text-[var(--accent)]">{String(i + 1).padStart(2, '0')}</span>
+                    <div>
+                      <h2 className="font-display text-2xl font-semibold text-[var(--text)] md:text-3xl">{s.title}</h2>
+                      <p className="mt-3 max-w-md leading-relaxed text-muted">{s.blurb}</p>
+                    </div>
+                  </div>
+                  <ul className="grid gap-x-8 gap-y-3 self-center sm:grid-cols-2">
+                    {s.points.map((p) => (
+                      <li key={p} className="flex items-start gap-2.5 text-[var(--text)]">
+                        <svg className="mt-1 h-4 w-4 flex-shrink-0 text-[var(--accent)]" fill="none" stroke="currentColor" strokeWidth={2.4} viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                         </svg>
-                      </div>
-                    </button>
-
-                    {/* Expanded Content */}
-                    {isExpanded && (
-                      <div className="px-6 pb-6 bg-[var(--bg-elev)] border-t border-[var(--border)] animate-fade-in">
-                        <div className="grid gap-6 md:grid-cols-[1fr_1.2fr] mt-6">
-                          <div className="overflow-hidden rounded-3xl">
-                            <img
-                              src={service.image}
-                              alt={service.title}
-                              className="h-56 w-full object-cover hover:scale-110 transition-transform duration-500"
-                            />
-                          </div>
-                          <div className="space-y-5">
-                            <div>
-                              <p className="text-muted leading-relaxed text-lg">{service.overview}</p>
-                            </div>
-                            <div className="grid gap-4 sm:grid-cols-2">
-                              <div className="rounded-3xl bg-[var(--bg-elev)] p-5 border border-brand-200">
-                                <h4 className="font-semibold text-[var(--text)] mb-3 flex items-center gap-2">
-                                  <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-brand-600 text-white text-sm">
-                                    ✓
-                                  </span>
-                                  What we deliver
-                                </h4>
-                                <ul className="space-y-2 text-muted text-sm">
-                                  {service.details.map((detail, detailIndex) => (
-                                    <li
-                                      key={detailIndex}
-                                      className="before:content-['•'] before:mr-2 before:text-brand-600 hover:translate-x-1 transition-transform"
-                                    >
-                                      {detail}
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-                              <div className="rounded-3xl bg-[var(--bg-elev)] p-5 border border-[var(--border)]">
-                                <h4 className="font-semibold text-[var(--text)] mb-3 flex items-center gap-2">
-                                  <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-brand-600 text-white text-sm">
-                                    ★
-                                  </span>
-                                  Key benefits
-                                </h4>
-                                <ul className="space-y-2 text-muted text-sm">
-                                  {service.benefits.map((benefit, benefitIndex) => (
-                                    <li
-                                      key={benefitIndex}
-                                      className="before:content-['→'] before:mr-2 before:text-brand-600 hover:translate-x-1 transition-transform"
-                                    >
-                                      {benefit}
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </article>
-                )
-              })}
+                        <span className="text-[15px]">{p}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="mx-6 md:mx-12 mb-20 rounded-[2rem] border border-[var(--border)] bg-gradient-to-br from-[var(--bg-elev)] to-[var(--bg-elev)] p-10 shadow-xl animate-fade-in-up">
-          <div className="max-w-6xl mx-auto grid gap-8 lg:grid-cols-3">
-            <div className="hover:translate-y-[-4px] transition-transform duration-300">
-              <h3 className="text-xl font-semibold text-[var(--text)] mb-3">Fast Response</h3>
-              <p className="text-muted leading-relaxed">We minimise downtime with quick diagnostics, efficient repairs, and responsive support.</p>
-            </div>
-            <div className="hover:translate-y-[-4px] transition-transform duration-300">
-              <h3 className="text-xl font-semibold text-[var(--text)] mb-3">Professional Service</h3>
-              <p className="text-muted leading-relaxed">Every engagement is delivered with clear communication, quality assurance, and reliable follow-through.</p>
-            </div>
-            <div className="hover:translate-y-[-4px] transition-transform duration-300">
-              <h3 className="text-xl font-semibold text-[var(--text)] mb-3">Commercial Focus</h3>
-              <p className="text-muted leading-relaxed">Our services are tailored for UK businesses that need secure IT and strong infrastructure.</p>
+        {/* Secondary — IT support & hardware */}
+        <section className="px-6 pb-20 md:px-12">
+          <div className="mx-auto max-w-5xl">
+            <p className="eyebrow mb-3">Also — IT support &amp; hardware</p>
+            <h2 className="mb-10 font-display text-3xl font-semibold text-[var(--text)]">The IT backbone, handled</h2>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {support.map((s) => (
+                <div key={s.title} className="rounded-2xl border border-[var(--border)] bg-[var(--bg-elev)] p-6 shadow-card">
+                  <div className="flex items-baseline justify-between gap-3">
+                    <h3 className="font-display text-lg font-semibold text-[var(--text)]">{s.title}</h3>
+                    <span className="shrink-0 text-sm font-medium text-[var(--accent)]">{s.price}</span>
+                  </div>
+                  <p className="mt-3 text-sm leading-relaxed text-muted">{s.text}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
+
+        <CTASection />
       </main>
-
       <Footer />
     </div>
   )
 }
-
