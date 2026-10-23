@@ -75,7 +75,7 @@ export default function Services() {
       <div className="container mx-auto max-w-7xl">
         <Reveal className="flex flex-col items-center justify-between gap-6 md:flex-row md:items-end">
           <div className="text-center md:text-left">
-            <p className="mb-3 font-mono text-xs uppercase tracking-[0.25em] text-gradient-brand">{'//'} what we do</p>
+            <p className="mb-3 eyebrow">what we do</p>
             <h2 className="font-display text-4xl font-bold text-[var(--text)] md:text-5xl">Our Services</h2>
           </div>
           <a href="/services" className="glass glass-edge inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-[var(--text)] transition hover:scale-[1.02]">
@@ -92,7 +92,7 @@ export default function Services() {
             return (
               <Reveal key={service.title} delay={(index % 3) * 90}>
                 <div className="glass glass-edge group relative h-full overflow-hidden rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-glow">
-                  <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-indigo-600 text-white shadow-brand">
+                  <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-brand-600 text-white shadow-brand">
                     <Icon className="h-7 w-7" />
                   </div>
                   <h3 className="mb-2 font-display text-xl font-semibold text-[var(--text)]">{service.title}</h3>
@@ -103,7 +103,7 @@ export default function Services() {
           })}
 
           <Reveal delay={90}>
-            <a href="/contact" className="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl bg-gradient-to-br from-brand-600 to-indigo-700 p-7 text-white shadow-brand transition-all duration-300 hover:-translate-y-1.5 hover:shadow-glow">
+            <a href="/contact" className="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl bg-gradient-to-br from-brand-600 to-brand-700 p-7 text-white shadow-brand transition-all duration-300 hover:-translate-y-1.5 hover:shadow-glow">
               <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/10 blur-2xl" />
               <div className="relative">
                 <h3 className="font-display text-xl font-semibold">Need something else?</h3>

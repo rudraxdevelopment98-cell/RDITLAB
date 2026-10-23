@@ -24,7 +24,7 @@ export default function Contact() {
     <section id="contact" className="relative px-6 py-24 md:px-12">
       <div className="container mx-auto max-w-7xl">
         <Reveal className="mb-14 text-center">
-          <p className="mb-3 font-mono text-xs uppercase tracking-[0.25em] text-gradient-brand">{'//'} get in touch</p>
+          <p className="mb-3 eyebrow">get in touch</p>
           <h2 className="font-display text-4xl font-bold text-[var(--text)] md:text-5xl">Let&apos;s discuss your project</h2>
         </Reveal>
 
@@ -34,7 +34,7 @@ export default function Contact() {
             <div className="space-y-5">
               {contact.map((c) => (
                 <div key={c.label} className="flex items-start gap-4">
-                  <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-indigo-600 text-white">{c.icon}</span>
+                  <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-brand-600 text-white">{c.icon}</span>
                   <div>
                     <p className="font-semibold text-[var(--text)]">{c.label}</p>
                     {c.href ? (
@@ -47,7 +47,7 @@ export default function Contact() {
               ))}
             </div>
             <div className="mt-8 flex gap-3 border-t border-[var(--border)] pt-6">
-              <a href="https://share.google/nMMOrlyJNoFbICUL5" target="_blank" rel="noopener noreferrer" className="rounded-full bg-gradient-to-r from-brand-600 to-indigo-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:shadow-glow">Google Reviews</a>
+              <a href="https://share.google/nMMOrlyJNoFbICUL5" target="_blank" rel="noopener noreferrer" className="rounded-full bg-gradient-to-r from-brand-600 to-brand-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:shadow-glow">Google Reviews</a>
               <a href="https://www.instagram.com/rditlab.uk" target="_blank" rel="noopener noreferrer" className="glass glass-edge rounded-full px-5 py-2.5 text-sm font-semibold text-[var(--text)]">Instagram</a>
             </div>
           </Reveal>
@@ -65,7 +65,7 @@ export default function Contact() {
               <input required placeholder="Your name" className={field} />
               <input required type="email" placeholder="your@email.com" className={field} />
               <textarea required rows={4} placeholder="Tell us about your IT or software needs…" className={`${field} resize-none`} />
-              <button type="submit" className="w-full rounded-full bg-gradient-to-r from-brand-600 to-indigo-600 py-3.5 font-semibold text-white transition hover:shadow-glow active:scale-95">
+              <button type="submit" className="w-full rounded-full bg-gradient-to-r from-brand-600 to-brand-600 py-3.5 font-semibold text-white transition hover:shadow-glow active:scale-95">
                 Send message
               </button>
               {formStatus && <p className="text-center text-sm text-gradient-brand">{formStatus}</p>}

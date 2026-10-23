@@ -29,7 +29,7 @@ const empty = {
   tags: '',
   demoUrl: '',
   image: '',
-  gradient: 'from-violet-500 to-indigo-600',
+  gradient: 'from-brand-500 to-brand-600',
   overview: '',
   presentationUrl: '',
   presentationType: '',
@@ -170,7 +170,7 @@ export default function ProjectsManager() {
   return (
     <div className="space-y-6">
       <div className="rounded-lg bg-white p-6 shadow-lg">
-        <h2 className="mb-1 text-2xl font-bold text-violet-600">🚀 Portfolio Projects</h2>
+        <h2 className="mb-1 text-2xl font-bold text-brand-600">🚀 Portfolio Projects</h2>
         <p className="mb-4 text-sm text-gray-500">
           Manage the website demos shown on the Web &amp; Software page and homepage.
         </p>
@@ -194,8 +194,8 @@ export default function ProjectsManager() {
           </Field>
 
           {/* Case study: full overview + presentation */}
-          <div className="rounded-lg border border-violet-200 bg-violet-50/50 p-4">
-            <p className="mb-3 text-sm font-semibold text-violet-700">Case study (optional)</p>
+          <div className="rounded-lg border border-brand-200 bg-brand-50/50 p-4">
+            <p className="mb-3 text-sm font-semibold text-brand-700">Case study (optional)</p>
             <Field label="Full overview">
               <textarea className={input} rows={5} value={form.overview} onChange={(e) => setForm({ ...form, overview: e.target.value })} placeholder="The full project story — problem, what you built, results. Blank lines separate paragraphs." />
             </Field>
@@ -210,7 +210,7 @@ export default function ProjectsManager() {
             </div>
             {form.presentationUrl && (
               <p className="mt-2 text-xs text-gray-600">
-                Attached ({form.presentationType}): <a href={form.presentationUrl} target="_blank" rel="noopener noreferrer" className="text-violet-700 underline">view</a>{' '}
+                Attached ({form.presentationType}): <a href={form.presentationUrl} target="_blank" rel="noopener noreferrer" className="text-brand-700 underline">view</a>{' '}
                 <button type="button" onClick={() => setForm({ ...form, presentationUrl: '', presentationType: '' })} className="ml-2 text-red-600 underline">remove</button>
               </p>
             )}
@@ -264,7 +264,7 @@ export default function ProjectsManager() {
           </div>
 
           <div className="flex gap-2">
-            <button type="submit" className="flex-1 rounded-lg bg-violet-600 px-4 py-2 text-white transition hover:bg-violet-700">
+            <button type="submit" className="flex-1 rounded-lg bg-brand-600 px-4 py-2 text-white transition hover:bg-brand-700">
               {editingId ? 'Update' : 'Add'} project
             </button>
             {editingId && (
@@ -282,12 +282,12 @@ export default function ProjectsManager() {
         ) : (
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {items.map((p) => (
-              <div key={p.id} className={`overflow-hidden rounded-lg border transition ${editingId === p.id ? 'border-violet-600 bg-violet-50' : 'border-gray-200'} ${!p.active ? 'opacity-60' : ''}`}>
+              <div key={p.id} className={`overflow-hidden rounded-lg border transition ${editingId === p.id ? 'border-brand-600 bg-brand-50' : 'border-gray-200'} ${!p.active ? 'opacity-60' : ''}`}>
                 <BrowserMock label={p.name} gradient={p.gradient} image={p.image} />
                 <div className="p-4">
                   <div className="mb-1 flex items-center gap-2">
                     <h3 className="font-semibold text-gray-900">{p.name}</h3>
-                    {p.featured && <span className="rounded bg-violet-100 px-1.5 py-0.5 text-xs text-violet-700">Featured</span>}
+                    {p.featured && <span className="rounded bg-brand-100 px-1.5 py-0.5 text-xs text-brand-700">Featured</span>}
                     {!p.active && <span className="rounded bg-gray-200 px-1.5 py-0.5 text-xs text-gray-600">Hidden</span>}
                   </div>
                   <p className="mb-2 text-xs font-medium text-gray-500">{p.category}</p>
@@ -307,7 +307,7 @@ export default function ProjectsManager() {
   )
 }
 
-const input = 'w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-violet-500'
+const input = 'w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500'
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (

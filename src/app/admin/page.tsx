@@ -29,8 +29,8 @@ function AdminContent() {
               onClick={() => setActiveTab('dashboard')}
               className={`py-4 px-3 font-medium transition border-b-2 whitespace-nowrap ${
                 activeTab === 'dashboard'
-                  ? 'text-violet-600 border-violet-600'
-                  : 'text-gray-600 border-transparent hover:text-violet-600'
+                  ? 'text-brand-600 border-brand-600'
+                  : 'text-gray-600 border-transparent hover:text-brand-600'
               }`}
             >
               📊 Dashboard
@@ -40,8 +40,8 @@ function AdminContent() {
               onClick={() => setActiveTab('pages')}
               className={`py-4 px-3 font-medium transition border-b-2 whitespace-nowrap ${
                 activeTab === 'pages'
-                  ? 'text-violet-600 border-violet-600'
-                  : 'text-gray-600 border-transparent hover:text-violet-600'
+                  ? 'text-brand-600 border-brand-600'
+                  : 'text-gray-600 border-transparent hover:text-brand-600'
               }`}
             >
               📄 Pages & Content
@@ -51,8 +51,8 @@ function AdminContent() {
               onClick={() => setActiveTab('team')}
               className={`py-4 px-3 font-medium transition border-b-2 whitespace-nowrap ${
                 activeTab === 'team'
-                  ? 'text-violet-600 border-violet-600'
-                  : 'text-gray-600 border-transparent hover:text-violet-600'
+                  ? 'text-brand-600 border-brand-600'
+                  : 'text-gray-600 border-transparent hover:text-brand-600'
               }`}
             >
               👥 Team Members
@@ -62,8 +62,8 @@ function AdminContent() {
               onClick={() => setActiveTab('portfolio')}
               className={`py-4 px-3 font-medium transition border-b-2 whitespace-nowrap ${
                 activeTab === 'portfolio'
-                  ? 'text-violet-600 border-violet-600'
-                  : 'text-gray-600 border-transparent hover:text-violet-600'
+                  ? 'text-brand-600 border-brand-600'
+                  : 'text-gray-600 border-transparent hover:text-brand-600'
               }`}
             >
               🚀 Portfolio
@@ -73,8 +73,8 @@ function AdminContent() {
               onClick={() => setActiveTab('plans')}
               className={`py-4 px-3 font-medium transition border-b-2 whitespace-nowrap ${
                 activeTab === 'plans'
-                  ? 'text-violet-600 border-violet-600'
-                  : 'text-gray-600 border-transparent hover:text-violet-600'
+                  ? 'text-brand-600 border-brand-600'
+                  : 'text-gray-600 border-transparent hover:text-brand-600'
               }`}
             >
               💷 Plans
@@ -84,8 +84,8 @@ function AdminContent() {
               onClick={() => setActiveTab('templates')}
               className={`py-4 px-3 font-medium transition border-b-2 whitespace-nowrap ${
                 activeTab === 'templates'
-                  ? 'text-violet-600 border-violet-600'
-                  : 'text-gray-600 border-transparent hover:text-violet-600'
+                  ? 'text-brand-600 border-brand-600'
+                  : 'text-gray-600 border-transparent hover:text-brand-600'
               }`}
             >
               🧩 Templates
@@ -95,8 +95,8 @@ function AdminContent() {
               onClick={() => setActiveTab('testimonials')}
               className={`py-4 px-3 font-medium transition border-b-2 whitespace-nowrap ${
                 activeTab === 'testimonials'
-                  ? 'text-violet-600 border-violet-600'
-                  : 'text-gray-600 border-transparent hover:text-violet-600'
+                  ? 'text-brand-600 border-brand-600'
+                  : 'text-gray-600 border-transparent hover:text-brand-600'
               }`}
             >
               💬 Testimonials
@@ -106,8 +106,8 @@ function AdminContent() {
               onClick={() => setActiveTab('audit')}
               className={`py-4 px-3 font-medium transition border-b-2 whitespace-nowrap ${
                 activeTab === 'audit'
-                  ? 'text-violet-600 border-violet-600'
-                  : 'text-gray-600 border-transparent hover:text-violet-600'
+                  ? 'text-brand-600 border-brand-600'
+                  : 'text-gray-600 border-transparent hover:text-brand-600'
               }`}
             >
               📋 Audit Logs
@@ -117,8 +117,8 @@ function AdminContent() {
               onClick={() => setActiveTab('settings')}
               className={`py-4 px-3 font-medium transition border-b-2 whitespace-nowrap ${
                 activeTab === 'settings'
-                  ? 'text-violet-600 border-violet-600'
-                  : 'text-gray-600 border-transparent hover:text-violet-600'
+                  ? 'text-brand-600 border-brand-600'
+                  : 'text-gray-600 border-transparent hover:text-brand-600'
               }`}
             >
               ⚙️ Settings

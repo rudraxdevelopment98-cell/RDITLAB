@@ -10,7 +10,7 @@ export default function Portfolio({ projects }: { projects: ResolvedProject[] })
 
       <div className="container relative z-10 mx-auto max-w-7xl">
         <Reveal className="mx-auto mb-14 max-w-2xl text-center">
-          <p className="mb-3 font-mono text-xs uppercase tracking-[0.25em] text-gradient-brand">{'//'} our work</p>
+          <p className="mb-3 eyebrow">our work</p>
           <h2 className="font-display text-4xl font-bold text-[var(--text)] md:text-5xl">Websites we&apos;ve built</h2>
           <p className="mt-4 text-lg text-muted">A selection of live projects and demos. Real, fast, and built to convert.</p>
         </Reveal>

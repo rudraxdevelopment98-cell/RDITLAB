@@ -7,7 +7,7 @@ export default function Templates({ templates }: { templates: ResolvedTemplate[]
     <section id="templates" className="relative px-6 py-24 md:px-12">
       <div className="container mx-auto max-w-7xl">
         <Reveal className="mx-auto mb-14 max-w-2xl text-center">
-          <p className="mb-3 font-mono text-xs uppercase tracking-[0.25em] text-gradient-brand">{'//'} templates &amp; examples</p>
+          <p className="mb-3 eyebrow">templates &amp; examples</p>
           <h2 className="font-display text-4xl font-bold text-[var(--text)] md:text-5xl">Start from a ready-made template</h2>
           <p className="mt-4 text-lg text-muted">Kick off faster with a polished starting point — then we customise it to your brand.</p>
         </Reveal>

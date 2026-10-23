@@ -62,7 +62,7 @@ export default function LoginPage() {
       <div className="relative z-10 w-full max-w-md">
         <div className="mb-8 text-center">
           <Link href="/" className="mb-6 inline-flex items-center gap-2.5">
-            <span className="glass-edge flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand-600 via-brand-500 to-cyan-400 text-sm font-bold text-white">RD</span>
+            <span className="glass-edge flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand-600 via-brand-500 to-brand-400 text-sm font-bold text-white">RD</span>
             <span className="font-display text-2xl font-bold text-[var(--text)]">IT Lab <span className="text-gradient-brand">UK</span></span>
           </Link>
           <p className="text-muted">Admin Portal</p>
@@ -102,7 +102,7 @@ export default function LoginPage() {
               <p className="text-xs text-muted">Temporary password fallback (removed once Google login is confirmed):</p>
               <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="admin email" className={field} required />
               <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="password" className={field} required />
-              <button type="submit" disabled={loading} className="w-full rounded-full bg-gradient-to-r from-brand-600 to-indigo-600 py-3 font-semibold text-white transition hover:shadow-glow disabled:opacity-50">
+              <button type="submit" disabled={loading} className="w-full rounded-full bg-gradient-to-r from-brand-600 to-brand-600 py-3 font-semibold text-white transition hover:shadow-glow disabled:opacity-50">
                 {loading ? 'Signing in…' : 'Sign in with password'}
               </button>
             </form>

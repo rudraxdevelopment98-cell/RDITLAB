@@ -29,48 +29,46 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled ? 'glass-nav' : ''}`}>
-        <div className="container mx-auto flex items-center justify-between max-w-7xl py-3.5">
-          <Link href="/" className="group flex items-center gap-2.5">
-            <span className="glass-edge flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-brand-600 via-brand-500 to-cyan-400 text-sm font-bold text-white shadow-brand transition-transform group-hover:scale-105">
+      <nav className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled ? 'glass-nav' : 'border-b border-transparent'}`}>
+        <div className="container mx-auto flex items-center justify-between max-w-6xl py-4">
+          <Link href="/" className="group flex items-center gap-3">
+            <span className="flex h-9 w-9 items-center justify-center rounded-md bg-[var(--accent)] font-display text-sm font-semibold text-white">
               RD
             </span>
-            <span className="font-display text-xl font-bold tracking-tight text-[var(--text)]">
-              IT Lab <span className="text-gradient-brand">UK</span>
+            <span className="font-display text-lg font-semibold tracking-tight text-[var(--text)]">
+              IT Lab <span className="text-[var(--accent)]">UK</span>
             </span>
           </Link>
 
-          <ul className="hidden items-center gap-1 md:flex">
+          <ul className="hidden items-center gap-8 md:flex">
             {links.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={`relative rounded-full px-4 py-2 text-sm font-medium transition ${
-                    isActive(link.href)
-                      ? 'text-[var(--text)]'
-                      : 'text-muted hover:text-[var(--text)]'
+                  className={`relative text-sm transition ${
+                    isActive(link.href) ? 'font-medium text-[var(--text)]' : 'text-muted hover:text-[var(--text)]'
                   }`}
                 >
-                  {isActive(link.href) && (
-                    <span className="glass absolute inset-0 -z-10 rounded-full" aria-hidden />
-                  )}
                   {link.label}
+                  {isActive(link.href) && (
+                    <span className="absolute -bottom-1.5 left-0 h-px w-full bg-[var(--accent)]" />
+                  )}
                 </Link>
               </li>
             ))}
           </ul>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <ThemeToggle />
             <Link
               href="/contact"
-              className="hidden rounded-full bg-gradient-to-r from-brand-600 to-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-brand transition hover:shadow-glow active:scale-95 md:inline-flex"
+              className="hidden rounded-full bg-[var(--accent)] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[var(--accent-ink)] md:inline-flex"
             >
               Get in touch
             </Link>
             <button
               onClick={() => setIsOpen((v) => !v)}
-              className="neu flex h-10 w-10 items-center justify-center rounded-full text-[var(--text)] md:hidden"
+              className="flex h-10 w-10 items-center justify-center rounded-md border border-[var(--border)] text-[var(--text)] md:hidden"
               aria-label="Toggle menu"
               aria-expanded={isOpen}
             >
@@ -83,15 +81,15 @@ export default function Navbar() {
       </nav>
 
       {isOpen && (
-        <div className="glass fixed inset-x-3 top-[70px] z-40 rounded-2xl p-3 md:hidden animate-slideDown">
+        <div className="fixed inset-x-3 top-[72px] z-40 rounded-xl border border-[var(--border)] bg-[var(--bg-elev)] p-3 shadow-card md:hidden animate-slideDown">
           <ul className="space-y-1">
             {links.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className={`block rounded-xl px-4 py-3 font-medium transition ${
-                    isActive(link.href) ? 'neu-inset text-[var(--text)]' : 'text-muted hover:text-[var(--text)]'
+                  className={`block rounded-lg px-4 py-3 text-sm transition ${
+                    isActive(link.href) ? 'bg-[var(--accent-weak)] font-medium text-[var(--accent)]' : 'text-muted hover:text-[var(--text)]'
                   }`}
                 >
                   {link.label}
@@ -102,7 +100,7 @@ export default function Navbar() {
               <Link
                 href="/contact"
                 onClick={() => setIsOpen(false)}
-                className="block rounded-full bg-gradient-to-r from-brand-600 to-indigo-600 px-5 py-3 text-center font-semibold text-white"
+                className="block rounded-full bg-[var(--accent)] px-5 py-3 text-center font-semibold text-white"
               >
                 Get in touch
               </Link>
