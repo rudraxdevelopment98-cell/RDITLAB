@@ -4,25 +4,23 @@ import Footer from '@/components/Footer'
 import StudioHero from '@/components/studio/StudioHero'
 import Plans from '@/components/studio/Plans'
 import Portfolio from '@/components/studio/Portfolio'
-import Templates from '@/components/studio/Templates'
 import CTASection from '@/components/studio/CTASection'
 import Testimonials from '@/components/Testimonials'
-import { getPlans, getProjects, getTemplates, getTestimonials } from '@/lib/studio'
+import { getPlans, getProjects, getTestimonials } from '@/lib/studio'
 
 export const metadata: Metadata = {
-  title: 'Web & Software Development',
+  title: 'Web, Software & AI',
   description:
-    'Custom websites, web apps and software built by RD IT Lab UK. Explore our plans, portfolio of live demos, and ready-made templates.',
+    'Custom websites, web apps, AI agents and automation built by RD IT Lab UK. See our work, plans and process.',
 }
 
 // Content is admin-managed, so always render fresh from the database.
 export const dynamic = 'force-dynamic'
 
 export default async function WebDevelopmentPage() {
-  const [plans, projects, templates, testimonials] = await Promise.all([
+  const [plans, projects, testimonials] = await Promise.all([
     getPlans(),
     getProjects(),
-    getTemplates(),
     getTestimonials(),
   ])
 
@@ -30,9 +28,8 @@ export default async function WebDevelopmentPage() {
     <div className="min-h-screen">
       <Navbar />
       <StudioHero />
-      <Plans plans={plans} />
       <Portfolio projects={projects} />
-      <Templates templates={templates} />
+      <Plans plans={plans} />
       <Testimonials testimonials={testimonials} />
       <CTASection />
       <Footer />

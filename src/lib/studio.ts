@@ -194,9 +194,6 @@ function fallbackTemplates(): ResolvedTemplate[] {
 }
 
 function fallbackTestimonials(): ResolvedTestimonial[] {
-  return [
-    { id: 'd-0', name: 'Rajesh Patel', role: 'Owner', company: 'Harrow Auto Garage', rating: 5, quote: 'RD IT Lab rebuilt our office network and set up a new booking website — fast, professional, and no downtime. Highly recommended.', featured: true },
-    { id: 'd-1', name: 'Sarah Thompson', role: 'Practice Manager', company: 'Aarogya Clinic', rating: 5, quote: 'They delivered our appointment-booking site ahead of schedule and handled everything securely. Brilliant to work with.' },
-    { id: 'd-2', name: 'Daniel Okafor', role: 'Founder', company: 'PeakFit Studio', rating: 5, quote: 'The custom membership app they built just works. Clear communication and genuine care for the details.' },
-  ]
+  // No invented reviews — real testimonials are added from the admin.
+  return []
 }
