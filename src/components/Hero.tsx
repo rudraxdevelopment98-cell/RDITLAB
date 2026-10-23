@@ -12,17 +12,17 @@ export default function Hero() {
         <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-12">
           {/* Left — editorial headline */}
           <div className="animate-fade-in-up lg:col-span-7">
-            <p className="eyebrow">IT &amp; Software Studio</p>
+            <p className="eyebrow">AI · Automation · Software</p>
 
             <h1 className="mt-6 font-display text-[2.6rem] font-semibold leading-[1.05] tracking-[-0.01em] text-[var(--text)] sm:text-6xl lg:text-7xl">
-              Technology that works,
+              We build the software, AI &amp;
               <br />
-              <span className="text-[var(--accent)]">built by people who care.</span>
+              <span className="text-[var(--accent)]">automation your business runs on.</span>
             </h1>
 
             <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted">
-              RD IT Lab UK is a Harrow-based studio for IT support and software. We repair, build and
-              secure your hardware — and design the websites, apps and AI tools that move your business forward.
+              RD IT Lab UK is a studio for custom software, AI agents, automation and digitalization —
+              helping businesses work smarter. And our IT team keeps your hardware and networks running.
             </p>
 
             <div className="mt-9 flex flex-wrap items-center gap-6">
@@ -47,9 +47,9 @@ export default function Hero() {
           {/* Right — framed credential panel */}
           <div className="lg:col-span-5">
             <div className="rounded-2xl border border-[var(--border)] bg-[var(--bg-elev)] p-8 shadow-card">
-              <p className="text-sm text-muted">Trusted for</p>
+              <p className="text-sm text-muted">What we deliver</p>
               <p className="mt-1 font-display text-2xl font-semibold text-[var(--text)]">
-                Repairs · Networks · Web · AI
+                AI · Automation · Software · Web
               </p>
               <div className="mt-7 grid grid-cols-2 gap-x-6 gap-y-7 border-t border-[var(--border)] pt-7">
                 {stats.map((stat) => (

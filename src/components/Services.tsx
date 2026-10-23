@@ -3,114 +3,85 @@ import Reveal from './Reveal'
 type IconProps = { className?: string }
 
 const icons: Record<string, (p: IconProps) => JSX.Element> = {
-  laptop: ({ className }) => (
-    <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.7} viewBox="0 0 24 24">
-      <rect x="4" y="5" width="16" height="11" rx="1.5" />
-      <path strokeLinecap="round" d="M2 20h20M9 16h6" />
+  ai: ({ className }) => (
+    <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.6} viewBox="0 0 24 24">
+      <rect x="5" y="7" width="14" height="12" rx="2.5" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v4M9 12h.01M15 12h.01M9 16h6" />
     </svg>
   ),
-  desktop: ({ className }) => (
-    <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.7} viewBox="0 0 24 24">
-      <rect x="3" y="4" width="18" height="12" rx="1.5" />
-      <path strokeLinecap="round" d="M8 20h8M12 16v4" />
-    </svg>
-  ),
-  build: ({ className }) => (
-    <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.7} viewBox="0 0 24 24">
-      <rect x="5" y="3" width="14" height="18" rx="1.5" />
-      <path strokeLinecap="round" d="M9 7h6M9 11h6M9 15h3" />
-    </svg>
-  ),
-  network: ({ className }) => (
-    <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.7} viewBox="0 0 24 24">
-      <circle cx="12" cy="5" r="2" /><circle cx="5" cy="19" r="2" /><circle cx="19" cy="19" r="2" />
-      <path strokeLinecap="round" d="M12 7v4m0 0l-5 6m5-6l5 6" />
-    </svg>
-  ),
-  lab: ({ className }) => (
-    <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.7} viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M9 3v6l-4 8a2 2 0 002 3h10a2 2 0 002-3l-4-8V3M8 3h8M7 14h10" />
-    </svg>
-  ),
-  audit: ({ className }) => (
-    <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.7} viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M9.5 12l1.8 1.8L15 10" />
+  automation: ({ className }) => (
+    <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.6} viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M4 12a8 8 0 0113.7-5.7L20 8M20 12a8 8 0 01-13.7 5.7L4 16" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M20 4v4h-4M4 20v-4h4" />
     </svg>
   ),
   software: ({ className }) => (
-    <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.7} viewBox="0 0 24 24">
+    <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.6} viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" d="M8 9l-3 3 3 3m8-6l3 3-3 3M13 6l-2 12" />
     </svg>
   ),
   web: ({ className }) => (
-    <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.7} viewBox="0 0 24 24">
+    <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.6} viewBox="0 0 24 24">
       <circle cx="12" cy="12" r="9" />
       <path strokeLinecap="round" d="M3 12h18M12 3c2.5 2.5 3.8 5.7 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.7-3.8-9S9.5 5.5 12 3z" />
     </svg>
   ),
-  ai: ({ className }) => (
-    <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.7} viewBox="0 0 24 24">
-      <rect x="5" y="7" width="14" height="12" rx="2.5" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v4M9 12h.01M15 12h.01M9 16h6" />
+  digital: ({ className }) => (
+    <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.6} viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 12l8-4.5M12 12v9M12 12L4 7.5" />
     </svg>
   ),
 }
 
 const services = [
-  { icon: 'laptop', title: 'Laptop Repair', description: 'Screen replacement, keyboard fixes, battery replacement, and hardware upgrades for all laptop brands.' },
-  { icon: 'desktop', title: 'PC Repair', description: 'Comprehensive desktop repair, from component replacement to full system diagnostics and optimization.' },
-  { icon: 'build', title: 'PC Build', description: 'Custom builds tailored to your needs — gaming rigs, workstations, and industrial machines.' },
-  { icon: 'network', title: 'Networking', description: 'Design and maintenance of network infrastructure: routers, switches, and secure connections.' },
-  { icon: 'lab', title: 'Lab Setup', description: 'Complete lab environments with specialised equipment, software installation, and configuration.' },
-  { icon: 'audit', title: 'Audit', description: 'Thorough system audits to find vulnerabilities, boost performance, and ensure compliance.' },
-  { icon: 'software', title: 'Software Support', description: 'Ongoing software maintenance, updates, troubleshooting, and custom software solutions.' },
-  { icon: 'web', title: 'Web Development', description: 'Custom websites and web apps — fast, secure, and built to convert, from landing pages to full platforms.' },
-  { icon: 'ai', title: 'AI Agent Development', description: 'Custom AI agents and automations — chatbots, assistants, and workflow bots wired into your tools and data.' },
+  { icon: 'ai', title: 'AI Agents', description: 'Custom AI assistants and chatbots wired into your tools, docs and data — answering, triaging and acting for you.' },
+  { icon: 'automation', title: 'Automation & Workflows', description: 'We remove the repetitive work — connect your apps, automate pipelines and let data flow without manual steps.' },
+  { icon: 'software', title: 'Custom Software', description: 'Full-stack web apps, dashboards and internal tools — auth, databases and integrations, built to scale.' },
+  { icon: 'web', title: 'Websites & Web Apps', description: 'Fast, modern, conversion-focused sites — from landing pages to full platforms with a CMS you control.' },
+  { icon: 'digital', title: 'Digitalization', description: 'Take your business paperless — digitise processes, records and operations into one secure system.' },
 ]
+
+const support = ['Laptop & PC repair', 'Custom PC builds', 'Networking & setup', 'Lab setup', 'Security audits', '24/7 emergency support']
 
 export default function Services() {
   return (
     <section id="services" className="relative px-6 py-24 md:px-12">
-      <div className="container mx-auto max-w-7xl">
-        <Reveal className="flex flex-col items-center justify-between gap-6 md:flex-row md:items-end">
-          <div className="text-center md:text-left">
-            <p className="mb-3 eyebrow">what we do</p>
-            <h2 className="font-display text-4xl font-bold text-[var(--text)] md:text-5xl">Our Services</h2>
-          </div>
-          <a href="/services" className="glass glass-edge inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-[var(--text)] transition hover:scale-[1.02]">
-            View full service page
-            <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </a>
+      <div className="container mx-auto max-w-6xl">
+        <Reveal className="max-w-3xl">
+          <p className="eyebrow">What we do</p>
+          <h2 className="mt-5 font-display text-4xl font-semibold leading-tight text-[var(--text)] md:text-5xl">
+            Software, AI &amp; automation — <span className="text-[var(--accent)]">that move your business forward.</span>
+          </h2>
+          <p className="mt-5 text-lg leading-relaxed text-muted">
+            We design and build the digital tools your business runs on. And when hardware needs attention,
+            our IT team keeps everything running.
+          </p>
         </Reveal>
 
-        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--border)] sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => {
             const Icon = icons[service.icon]
             return (
-              <Reveal key={service.title} delay={(index % 3) * 90}>
-                <div className="glass glass-edge group relative h-full overflow-hidden rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-glow">
-                  <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-brand-600 text-white shadow-brand">
-                    <Icon className="h-7 w-7" />
-                  </div>
-                  <h3 className="mb-2 font-display text-xl font-semibold text-[var(--text)]">{service.title}</h3>
-                  <p className="leading-relaxed text-muted">{service.description}</p>
+              <Reveal key={service.title} delay={(index % 3) * 70}>
+                <div className="group h-full bg-[var(--bg-elev)] p-8 transition-colors hover:bg-[var(--bg)]">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-[var(--accent-weak)] text-[var(--accent)]">
+                    <Icon className="h-6 w-6" />
+                  </span>
+                  <h3 className="mt-6 font-display text-xl font-semibold text-[var(--text)]">{service.title}</h3>
+                  <p className="mt-2 leading-relaxed text-muted">{service.description}</p>
                 </div>
               </Reveal>
             )
           })}
-
-          <Reveal delay={90}>
-            <a href="/contact" className="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl bg-gradient-to-br from-brand-600 to-brand-700 p-7 text-white shadow-brand transition-all duration-300 hover:-translate-y-1.5 hover:shadow-glow">
-              <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/10 blur-2xl" />
-              <div className="relative">
-                <h3 className="font-display text-xl font-semibold">Need something else?</h3>
-                <p className="mt-2 leading-relaxed text-white/85">Tell us about your setup and we&apos;ll put together a tailored IT solution.</p>
+          <Reveal delay={140}>
+            <a href="/contact" className="group flex h-full flex-col justify-between bg-[var(--bg-contrast)] p-8 text-[var(--text-on-contrast)]">
+              <div>
+                <h3 className="font-display text-xl font-semibold">Have an idea?</h3>
+                <p className="mt-2 leading-relaxed text-white/70">Tell us the problem — we&apos;ll scope the software, AI or automation to solve it.</p>
               </div>
-              <span className="relative mt-6 inline-flex items-center gap-2 font-semibold">
-                Talk to us
+              <span className="mt-6 inline-flex items-center gap-2 font-medium text-[var(--accent)]">
+                Start a conversation
                 <svg className="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
@@ -118,6 +89,24 @@ export default function Services() {
             </a>
           </Reveal>
         </div>
+
+        {/* Secondary — IT support & hardware */}
+        <Reveal className="mt-10 flex flex-col gap-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-elev)] p-6 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wider text-muted">Also — IT support &amp; hardware</p>
+            <div className="mt-2 flex flex-wrap gap-x-5 gap-y-1 text-sm text-[var(--text)]">
+              {support.map((s) => (
+                <span key={s} className="flex items-center gap-1.5">
+                  <span className="h-1 w-1 rounded-full bg-[var(--accent)]" />
+                  {s}
+                </span>
+              ))}
+            </div>
+          </div>
+          <a href="/services" className="shrink-0 text-sm font-semibold text-[var(--accent)] hover:text-[var(--accent-ink)]">
+            All services →
+          </a>
+        </Reveal>
       </div>
     </section>
   )

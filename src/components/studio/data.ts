@@ -67,54 +67,16 @@ export type Project = {
   gradient: string
 }
 
+// Only real, PUBLIC, ours-to-share work. No private/client projects here.
+// Add more public projects from the admin once the database is connected.
 export const projects: Project[] = [
   {
     name: 'RD IT Lab UK',
-    category: 'Business',
-    description: 'This very site — a fast, animated marketing site with a full admin panel.',
+    category: 'Business website',
+    description: 'Our own site — editorial design, light/dark themes and a full admin panel to manage content, projects and testimonials.',
     tags: ['Next.js', 'Tailwind', 'Prisma'],
-    demo: '/',
-    gradient: 'from-brand-500 to-brand-600',
-  },
-  {
-    name: 'Aarogya Clinic',
-    category: 'Healthcare',
-    description: 'Appointment-booking site for a private clinic with online enquiries.',
-    tags: ['Next.js', 'Booking', 'SEO'],
-    demo: '#',
-    gradient: 'from-emerald-500 to-teal-600',
-  },
-  {
-    name: 'Harrow Auto Garage',
-    category: 'Local business',
-    description: 'Lead-generating site for a car garage with a quote request flow.',
-    tags: ['Website', 'Forms', 'Maps'],
-    demo: '#',
-    gradient: 'from-orange-500 to-rose-600',
-  },
-  {
-    name: 'Lumina Café',
-    category: 'Restaurant',
-    description: 'Menu-driven restaurant site with reservations and gallery.',
-    tags: ['Website', 'Menu', 'Gallery'],
-    demo: '#',
-    gradient: 'from-amber-500 to-orange-600',
-  },
-  {
-    name: 'PeakFit Studio',
-    category: 'Fitness',
-    description: 'Class schedule and membership sign-up for a boutique gym.',
-    tags: ['Next.js', 'Schedule', 'Payments'],
-    demo: '#',
-    gradient: 'from-fuchsia-500 to-purple-600',
-  },
-  {
-    name: 'Nova Store',
-    category: 'E-commerce',
-    description: 'Headless storefront with cart, checkout and inventory sync.',
-    tags: ['E-commerce', 'Cart', 'Stripe'],
-    demo: '#',
-    gradient: 'from-sky-500 to-blue-600',
+    demo: 'https://rditlabuk.vercel.app',
+    gradient: 'from-brand-500 to-brand-700',
   },
 ]
 
