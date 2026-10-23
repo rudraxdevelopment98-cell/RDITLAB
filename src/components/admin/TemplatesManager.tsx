@@ -24,7 +24,7 @@ const empty = {
   price: 'Free',
   description: '',
   image: '',
-  gradient: 'from-violet-500 to-indigo-600',
+  gradient: 'from-brand-500 to-brand-600',
   previewUrl: '',
   active: true,
   order: 0,
@@ -138,7 +138,7 @@ export default function TemplatesManager() {
   return (
     <div className="space-y-6">
       <div className="rounded-lg bg-white p-6 shadow-lg">
-        <h2 className="mb-1 text-2xl font-bold text-violet-600">🧩 Templates</h2>
+        <h2 className="mb-1 text-2xl font-bold text-brand-600">🧩 Templates</h2>
         <p className="mb-4 text-sm text-gray-500">Manage the starter templates shown on the Web &amp; Software page.</p>
 
         {error && <div className="mb-4 rounded border border-red-400 bg-red-100 p-3 text-red-700">{error}</div>}
@@ -198,7 +198,7 @@ export default function TemplatesManager() {
           </div>
 
           <div className="flex gap-2">
-            <button type="submit" className="flex-1 rounded-lg bg-violet-600 px-4 py-2 text-white transition hover:bg-violet-700">
+            <button type="submit" className="flex-1 rounded-lg bg-brand-600 px-4 py-2 text-white transition hover:bg-brand-700">
               {editingId ? 'Update' : 'Add'} template
             </button>
             {editingId && (
@@ -216,12 +216,12 @@ export default function TemplatesManager() {
         ) : (
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {items.map((t) => (
-              <div key={t.id} className={`overflow-hidden rounded-lg border transition ${editingId === t.id ? 'border-violet-600 bg-violet-50' : 'border-gray-200'} ${!t.active ? 'opacity-60' : ''}`}>
+              <div key={t.id} className={`overflow-hidden rounded-lg border transition ${editingId === t.id ? 'border-brand-600 bg-brand-50' : 'border-gray-200'} ${!t.active ? 'opacity-60' : ''}`}>
                 <BrowserMock label={t.name} gradient={t.gradient} image={t.image} />
                 <div className="p-4">
                   <div className="mb-1 flex items-center gap-2">
                     <h3 className="font-semibold text-gray-900">{t.name}</h3>
-                    <span className="rounded bg-violet-100 px-1.5 py-0.5 text-xs text-violet-700">{t.price}</span>
+                    <span className="rounded bg-brand-100 px-1.5 py-0.5 text-xs text-brand-700">{t.price}</span>
                     {!t.active && <span className="rounded bg-gray-200 px-1.5 py-0.5 text-xs text-gray-600">Hidden</span>}
                   </div>
                   <p className="mb-2 text-xs font-medium text-gray-500">{t.category}</p>
@@ -241,7 +241,7 @@ export default function TemplatesManager() {
   )
 }
 
-const input = 'w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-violet-500'
+const input = 'w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500'
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (

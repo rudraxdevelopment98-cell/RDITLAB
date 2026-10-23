@@ -61,7 +61,7 @@ export default async function CaseStudyPage({ params }: { params: { id: string }
             </div>
             {project.demo && project.demo !== '#' && (
               <div className="mt-8">
-                <a href={project.demo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-600 to-indigo-600 px-8 py-3.5 font-semibold text-white shadow-brand transition hover:shadow-glow">
+                <a href={project.demo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-600 to-brand-600 px-8 py-3.5 font-semibold text-white shadow-brand transition hover:shadow-glow">
                   Visit live site
                   <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
                 </a>
@@ -86,7 +86,7 @@ export default async function CaseStudyPage({ params }: { params: { id: string }
           {/* Overview */}
           {paragraphs.length > 0 && (
             <article className="glass glass-edge rounded-[2rem] p-8 md:p-10">
-              <p className="mb-4 font-mono text-xs uppercase tracking-[0.25em] text-gradient-brand">{'//'} overview</p>
+              <p className="mb-4 eyebrow">overview</p>
               <div className="space-y-4">
                 {paragraphs.map((p, i) => (
                   <p key={i} className="leading-relaxed text-[var(--text)]">{p}</p>
@@ -96,7 +96,7 @@ export default async function CaseStudyPage({ params }: { params: { id: string }
           )}
 
           <div className="mt-12 text-center">
-            <Link href="/contact" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-600 to-indigo-600 px-8 py-4 font-semibold text-white shadow-brand transition hover:shadow-glow">
+            <Link href="/contact" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-600 to-brand-600 px-8 py-4 font-semibold text-white shadow-brand transition hover:shadow-glow">
               Start a project like this
             </Link>
           </div>

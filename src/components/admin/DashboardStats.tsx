@@ -111,8 +111,8 @@ export default function DashboardStats() {
       label: 'Audit Log Entries',
       value: stats?.totalAuditLogs ?? 0,
       icon: '📋',
-      color: 'bg-violet-50 border-violet-200',
-      textColor: 'text-violet-700',
+      color: 'bg-brand-50 border-brand-200',
+      textColor: 'text-brand-700',
     },
     {
       label: 'Recent Changes (24h)',
@@ -126,7 +126,7 @@ export default function DashboardStats() {
   return (
     <div className="space-y-6">
       {/* Welcome Header */}
-      <div className="bg-gradient-to-r from-violet-50 to-orange-50 border border-violet-200 rounded-lg p-6">
+      <div className="bg-gradient-to-r from-brand-50 to-orange-50 border border-brand-200 rounded-lg p-6">
         <h1 className="text-3xl font-bold text-gray-900">📊 Dashboard Overview</h1>
         <p className="text-gray-600 mt-2">
           Welcome back! Here&apos;s a summary of your RDITLAB admin activities.
@@ -188,7 +188,7 @@ export default function DashboardStats() {
               const btn = document.querySelector('[data-tab="audit"]') as HTMLButtonElement
               btn?.click()
             }}
-            className="p-4 bg-violet-50 border border-violet-200 rounded-lg hover:bg-violet-100 transition text-violet-700 font-medium text-left"
+            className="p-4 bg-brand-50 border border-brand-200 rounded-lg hover:bg-brand-100 transition text-brand-700 font-medium text-left"
           >
             📋 View Audit Logs
           </button>

@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="mb-10 grid grid-cols-1 gap-10 md:grid-cols-4">
           <div className="md:col-span-2">
             <div className="flex items-center gap-2.5">
-              <span className="glass-edge flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-brand-600 via-brand-500 to-cyan-400 text-sm font-bold text-white">
+              <span className="glass-edge flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-brand-600 via-brand-500 to-brand-400 text-sm font-bold text-white">
                 RD
               </span>
               <span className="font-display text-xl font-bold text-[var(--text)]">

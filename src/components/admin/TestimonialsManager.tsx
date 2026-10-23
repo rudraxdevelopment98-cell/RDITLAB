@@ -90,7 +90,7 @@ export default function TestimonialsManager() {
   return (
     <div className="space-y-6">
       <div className="rounded-lg bg-white p-6 shadow-lg">
-        <h2 className="mb-1 text-2xl font-bold text-violet-600">💬 Testimonials</h2>
+        <h2 className="mb-1 text-2xl font-bold text-brand-600">💬 Testimonials</h2>
         <p className="mb-4 text-sm text-gray-500">
           Manage reviews shown on the site. {pending > 0 && <span className="font-semibold text-amber-600">{pending} awaiting approval.</span>}
         </p>
@@ -122,7 +122,7 @@ export default function TestimonialsManager() {
             <Chk label="Active" v={form.active} on={(v) => setForm({ ...form, active: v })} />
           </div>
           <div className="flex gap-2">
-            <button type="submit" className="flex-1 rounded-lg bg-violet-600 px-4 py-2 text-white hover:bg-violet-700">{editingId ? 'Update' : 'Add'} testimonial</button>
+            <button type="submit" className="flex-1 rounded-lg bg-brand-600 px-4 py-2 text-white hover:bg-brand-700">{editingId ? 'Update' : 'Add'} testimonial</button>
             {editingId && <button type="button" onClick={reset} className="flex-1 rounded-lg bg-gray-400 px-4 py-2 text-white hover:bg-gray-500">Cancel</button>}
           </div>
         </form>
@@ -132,13 +132,13 @@ export default function TestimonialsManager() {
         ) : (
           <div className="grid gap-4 md:grid-cols-2">
             {items.map((t) => (
-              <div key={t.id} className={`rounded-lg border p-4 ${editingId === t.id ? 'border-violet-600 bg-violet-50' : 'border-gray-200'} ${!t.active ? 'opacity-60' : ''}`}>
+              <div key={t.id} className={`rounded-lg border p-4 ${editingId === t.id ? 'border-brand-600 bg-brand-50' : 'border-gray-200'} ${!t.active ? 'opacity-60' : ''}`}>
                 <div className="mb-1 flex flex-wrap items-center gap-2">
                   <h3 className="font-semibold text-gray-900">{t.name}</h3>
                   <span className="text-amber-500">{'★'.repeat(t.rating)}</span>
                   {t.source === 'visitor' && <span className="rounded bg-blue-100 px-1.5 py-0.5 text-xs text-blue-700">Visitor</span>}
                   {!t.approved && <span className="rounded bg-amber-100 px-1.5 py-0.5 text-xs text-amber-700">Pending</span>}
-                  {t.featured && <span className="rounded bg-violet-100 px-1.5 py-0.5 text-xs text-violet-700">Featured</span>}
+                  {t.featured && <span className="rounded bg-brand-100 px-1.5 py-0.5 text-xs text-brand-700">Featured</span>}
                 </div>
                 {(t.role || t.company) && <p className="mb-1 text-xs text-gray-500">{[t.role, t.company].filter(Boolean).join(' · ')}</p>}
                 <p className="mb-3 line-clamp-3 text-sm text-gray-700">“{t.quote}”</p>
@@ -157,7 +157,7 @@ export default function TestimonialsManager() {
   )
 }
 
-const inp = 'w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-violet-500'
+const inp = 'w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500'
 function F({ label, children }: { label: string; children: React.ReactNode }) {
   return <div><label className="mb-2 block text-sm font-medium text-gray-700">{label}</label>{children}</div>
 }

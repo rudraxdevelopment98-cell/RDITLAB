@@ -49,7 +49,7 @@ export async function POST(request: NextRequest) {
         description,
         price: body.price || 'Free',
         image: body.image || null,
-        gradient: body.gradient || 'from-violet-500 to-indigo-600',
+        gradient: body.gradient || 'from-brand-500 to-brand-600',
         previewUrl: body.previewUrl || '#',
         active: body.active === undefined ? true : Boolean(body.active),
         order: body.order != null ? Number(body.order) : await nextOrder(),

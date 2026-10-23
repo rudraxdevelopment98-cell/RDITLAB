@@ -87,7 +87,7 @@ export default function ContactPage() {
             >
               <div className="text-5xl mb-4">{info.icon}</div>
               <h3 className="text-xl font-semibold text-[var(--text)] mb-2">{info.title}</h3>
-              <p className="text-violet-600 font-semibold mb-3">{info.details}</p>
+              <p className="text-brand-600 font-semibold mb-3">{info.details}</p>
               <p className="text-muted text-sm">{info.description}</p>
             </div>
           ))}
@@ -114,7 +114,7 @@ export default function ContactPage() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-xl border border-[var(--border)] bg-[var(--bg-elev)] text-[var(--text)] placeholder-gray-500 transition focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-200"
+                  className="w-full px-4 py-3 rounded-xl border border-[var(--border)] bg-[var(--bg-elev)] text-[var(--text)] placeholder-gray-500 transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
                   placeholder="Your name"
                 />
               </div>
@@ -127,7 +127,7 @@ export default function ContactPage() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-xl border border-[var(--border)] bg-[var(--bg-elev)] text-[var(--text)] placeholder-gray-500 transition focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-200"
+                  className="w-full px-4 py-3 rounded-xl border border-[var(--border)] bg-[var(--bg-elev)] text-[var(--text)] placeholder-gray-500 transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
                   placeholder="your@email.com"
                 />
               </div>
@@ -138,7 +138,7 @@ export default function ContactPage() {
                   name="service"
                   value={formData.service}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl border border-[var(--border)] bg-[var(--bg-elev)] text-[var(--text)] transition focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-200"
+                  className="w-full px-4 py-3 rounded-xl border border-[var(--border)] bg-[var(--bg-elev)] text-[var(--text)] transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
                 >
                   <option value="">Select a service...</option>
                   {services.map((service, idx) => (
@@ -155,14 +155,14 @@ export default function ContactPage() {
                   onChange={handleChange}
                   required
                   rows={4}
-                  className="w-full px-4 py-3 rounded-xl border border-[var(--border)] bg-[var(--bg-elev)] text-[var(--text)] placeholder-gray-500 transition focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-200"
+                  className="w-full px-4 py-3 rounded-xl border border-[var(--border)] bg-[var(--bg-elev)] text-[var(--text)] placeholder-gray-500 transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
                   placeholder="Tell us about your needs..."
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full px-6 py-4 rounded-xl bg-gradient-to-r from-violet-500 to-violet-600 text-white font-semibold transition hover:from-violet-600 hover:to-violet-700 shadow-lg hover:shadow-xl transform hover:-translate-y-1 animate-fadeIn"
+                className="w-full px-6 py-4 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 text-white font-semibold transition hover:from-brand-600 hover:to-brand-700 shadow-lg hover:shadow-xl transform hover:-translate-y-1 animate-fadeIn"
                 style={{ animationDelay: '300ms' }}
               >
                 Send Message
@@ -176,28 +176,28 @@ export default function ContactPage() {
               <h2 className="text-3xl font-bold text-[var(--text)] mb-6">Why contact us?</h2>
               <ul className="space-y-4 text-muted">
                 <li className="flex items-start gap-3">
-                  <span className="text-2xl text-violet-600">→</span>
+                  <span className="text-2xl text-brand-600">→</span>
                   <div>
                     <p className="font-semibold text-[var(--text)]">Quick Consultation</p>
                     <p className="text-sm">Discuss your IT needs with our experts</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-2xl text-violet-600">→</span>
+                  <span className="text-2xl text-brand-600">→</span>
                   <div>
                     <p className="font-semibold text-[var(--text)]">Support Request</p>
                     <p className="text-sm">Get help with repairs, networking, or setup</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-2xl text-violet-600">→</span>
+                  <span className="text-2xl text-brand-600">→</span>
                   <div>
                     <p className="font-semibold text-[var(--text)]">Service Inquiry</p>
                     <p className="text-sm">Learn more about a specific service offering</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-2xl text-violet-600">→</span>
+                  <span className="text-2xl text-brand-600">→</span>
                   <div>
                     <p className="font-semibold text-[var(--text)]">Emergency Support</p>
                     <p className="text-sm">Call us 24/7 for urgent network or system issues</p>
@@ -207,8 +207,8 @@ export default function ContactPage() {
             </div>
 
             <div className="rounded-[2rem] bg-[var(--bg-elev)] border border-[var(--border)] p-8 md:p-12 animate-slideInRight" style={{ animationDelay: '100ms' }}>
-              <h3 className="text-2xl font-bold text-violet-900 mb-4">Response Time</h3>
-              <div className="space-y-3 text-violet-900">
+              <h3 className="text-2xl font-bold text-brand-900 mb-4">Response Time</h3>
+              <div className="space-y-3 text-brand-900">
                 <p><strong>Email:</strong> Within 24 hours</p>
                 <p><strong>Phone:</strong> Immediate for urgent support</p>
                 <p><strong>Emergency:</strong> On-call 24/7</p>
@@ -229,7 +229,7 @@ export default function ContactPage() {
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
                   <p className="text-[var(--text)] font-semibold">{service}</p>
-                  <p className="text-xs text-violet-600 mt-2">→ Click to inquire</p>
+                  <p className="text-xs text-brand-600 mt-2">→ Click to inquire</p>
                 </div>
               ))}
             </div>

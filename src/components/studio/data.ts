@@ -74,7 +74,7 @@ export const projects: Project[] = [
     description: 'This very site — a fast, animated marketing site with a full admin panel.',
     tags: ['Next.js', 'Tailwind', 'Prisma'],
     demo: '/',
-    gradient: 'from-violet-500 to-indigo-600',
+    gradient: 'from-brand-500 to-brand-600',
   },
   {
     name: 'Aarogya Clinic',
@@ -127,7 +127,7 @@ export type Template = {
 }
 
 export const templates: Template[] = [
-  { name: 'Apex Business', category: 'Business', price: 'Free', description: 'Clean corporate site with services & team sections.', gradient: 'from-violet-500 to-indigo-600' },
+  { name: 'Apex Business', category: 'Business', price: 'Free', description: 'Clean corporate site with services & team sections.', gradient: 'from-brand-500 to-brand-600' },
   { name: 'Folio Minimal', category: 'Portfolio', price: '£49', description: 'Elegant portfolio for creatives and freelancers.', gradient: 'from-slate-600 to-slate-800' },
   { name: 'ShopWave', category: 'E-commerce', price: '£79', description: 'Modern storefront layout with product grid & cart.', gradient: 'from-sky-500 to-blue-600' },
   { name: 'LaunchPad', category: 'SaaS / Landing', price: '£59', description: 'High-converting SaaS landing page with pricing.', gradient: 'from-fuchsia-500 to-purple-600' },

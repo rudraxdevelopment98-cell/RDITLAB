@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
         tags: normalizeTags(body.tags),
         demoUrl: body.demoUrl || '#',
         image: body.image || null,
-        gradient: body.gradient || 'from-violet-500 to-indigo-600',
+        gradient: body.gradient || 'from-brand-500 to-brand-600',
         overview: body.overview || '',
         presentationUrl: body.presentationUrl || '',
         presentationType: body.presentationType || '',

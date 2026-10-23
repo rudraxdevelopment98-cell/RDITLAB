@@ -12,7 +12,7 @@ export default function Plans({ plans }: { plans: ResolvedPlan[] }) {
     <section id="plans" className="relative px-6 py-24 md:px-12">
       <div className="container mx-auto max-w-7xl">
         <Reveal className="mx-auto mb-14 max-w-2xl text-center">
-          <p className="mb-3 font-mono text-xs uppercase tracking-[0.25em] text-gradient-brand">{'//'} plans &amp; pricing</p>
+          <p className="mb-3 eyebrow">plans &amp; pricing</p>
           <h2 className="font-display text-4xl font-bold text-[var(--text)] md:text-5xl">Simple pricing for websites &amp; software</h2>
           <p className="mt-4 text-lg text-muted">Transparent, fixed-scope packages — or a custom quote for bigger builds. No surprises.</p>
         </Reveal>
@@ -26,7 +26,7 @@ export default function Plans({ plans }: { plans: ResolvedPlan[] }) {
                 }`}
               >
                 {plan.popular && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-brand-500 to-indigo-500 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-white shadow-lg">
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-brand-500 to-brand-500 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-white shadow-lg">
                     Most popular
                   </span>
                 )}
@@ -47,7 +47,7 @@ export default function Plans({ plans }: { plans: ResolvedPlan[] }) {
                 <a
                   href="/contact"
                   className={`mt-8 inline-flex items-center justify-center rounded-full px-6 py-3.5 text-sm font-semibold transition active:scale-95 ${
-                    plan.popular ? 'bg-gradient-to-r from-brand-600 to-indigo-600 text-white hover:shadow-glow' : 'glass glass-edge text-[var(--text)] hover:scale-[1.02]'
+                    plan.popular ? 'bg-gradient-to-r from-brand-600 to-brand-600 text-white hover:shadow-glow' : 'glass glass-edge text-[var(--text)] hover:scale-[1.02]'
                   }`}
                 >
                   {plan.cta}

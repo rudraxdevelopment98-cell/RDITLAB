@@ -26,7 +26,7 @@ export default function About() {
     <section id="about" className="relative px-6 py-24 md:px-12">
       <div className="container mx-auto max-w-7xl">
         <Reveal className="mb-14 text-center">
-          <p className="mb-3 font-mono text-xs uppercase tracking-[0.25em] text-gradient-brand">{'//'} about us</p>
+          <p className="mb-3 eyebrow">about us</p>
           <h2 className="font-display text-4xl font-bold text-[var(--text)] md:text-5xl">Who we are &amp; what we do</h2>
         </Reveal>
 
@@ -53,7 +53,7 @@ export default function About() {
             <ul className="space-y-3">
               {benefits.map((benefit) => (
                 <li key={benefit} className="flex items-start gap-3">
-                  <span className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-500 to-cyan-400 text-white">
+                  <span className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-500 to-brand-400 text-white">
                     <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>

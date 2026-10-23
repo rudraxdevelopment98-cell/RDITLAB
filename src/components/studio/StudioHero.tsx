@@ -18,7 +18,7 @@ export default function StudioHero() {
           From a sharp landing page to a full custom web app — modern, fast, secure, and built to grow with your business. Explore our plans, live demos, and templates below.
         </p>
         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-          <a href="#plans" className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-brand-600 to-indigo-600 px-8 py-4 text-base font-semibold text-white shadow-brand transition hover:shadow-glow active:scale-95">
+          <a href="#plans" className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-brand-600 to-brand-600 px-8 py-4 text-base font-semibold text-white shadow-brand transition hover:shadow-glow active:scale-95">
             View plans
           </a>
           <a href="#portfolio" className="glass glass-edge inline-flex items-center justify-center rounded-full px-8 py-4 text-base font-semibold text-[var(--text)] transition hover:scale-[1.02]">

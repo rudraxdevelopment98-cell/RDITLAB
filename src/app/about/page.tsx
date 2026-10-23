@@ -60,7 +60,7 @@ export default function AboutPage() {
               { value: '24/7', label: 'Emergency Support' },
             ].map((stat) => (
               <div key={stat.label} className="rounded-2xl border border-[var(--border)] bg-[var(--bg-elev)] p-8 shadow-lg transition hover:-translate-y-2 hover:shadow-brand">
-                <div className="mb-2 font-display text-4xl font-bold text-violet-600">{stat.value}</div>
+                <div className="mb-2 font-display text-4xl font-bold text-brand-600">{stat.value}</div>
                 <p className="text-muted">{stat.label}</p>
               </div>
             ))}
@@ -79,10 +79,10 @@ export default function AboutPage() {
                 >
                   <button
                     onClick={() => setExpandedSection(expandedSection === section.id ? null : section.id)}
-                    className="w-full px-8 py-6 flex items-center justify-between bg-gradient-to-r from-[var(--bg-elev)] to-[var(--bg-elev)] hover:from-violet-100 hover:to-violet-50 transition"
+                    className="w-full px-8 py-6 flex items-center justify-between bg-gradient-to-r from-[var(--bg-elev)] to-[var(--bg-elev)] hover:from-brand-100 hover:to-brand-50 transition"
                   >
                     <h3 className="text-2xl font-semibold text-[var(--text)] text-left">{section.title}</h3>
-                    <span className={`text-2xl text-violet-600 transition-transform ${expandedSection === section.id ? 'rotate-180' : ''}`}>
+                    <span className={`text-2xl text-brand-600 transition-transform ${expandedSection === section.id ? 'rotate-180' : ''}`}>
                       ▼
                     </span>
                   </button>
@@ -115,7 +115,7 @@ export default function AboutPage() {
                   />
                   <div className="p-6">
                     <h3 className="text-2xl font-semibold text-[var(--text)] mb-2">{member.name}</h3>
-                    <p className="text-violet-600 font-semibold mb-3">{member.role}</p>
+                    <p className="text-brand-600 font-semibold mb-3">{member.role}</p>
                     <p className="text-muted leading-relaxed">{member.bio}</p>
                   </div>
                 </div>
@@ -136,15 +136,15 @@ export default function AboutPage() {
                 </p>
                 <ul className="space-y-2 text-muted">
                   <li className="flex items-start gap-3">
-                    <span className="text-violet-600 font-bold">✓</span>
+                    <span className="text-brand-600 font-bold">✓</span>
                     <span>Certified technical expertise</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-violet-600 font-bold">✓</span>
+                    <span className="text-brand-600 font-bold">✓</span>
                     <span>Commercial IT knowledge</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-violet-600 font-bold">✓</span>
+                    <span className="text-brand-600 font-bold">✓</span>
                     <span>Industry best practices</span>
                   </li>
                 </ul>
@@ -157,15 +157,15 @@ export default function AboutPage() {
                 </p>
                 <ul className="space-y-2 text-muted">
                   <li className="flex items-start gap-3">
-                    <span className="text-violet-600 font-bold">✓</span>
+                    <span className="text-brand-600 font-bold">✓</span>
                     <span>24/7 availability</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-violet-600 font-bold">✓</span>
+                    <span className="text-brand-600 font-bold">✓</span>
                     <span>Quick response times</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-violet-600 font-bold">✓</span>
+                    <span className="text-brand-600 font-bold">✓</span>
                     <span>Clear communication</span>
                   </li>
                 </ul>

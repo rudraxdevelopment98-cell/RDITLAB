@@ -51,7 +51,7 @@ export default function Testimonials({ testimonials }: { testimonials: ResolvedT
       <div className="container relative z-10 mx-auto max-w-7xl">
         <Reveal className="mb-14 flex flex-col items-center justify-between gap-6 text-center md:flex-row md:text-left">
           <div>
-            <p className="mb-3 font-mono text-xs uppercase tracking-[0.25em] text-gradient-brand">{'//'} testimonials</p>
+            <p className="mb-3 eyebrow">testimonials</p>
             <h2 className="font-display text-4xl font-bold text-[var(--text)] md:text-5xl">What clients say</h2>
           </div>
           <button onClick={() => setOpen((v) => !v)} className="glass glass-edge inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-[var(--text)] transition hover:scale-[1.02]">
@@ -83,7 +83,7 @@ export default function Testimonials({ testimonials }: { testimonials: ResolvedT
                 </div>
                 <textarea required rows={4} placeholder="Tell us about your experience…" value={form.quote} onChange={(e) => setForm({ ...form, quote: e.target.value })} className={`${field} resize-none`} />
                 {status === 'error' && <p className="text-sm text-red-500">Something went wrong. Please try again.</p>}
-                <button type="submit" disabled={status === 'sending'} className="w-full rounded-full bg-gradient-to-r from-brand-600 to-indigo-600 py-3 font-semibold text-white transition hover:shadow-glow disabled:opacity-50">
+                <button type="submit" disabled={status === 'sending'} className="w-full rounded-full bg-gradient-to-r from-brand-600 to-brand-600 py-3 font-semibold text-white transition hover:shadow-glow disabled:opacity-50">
                   {status === 'sending' ? 'Submitting…' : 'Submit testimonial'}
                 </button>
               </form>
@@ -103,7 +103,7 @@ export default function Testimonials({ testimonials }: { testimonials: ResolvedT
                       // eslint-disable-next-line @next/next/no-img-element
                       <img src={t.photo} alt={t.name} className="h-11 w-11 rounded-full object-cover" />
                     ) : (
-                      <span className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-brand-500 to-cyan-400 text-sm font-bold text-white">{initials(t.name)}</span>
+                      <span className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-brand-500 to-brand-400 text-sm font-bold text-white">{initials(t.name)}</span>
                     )}
                     <div>
                       <p className="font-semibold text-[var(--text)]">{t.name}</p>

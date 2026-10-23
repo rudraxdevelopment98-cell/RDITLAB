@@ -16,7 +16,7 @@ export default function StudioTeaser({ projects }: { projects: ResolvedProject[]
       <div className="container relative z-10 mx-auto max-w-7xl">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <Reveal>
-            <p className="mb-3 font-mono text-xs uppercase tracking-[0.25em] text-gradient-brand">{'//'} web &amp; software studio</p>
+            <p className="mb-3 eyebrow">web &amp; software studio</p>
             <h2 className="font-display text-4xl font-bold leading-tight text-[var(--text)] md:text-5xl">
               We don&apos;t just fix tech — <span className="text-gradient-brand">we build it.</span>
             </h2>
@@ -26,7 +26,7 @@ export default function StudioTeaser({ projects }: { projects: ResolvedProject[]
             <ul className="mt-8 space-y-3">
               {highlights.map((h) => (
                 <li key={h} className="flex items-center gap-3 text-[var(--text)]">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-brand-500 to-cyan-400 text-white">
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-brand-500 to-brand-400 text-white">
                     <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
@@ -36,7 +36,7 @@ export default function StudioTeaser({ projects }: { projects: ResolvedProject[]
               ))}
             </ul>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link href="/web-development" className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-brand-600 to-indigo-600 px-8 py-4 text-base font-semibold text-white shadow-brand transition hover:shadow-glow active:scale-95">
+              <Link href="/web-development" className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-brand-600 to-brand-600 px-8 py-4 text-base font-semibold text-white shadow-brand transition hover:shadow-glow active:scale-95">
                 Explore Web &amp; Software
               </Link>
               <Link href="/web-development#plans" className="glass glass-edge inline-flex items-center justify-center rounded-full px-8 py-4 text-base font-semibold text-[var(--text)] transition hover:scale-[1.02]">

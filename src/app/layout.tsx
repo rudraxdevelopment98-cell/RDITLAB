@@ -1,11 +1,15 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter, Sora } from 'next/font/google'
+import { Inter, Fraunces } from 'next/font/google'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter' })
-const sora = Sora({ subsets: ['latin'], display: 'swap', variable: '--font-sora' })
-// Mono uses a system monospace stack (see tailwind font-mono) — no build-time
-// Google Fonts fetch, so deploys don't fail when fonts.gstatic.com is flaky.
+// Fraunces: a warm, editorial serif for display headings.
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-fraunces',
+  axes: ['opsz'],
+})
 
 export const metadata: Metadata = {
   title: {
@@ -26,8 +30,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#f4f5fb' },
-    { media: '(prefers-color-scheme: dark)', color: '#08080f' },
+    { media: '(prefers-color-scheme: light)', color: '#f6f3ec' },
+    { media: '(prefers-color-scheme: dark)', color: '#171310' },
   ],
 }
 
@@ -36,7 +40,7 @@ const themeScript = `(function(){try{var t=localStorage.getItem('theme');var d=t
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${sora.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${fraunces.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>

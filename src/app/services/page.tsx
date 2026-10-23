@@ -147,7 +147,7 @@ export default function ServicesPage() {
         <section className="mx-6 md:mx-12 my-16 rounded-[2rem] bg-[var(--bg-elev)] border border-[var(--border)] shadow-xl p-8 md:p-12">
           <div className="max-w-7xl mx-auto">
             <div className="mb-10 text-center animate-fade-in">
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-violet-700 mb-3">Our core offerings</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-brand-700 mb-3">Our core offerings</p>
               <h2 className="text-3xl md:text-4xl font-bold text-[var(--text)]">Click to explore our services</h2>
             </div>
 
@@ -162,12 +162,12 @@ export default function ServicesPage() {
                     {/* Header / Accordion Button */}
                     <button
                       onClick={() => setExpandedIndex(isExpanded ? null : index)}
-                      className="w-full flex items-center justify-between p-6 bg-gradient-to-r from-[var(--bg-elev)] to-violet-50 hover:from-[var(--bg-elev)] hover:to-violet-100 transition-all duration-200"
+                      className="w-full flex items-center justify-between p-6 bg-gradient-to-r from-[var(--bg-elev)] to-brand-50 hover:from-[var(--bg-elev)] hover:to-brand-100 transition-all duration-200"
                     >
                       <div className="flex items-center gap-4 flex-1 text-left">
-                        <div className="flex-shrink-0 w-14 h-14 rounded-full bg-violet-100 flex items-center justify-center">
+                        <div className="flex-shrink-0 w-14 h-14 rounded-full bg-brand-100 flex items-center justify-center">
                           <svg
-                            className="w-7 h-7 text-violet-600"
+                            className="w-7 h-7 text-brand-600"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -182,7 +182,7 @@ export default function ServicesPage() {
                         </div>
                         <div>
                           <h3 className="text-xl md:text-2xl font-semibold text-[var(--text)]">{service.title}</h3>
-                          <p className="text-lg font-semibold text-violet-600 mt-1">{service.price}</p>
+                          <p className="text-lg font-semibold text-brand-600 mt-1">{service.price}</p>
                         </div>
                       </div>
                       <div
@@ -191,7 +191,7 @@ export default function ServicesPage() {
                         }`}
                       >
                         <svg
-                          className="w-6 h-6 text-violet-600"
+                          className="w-6 h-6 text-brand-600"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -222,9 +222,9 @@ export default function ServicesPage() {
                               <p className="text-muted leading-relaxed text-lg">{service.overview}</p>
                             </div>
                             <div className="grid gap-4 sm:grid-cols-2">
-                              <div className="rounded-3xl bg-[var(--bg-elev)] p-5 border border-violet-200">
+                              <div className="rounded-3xl bg-[var(--bg-elev)] p-5 border border-brand-200">
                                 <h4 className="font-semibold text-[var(--text)] mb-3 flex items-center gap-2">
-                                  <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-violet-600 text-white text-sm">
+                                  <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-brand-600 text-white text-sm">
                                     ✓
                                   </span>
                                   What we deliver
@@ -233,7 +233,7 @@ export default function ServicesPage() {
                                   {service.details.map((detail, detailIndex) => (
                                     <li
                                       key={detailIndex}
-                                      className="before:content-['•'] before:mr-2 before:text-violet-600 hover:translate-x-1 transition-transform"
+                                      className="before:content-['•'] before:mr-2 before:text-brand-600 hover:translate-x-1 transition-transform"
                                     >
                                       {detail}
                                     </li>
@@ -242,7 +242,7 @@ export default function ServicesPage() {
                               </div>
                               <div className="rounded-3xl bg-[var(--bg-elev)] p-5 border border-[var(--border)]">
                                 <h4 className="font-semibold text-[var(--text)] mb-3 flex items-center gap-2">
-                                  <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-violet-600 text-white text-sm">
+                                  <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-brand-600 text-white text-sm">
                                     ★
                                   </span>
                                   Key benefits
@@ -251,7 +251,7 @@ export default function ServicesPage() {
                                   {service.benefits.map((benefit, benefitIndex) => (
                                     <li
                                       key={benefitIndex}
-                                      className="before:content-['→'] before:mr-2 before:text-violet-600 hover:translate-x-1 transition-transform"
+                                      className="before:content-['→'] before:mr-2 before:text-brand-600 hover:translate-x-1 transition-transform"
                                     >
                                       {benefit}
                                     </li>

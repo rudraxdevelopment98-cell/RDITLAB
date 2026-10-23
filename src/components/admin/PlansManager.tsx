@@ -116,7 +116,7 @@ export default function PlansManager() {
   return (
     <div className="space-y-6">
       <div className="rounded-lg bg-white p-6 shadow-lg">
-        <h2 className="mb-1 text-2xl font-bold text-violet-600">💷 Pricing Plans</h2>
+        <h2 className="mb-1 text-2xl font-bold text-brand-600">💷 Pricing Plans</h2>
         <p className="mb-4 text-sm text-gray-500">Manage the plans shown on the Web &amp; Software page.</p>
 
         {error && <div className="mb-4 rounded border border-red-400 bg-red-100 p-3 text-red-700">{error}</div>}
@@ -162,7 +162,7 @@ export default function PlansManager() {
           </div>
 
           <div className="flex gap-2">
-            <button type="submit" className="flex-1 rounded-lg bg-violet-600 px-4 py-2 text-white transition hover:bg-violet-700">
+            <button type="submit" className="flex-1 rounded-lg bg-brand-600 px-4 py-2 text-white transition hover:bg-brand-700">
               {editingId ? 'Update' : 'Add'} plan
             </button>
             {editingId && (
@@ -180,13 +180,13 @@ export default function PlansManager() {
         ) : (
           <div className="grid gap-4 md:grid-cols-3">
             {items.map((p) => (
-              <div key={p.id} className={`rounded-lg border p-5 transition ${editingId === p.id ? 'border-violet-600 bg-violet-50' : 'border-gray-200'} ${!p.active ? 'opacity-60' : ''}`}>
+              <div key={p.id} className={`rounded-lg border p-5 transition ${editingId === p.id ? 'border-brand-600 bg-brand-50' : 'border-gray-200'} ${!p.active ? 'opacity-60' : ''}`}>
                 <div className="mb-1 flex items-center gap-2">
                   <h3 className="text-lg font-semibold text-gray-900">{p.name}</h3>
-                  {p.popular && <span className="rounded bg-violet-100 px-1.5 py-0.5 text-xs text-violet-700">Popular</span>}
+                  {p.popular && <span className="rounded bg-brand-100 px-1.5 py-0.5 text-xs text-brand-700">Popular</span>}
                   {!p.active && <span className="rounded bg-gray-200 px-1.5 py-0.5 text-xs text-gray-600">Hidden</span>}
                 </div>
-                <p className="text-xl font-bold text-violet-600">{p.price} <span className="text-sm font-normal text-gray-500">{p.period}</span></p>
+                <p className="text-xl font-bold text-brand-600">{p.price} <span className="text-sm font-normal text-gray-500">{p.period}</span></p>
                 <p className="mb-2 mt-1 text-sm text-gray-600">{p.tagline}</p>
                 <ul className="mb-3 space-y-1 text-sm text-gray-700">
                   {p.features.split('\n').filter(Boolean).slice(0, 4).map((f, i) => (
@@ -207,7 +207,7 @@ export default function PlansManager() {
   )
 }
 
-const input = 'w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-violet-500'
+const input = 'w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500'
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
