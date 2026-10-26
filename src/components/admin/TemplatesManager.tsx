@@ -137,13 +137,13 @@ export default function TemplatesManager() {
 
   return (
     <div className="space-y-6">
-      <div className="rounded-lg bg-white p-6 shadow-lg">
-        <h2 className="mb-1 text-2xl font-bold text-brand-600">🧩 Templates</h2>
-        <p className="mb-4 text-sm text-gray-500">Manage the starter templates shown on the Web &amp; Software page.</p>
+      <div className="rounded-2xl border border-[var(--border)] bg-[var(--bg-elev)] p-6 shadow-card">
+        <h2 className="font-display text-2xl font-semibold tracking-tight text-[var(--text)]">Templates</h2>
+        <p className="mb-4 text-sm text-muted">Manage the starter templates shown on the Web &amp; Software page.</p>
 
-        {error && <div className="mb-4 rounded border border-red-400 bg-red-100 p-3 text-red-700">{error}</div>}
+        {error && <div className="mb-4 rounded-lg border border-[var(--accent)]/40 bg-[var(--accent-weak)] p-3 text-sm text-[var(--accent-ink)]">{error}</div>}
 
-        <form onSubmit={submit} className="mb-6 grid gap-4 rounded-lg border border-gray-200 bg-gray-50 p-4">
+        <form onSubmit={submit} className="mb-6 grid gap-4 rounded-lg border border-[var(--border)] bg-[var(--bg)] p-4">
           <div className="grid gap-4 md:grid-cols-3">
             <Field label="Template name *">
               <input className={input} value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="e.g. Apex Business" />
@@ -167,13 +167,13 @@ export default function TemplatesManager() {
           <div className="grid gap-4 md:grid-cols-2">
             <div>
               <GradientPicker value={form.gradient} onChange={(g) => setForm({ ...form, gradient: g })} />
-              <p className="mt-2 text-xs text-gray-500">Used when no thumbnail image is set.</p>
+              <p className="mt-2 text-xs text-muted">Used when no thumbnail image is set.</p>
             </div>
             <Field label="Thumbnail image (optional)">
-              <input type="file" accept="image/*" onChange={upload} disabled={uploading} className="w-full rounded-lg border border-gray-300 px-3 py-2" />
-              {uploading && <span className="text-sm text-blue-600">Uploading…</span>}
+              <input type="file" accept="image/*" onChange={upload} disabled={uploading} className="w-full rounded-lg border border-[var(--border)] px-3 py-2" />
+              {uploading && <span className="text-sm text-[var(--accent-ink)]">Uploading…</span>}
               {form.image && (
-                <button type="button" onClick={() => setForm({ ...form, image: '' })} className="mt-1 text-xs text-red-600 underline">
+                <button type="button" onClick={() => setForm({ ...form, image: '' })} className="mt-1 text-xs text-muted underline hover:text-[var(--text)]">
                   Remove image
                 </button>
               )}
@@ -184,14 +184,14 @@ export default function TemplatesManager() {
             <Field label="Order">
               <input type="number" className={input} value={form.order} onChange={(e) => setForm({ ...form, order: Number(e.target.value) })} />
             </Field>
-            <label className="flex items-center gap-2 pt-8 text-sm font-medium text-gray-700">
+            <label className="flex items-center gap-2 pt-8 text-sm font-medium text-muted">
               <input type="checkbox" checked={form.active} onChange={(e) => setForm({ ...form, active: e.target.checked })} />
               Active (visible on site)
             </label>
           </div>
 
           <div>
-            <p className="mb-2 text-sm font-medium text-gray-700">Live preview</p>
+            <p className="mb-2 text-sm font-medium text-muted">Live preview</p>
             <div className="max-w-xs">
               <BrowserMock label={form.name || 'Preview'} gradient={form.gradient} image={form.image || null} />
             </div>
@@ -202,7 +202,7 @@ export default function TemplatesManager() {
               {editingId ? 'Update' : 'Add'} template
             </button>
             {editingId && (
-              <button type="button" onClick={reset} className="flex-1 rounded-lg bg-gray-400 px-4 py-2 text-white transition hover:bg-gray-500">
+              <button type="button" onClick={reset} className="flex-1 rounded-full border border-[var(--border)] px-4 py-2 font-medium text-[var(--text)] transition hover:border-[var(--border-strong)]">
                 Cancel
               </button>
             )}
@@ -210,26 +210,26 @@ export default function TemplatesManager() {
         </form>
 
         {isLoading ? (
-          <div className="py-8 text-center text-gray-500">Loading…</div>
+          <div className="py-8 text-center text-muted">Loading…</div>
         ) : items.length === 0 ? (
-          <div className="py-8 text-center text-gray-500">No templates yet — add your first above.</div>
+          <div className="py-8 text-center text-muted">No templates yet — add your first above.</div>
         ) : (
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {items.map((t) => (
-              <div key={t.id} className={`overflow-hidden rounded-lg border transition ${editingId === t.id ? 'border-brand-600 bg-brand-50' : 'border-gray-200'} ${!t.active ? 'opacity-60' : ''}`}>
+              <div key={t.id} className={`overflow-hidden rounded-lg border transition ${editingId === t.id ? 'border-[var(--accent)] ring-1 ring-[var(--accent)]' : 'border-[var(--border)]'} ${!t.active ? 'opacity-60' : ''}`}>
                 <BrowserMock label={t.name} gradient={t.gradient} image={t.image} />
                 <div className="p-4">
                   <div className="mb-1 flex items-center gap-2">
-                    <h3 className="font-semibold text-gray-900">{t.name}</h3>
+                    <h3 className="font-semibold text-[var(--text)]">{t.name}</h3>
                     <span className="rounded bg-brand-100 px-1.5 py-0.5 text-xs text-brand-700">{t.price}</span>
-                    {!t.active && <span className="rounded bg-gray-200 px-1.5 py-0.5 text-xs text-gray-600">Hidden</span>}
+                    {!t.active && <span className="rounded-full border border-[var(--border)] px-2 py-0.5 text-xs text-muted">Hidden</span>}
                   </div>
-                  <p className="mb-2 text-xs font-medium text-gray-500">{t.category}</p>
-                  <p className="mb-3 line-clamp-2 text-sm text-gray-700">{t.description}</p>
+                  <p className="mb-2 text-xs font-medium text-muted">{t.category}</p>
+                  <p className="mb-3 line-clamp-2 text-sm text-muted">{t.description}</p>
                   <div className="flex flex-wrap gap-2">
-                    <button onClick={() => edit(t)} className="rounded bg-blue-500 px-3 py-1 text-sm text-white hover:bg-blue-600">Edit</button>
-                    <button onClick={() => toggleActive(t)} className="rounded bg-gray-500 px-3 py-1 text-sm text-white hover:bg-gray-600">{t.active ? 'Hide' : 'Show'}</button>
-                    <button onClick={() => remove(t.id)} className="rounded bg-red-500 px-3 py-1 text-sm text-white hover:bg-red-600">Delete</button>
+                    <button onClick={() => edit(t)} className="rounded-full bg-[var(--accent)] px-3 py-1 text-sm font-medium text-white transition hover:bg-[var(--accent-ink)]">Edit</button>
+                    <button onClick={() => toggleActive(t)} className="rounded-full border border-[var(--border)] px-3 py-1 text-sm font-medium text-[var(--text)] transition hover:border-[var(--border-strong)]">{t.active ? 'Hide' : 'Show'}</button>
+                    <button onClick={() => remove(t.id)} className="rounded-full px-3 py-1 text-sm font-medium text-muted transition hover:text-[var(--accent-ink)]">Delete</button>
                   </div>
                 </div>
               </div>
@@ -241,12 +241,12 @@ export default function TemplatesManager() {
   )
 }
 
-const input = 'w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500'
+const input = 'w-full rounded-lg border border-[var(--border)] px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500'
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
-      <label className="mb-2 block text-sm font-medium text-gray-700">{label}</label>
+      <label className="mb-2 block text-sm font-medium text-muted">{label}</label>
       {children}
     </div>
   )

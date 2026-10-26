@@ -77,152 +77,107 @@ export default function DashboardStats() {
 
   if (isLoading) {
     return (
-      <div className="py-8 text-center">
-        <div className="inline-block animate-spin">⏳</div>
-        <p className="text-gray-600 mt-2">Loading dashboard...</p>
+      <div className="py-16 text-center">
+        <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-[var(--border)] border-t-[var(--accent)]" />
+        <p className="mt-3 text-sm text-muted">Loading overview…</p>
       </div>
     )
   }
 
   if (error) {
     return (
-      <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+      <div className="rounded-lg border border-[var(--accent)]/40 bg-[var(--accent-weak)] px-4 py-3 text-sm text-[var(--accent-ink)]">
         {error}
       </div>
     )
   }
 
   const stats_cards = [
-    {
-      label: 'Total Pages',
-      value: stats?.totalPages ?? 0,
-      icon: '📄',
-      color: 'bg-blue-50 border-blue-200',
-      textColor: 'text-blue-700',
-    },
-    {
-      label: 'Team Members',
-      value: stats?.totalTeamMembers ?? 0,
-      icon: '👥',
-      color: 'bg-green-50 border-green-200',
-      textColor: 'text-green-700',
-    },
-    {
-      label: 'Audit Log Entries',
-      value: stats?.totalAuditLogs ?? 0,
-      icon: '📋',
-      color: 'bg-brand-50 border-brand-200',
-      textColor: 'text-brand-700',
-    },
-    {
-      label: 'Recent Changes (24h)',
-      value: stats?.recentChanges ?? 0,
-      icon: '✏️',
-      color: 'bg-purple-50 border-purple-200',
-      textColor: 'text-purple-700',
-    },
+    { label: 'Published pages', value: stats?.totalPages ?? 0 },
+    { label: 'Team members', value: stats?.totalTeamMembers ?? 0 },
+    { label: 'Changes (24h)', value: stats?.recentChanges ?? 0 },
+    { label: 'Logged events', value: stats?.totalAuditLogs ?? 0 },
   ]
 
+  const actions = [
+    { tab: 'portfolio', label: 'Add a project', hint: 'Showcase a new build' },
+    { tab: 'testimonials', label: 'Review testimonials', hint: 'Approve client reviews' },
+    { tab: 'plans', label: 'Edit plans', hint: 'Update packages & pricing' },
+  ]
+
+  const go = (tab: string) => {
+    const btn = document.querySelector(`[data-tab="${tab}"]`) as HTMLButtonElement | null
+    btn?.click()
+  }
+
   return (
-    <div className="space-y-6">
-      {/* Welcome Header */}
-      <div className="bg-gradient-to-r from-brand-50 to-orange-50 border border-brand-200 rounded-lg p-6">
-        <h1 className="text-3xl font-bold text-gray-900">📊 Dashboard Overview</h1>
-        <p className="text-gray-600 mt-2">
-          Welcome back! Here&apos;s a summary of your RDITLAB admin activities.
-        </p>
+    <div className="space-y-8">
+      {/* Welcome */}
+      <div className="rounded-2xl border border-[var(--border)] bg-[var(--bg-elev)] p-6 shadow-card">
+        <p className="eyebrow">Today</p>
+        <h2 className="mt-3 font-display text-2xl font-semibold tracking-tight text-[var(--text)]">
+          Here&apos;s where the studio stands.
+        </h2>
         {stats?.lastLogin && (
-          <p className="text-sm text-gray-500 mt-3">
-            Last login: <strong>{stats.lastLogin}</strong>
+          <p className="mt-2 text-sm text-muted">
+            Last sign-in: <span className="font-medium text-[var(--text)]">{stats.lastLogin}</span>
           </p>
         )}
       </div>
 
-      {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {/* Stats */}
+      <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
         {stats_cards.map((card) => (
-          <div
-            key={card.label}
-            className={`${card.color} border rounded-lg p-6 transition hover:shadow-md`}
-          >
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600">{card.label}</p>
-                <p className={`text-4xl font-bold mt-2 ${card.textColor}`}>
-                  {card.value}
-                </p>
-              </div>
-              <span className="text-5xl opacity-20">{card.icon}</span>
-            </div>
+          <div key={card.label} className="rounded-xl border border-[var(--border)] bg-[var(--bg-elev)] p-5">
+            <p className="font-display text-4xl font-semibold text-[var(--text)]">{card.value}</p>
+            <p className="mt-2 text-sm text-muted">{card.label}</p>
           </div>
         ))}
       </div>
 
-      {/* Quick Actions */}
-      <div className="bg-white border border-gray-200 rounded-lg p-6">
-        <h2 className="text-xl font-semibold text-gray-900 mb-4">⚡ Quick Actions</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-          <button
-            onClick={(e) => {
-              e.preventDefault()
-              const btn = document.querySelector('[data-tab="pages"]') as HTMLButtonElement
-              btn?.click()
-            }}
-            className="p-4 bg-blue-50 border border-blue-200 rounded-lg hover:bg-blue-100 transition text-blue-700 font-medium text-left"
-          >
-            📄 Add New Page
-          </button>
-          <button
-            onClick={(e) => {
-              e.preventDefault()
-              const btn = document.querySelector('[data-tab="team"]') as HTMLButtonElement
-              btn?.click()
-            }}
-            className="p-4 bg-green-50 border border-green-200 rounded-lg hover:bg-green-100 transition text-green-700 font-medium text-left"
-          >
-            👥 Add Team Member
-          </button>
-          <button
-            onClick={(e) => {
-              e.preventDefault()
-              const btn = document.querySelector('[data-tab="audit"]') as HTMLButtonElement
-              btn?.click()
-            }}
-            className="p-4 bg-brand-50 border border-brand-200 rounded-lg hover:bg-brand-100 transition text-brand-700 font-medium text-left"
-          >
-            📋 View Audit Logs
-          </button>
+      {/* Quick actions */}
+      <div>
+        <p className="eyebrow mb-4">Quick actions</p>
+        <div className="grid gap-3 md:grid-cols-3">
+          {actions.map((a) => (
+            <button
+              key={a.tab}
+              onClick={() => go(a.tab)}
+              className="group rounded-xl border border-[var(--border)] bg-[var(--bg-elev)] p-5 text-left transition hover:border-[var(--accent)]"
+            >
+              <p className="font-medium text-[var(--text)]">{a.label}</p>
+              <p className="mt-1 text-sm text-muted">{a.hint}</p>
+              <span className="mt-3 inline-flex text-sm font-medium text-[var(--accent-ink)] opacity-0 transition group-hover:opacity-100">
+                Open →
+              </span>
+            </button>
+          ))}
         </div>
       </div>
 
-      {/* System Info */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="bg-white border border-gray-200 rounded-lg p-6">
-          <h3 className="font-semibold text-gray-900 mb-3">🔐 Security Status</h3>
-          <ul className="space-y-2 text-sm text-gray-600">
-            <li>✅ JWT Authentication Active</li>
-            <li>✅ Password Hashing Enabled</li>
-            <li>✅ HTTP-Only Cookies</li>
-            <li>✅ Audit Logging Active</li>
-            <li>✅ CSRF Protection Enabled</li>
+      {/* System */}
+      <div className="grid gap-4 md:grid-cols-2">
+        <div className="rounded-xl border border-[var(--border)] bg-[var(--bg-elev)] p-6">
+          <p className="eyebrow mb-3">Security</p>
+          <ul className="space-y-2 text-sm text-muted">
+            <li>Google sign-in, allow-listed admins only</li>
+            <li>Signed, HTTP-only session cookies</li>
+            <li>Every change written to the audit log</li>
+            <li>Server-side route protection on all admin APIs</li>
           </ul>
         </div>
-        <div className="bg-white border border-gray-200 rounded-lg p-6">
-          <h3 className="font-semibold text-gray-900 mb-3">📊 Database Info</h3>
-          <ul className="space-y-2 text-sm text-gray-600">
-            <li>📦 Database: SQLite (Development)</li>
-            <li>🔄 Migrations: Up to date</li>
-            <li>💾 ORM: Prisma</li>
-            <li>🌍 Ready for: PostgreSQL (Production)</li>
-            <li>📈 Auto-increment: Enabled</li>
+        <div className="rounded-xl border border-[var(--border)] bg-[var(--bg-elev)] p-6">
+          <p className="eyebrow mb-3">Platform</p>
+          <ul className="space-y-2 text-sm text-muted">
+            <li>PostgreSQL (Neon), isolated schema</li>
+            <li>Prisma ORM</li>
+            <li>Hosted on Vercel</li>
+            <li>Media stored on Vercel Blob</li>
           </ul>
         </div>
       </div>
 
-      {/* Refresh Notice */}
-      <div className="text-center text-xs text-gray-500 pt-4">
-        This dashboard refreshes automatically every 30 seconds
-      </div>
+      <p className="pt-2 text-center text-xs text-muted">Refreshes automatically every 30 seconds.</p>
     </div>
   )
 }

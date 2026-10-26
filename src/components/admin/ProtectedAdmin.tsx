@@ -3,6 +3,7 @@
 import { useEffect, useState, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import ThemeToggle from '@/components/ThemeToggle'
 
 interface AdminSession {
   id: string
@@ -55,10 +56,10 @@ export default function ProtectedAdmin({ children }: ProtectedAdminProps) {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <div className="min-h-screen bg-[var(--bg)] flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading...</p>
+          <p className="text-muted">Loading...</p>
         </div>
       </div>
     )
@@ -69,44 +70,65 @@ export default function ProtectedAdmin({ children }: ProtectedAdminProps) {
   }
 
   return (
-    <div>
+    <div className="min-h-screen bg-[var(--bg)]">
       {/* Admin Header */}
-      <header className="bg-white shadow-lg sticky top-0 z-40 border-b border-gray-200">
-        <div className="container mx-auto max-w-7xl px-6 py-4">
-          <div className="flex justify-between items-center">
-            <div>
-              <h1 className="text-3xl font-bold text-brand-600">RD IT Lab Admin</h1>
-              <p className="text-sm text-gray-600 mt-1">
-                Welcome, <span className="font-medium">{session.name || session.email}</span>
+      <header className="sticky top-0 z-40 border-b border-[var(--border)] bg-[var(--bg-elev)]/90 backdrop-blur">
+        <div className="container mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+          <div className="flex items-center gap-3">
+            <span className="flex h-9 w-9 items-center justify-center rounded-md bg-[var(--accent)] font-display text-sm font-semibold text-white">
+              RD
+            </span>
+            <div className="leading-tight">
+              <p className="font-display text-lg font-semibold tracking-tight text-[var(--text)]">
+                IT Lab <span className="text-[var(--accent)]">UK</span>
+                <span className="ml-2 align-middle text-xs font-normal uppercase tracking-[0.18em] text-muted">Studio</span>
+              </p>
+              <p className="text-xs text-muted">
+                Signed in as <span className="font-medium text-[var(--text)]">{session.name || session.email}</span>
               </p>
             </div>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <Link
+              href="/"
+              target="_blank"
+              className="hidden items-center gap-1.5 rounded-full border border-[var(--border)] px-4 py-2 text-sm font-medium text-[var(--text)] transition hover:border-[var(--border-strong)] sm:inline-flex"
+            >
+              View site
+              <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M9 7h8v8" />
+              </svg>
+            </Link>
+            <ThemeToggle />
             <div className="relative">
               <button
                 onClick={() => setShowLogout(!showLogout)}
-                className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 transition"
+                aria-label="Account menu"
+                className="flex items-center gap-2 rounded-full border border-[var(--border)] py-1 pl-1 pr-2 transition hover:border-[var(--border-strong)]"
               >
-                <div className="w-10 h-10 rounded-full bg-brand-600 flex items-center justify-center text-white font-bold">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[var(--accent)] text-sm font-semibold text-white">
                   {session.name?.charAt(0).toUpperCase() || session.email.charAt(0).toUpperCase()}
-                </div>
-                <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                </span>
+                <svg className="h-4 w-4 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
 
               {/* Logout Dropdown */}
               {showLogout && (
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden z-50">
+                <div className="absolute right-0 z-50 mt-2 w-52 overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--bg-elev)] shadow-card">
                   <Link
                     href="/"
-                    className="block px-4 py-3 text-gray-700 hover:bg-gray-50 border-b"
+                    className="block border-b border-[var(--border)] px-4 py-3 text-sm text-[var(--text)] transition hover:bg-[var(--bg)]"
                   >
-                    Back to Website
+                    Back to website
                   </Link>
                   <button
                     onClick={handleLogout}
-                    className="w-full text-left px-4 py-3 text-red-600 hover:bg-red-50 font-medium"
+                    className="w-full px-4 py-3 text-left text-sm font-medium text-[var(--accent)] transition hover:bg-[var(--accent-weak)]"
                   >
-                    Logout
+                    Sign out
                   </button>
                 </div>
               )}
@@ -116,7 +138,7 @@ export default function ProtectedAdmin({ children }: ProtectedAdminProps) {
       </header>
 
       {/* Main Content */}
-      <main className="bg-gray-100 min-h-[calc(100vh-80px)]">{children}</main>
+      <main className="min-h-[calc(100vh-80px)] bg-[var(--bg)]">{children}</main>
     </div>
   )
 }
