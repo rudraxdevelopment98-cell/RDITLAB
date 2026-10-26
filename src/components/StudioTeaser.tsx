@@ -3,56 +3,56 @@ import Reveal from './Reveal'
 import { BrowserMock } from './studio/BrowserMock'
 import type { ResolvedProject } from '@/lib/studio'
 
-const highlights = ['Custom websites & web apps', 'Fixed-scope plans from £299', 'Templates to start fast']
+const highlights = [
+  'AI agents & automation',
+  'Custom software & web apps',
+  'Websites & digitalization',
+]
 
 export default function StudioTeaser({ projects }: { projects: ResolvedProject[] }) {
-  const featured = (projects.filter((p) => p.featured).length ? projects.filter((p) => p.featured) : projects).slice(0, 3)
+  const featured = (projects.filter((p) => p.featured).length ? projects.filter((p) => p.featured) : projects).slice(0, 2)
 
   return (
-    <section className="relative overflow-hidden px-6 py-24 md:px-12">
-      <div className="aurora left-[-6%] top-[10%] h-80 w-80 animate-aurora" style={{ background: 'var(--aurora-1)' }} />
-      <div className="aurora right-[-6%] bottom-0 h-80 w-80 animate-aurora [animation-delay:5s]" style={{ background: 'var(--aurora-2)' }} />
-
-      <div className="container relative z-10 mx-auto max-w-7xl">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
+    <section className="relative px-6 py-24 md:px-12">
+      <div className="container mx-auto max-w-6xl">
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
-            <p className="mb-3 eyebrow">web &amp; software studio</p>
-            <h2 className="font-display text-4xl font-bold leading-tight text-[var(--text)] md:text-5xl">
-              We don&apos;t just fix tech — <span className="text-gradient-brand">we build it.</span>
+            <p className="eyebrow">Web &amp; Software Studio</p>
+            <h2 className="mt-5 font-display text-4xl font-semibold leading-tight text-[var(--text)] md:text-5xl">
+              We don&apos;t just fix tech — <span className="text-[var(--accent)]">we build it.</span>
             </h2>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">
-              Beautiful, fast websites and custom software for your business. Browse our plans, live demos, and ready-made templates.
+              Custom software, AI and automation for your business — plus the websites and systems that bring it
+              all together. See our work and plans.
             </p>
             <ul className="mt-8 space-y-3">
               {highlights.map((h) => (
                 <li key={h} className="flex items-center gap-3 text-[var(--text)]">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-brand-500 to-brand-400 text-white">
-                    <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </span>
+                  <svg className="h-4 w-4 flex-shrink-0 text-[var(--accent)]" fill="none" stroke="currentColor" strokeWidth={2.4} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
                   {h}
                 </li>
               ))}
             </ul>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link href="/web-development" className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-brand-600 to-brand-600 px-8 py-4 text-base font-semibold text-white shadow-brand transition hover:shadow-glow active:scale-95">
+            <div className="mt-9 flex flex-wrap items-center gap-6">
+              <Link href="/web-development" className="inline-flex items-center gap-2 rounded-full bg-[var(--accent)] px-7 py-3.5 text-base font-semibold text-white transition hover:bg-[var(--accent-ink)]">
                 Explore Web &amp; Software
               </Link>
-              <Link href="/web-development#plans" className="glass glass-edge inline-flex items-center justify-center rounded-full px-8 py-4 text-base font-semibold text-[var(--text)] transition hover:scale-[1.02]">
-                View plans
+              <Link href="/web-development#plans" className="group inline-flex items-center gap-2 text-base font-semibold text-[var(--text)]">
+                <span className="border-b border-[var(--border-strong)] pb-0.5 transition group-hover:border-[var(--accent)]">View plans</span>
               </Link>
             </div>
           </Reveal>
 
-          <Reveal delay={120} className="grid gap-4 sm:grid-cols-2">
-            {featured.map((project, i) => (
-              <div key={project.id} className={`glass glass-edge rounded-2xl p-3 ${i === 0 ? 'sm:col-span-2' : ''}`}>
+          <Reveal delay={120} className="space-y-5">
+            {featured.map((project) => (
+              <Link key={project.id} href={`/web-development/${project.id}`} className="block rounded-2xl border border-[var(--border)] bg-[var(--bg-elev)] p-3 shadow-card transition hover:-translate-y-0.5 hover:shadow-card-hover">
                 <BrowserMock label={project.name} gradient={project.gradient} image={project.image} />
                 <p className="mt-3 px-1 text-sm text-muted">
                   <span className="font-semibold text-[var(--text)]">{project.name}</span> · {project.category}
                 </p>
-              </div>
+              </Link>
             ))}
           </Reveal>
         </div>
