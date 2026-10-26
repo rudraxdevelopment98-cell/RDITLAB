@@ -169,17 +169,17 @@ export default function ProjectsManager() {
 
   return (
     <div className="space-y-6">
-      <div className="rounded-lg bg-white p-6 shadow-lg">
-        <h2 className="mb-1 text-2xl font-bold text-brand-600">🚀 Portfolio Projects</h2>
-        <p className="mb-4 text-sm text-gray-500">
-          Manage the website demos shown on the Web &amp; Software page and homepage.
+      <div className="rounded-2xl border border-[var(--border)] bg-[var(--bg-elev)] p-6 shadow-card">
+        <h2 className="font-display text-2xl font-semibold tracking-tight text-[var(--text)]">Selected work</h2>
+        <p className="mb-5 mt-1 text-sm text-muted">
+          The builds shown on the Web &amp; Software page and homepage. Add real, shippable work here.
         </p>
 
         {error && (
-          <div className="mb-4 rounded border border-red-400 bg-red-100 p-3 text-red-700">{error}</div>
+          <div className="mb-4 rounded-lg border border-[var(--accent)]/40 bg-[var(--accent-weak)] p-3 text-sm text-[var(--accent-ink)]">{error}</div>
         )}
 
-        <form onSubmit={submit} className="mb-6 grid gap-4 rounded-lg border border-gray-200 bg-gray-50 p-4">
+        <form onSubmit={submit} className="mb-6 grid gap-4 rounded-lg border border-[var(--border)] bg-[var(--bg)] p-4">
           <div className="grid gap-4 md:grid-cols-2">
             <Field label="Project name *">
               <input className={input} value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="e.g. Lumina Café" />
@@ -194,8 +194,8 @@ export default function ProjectsManager() {
           </Field>
 
           {/* Case study: full overview + presentation */}
-          <div className="rounded-lg border border-brand-200 bg-brand-50/50 p-4">
-            <p className="mb-3 text-sm font-semibold text-brand-700">Case study (optional)</p>
+          <div className="rounded-lg border border-[var(--border)] bg-[var(--bg)] p-4">
+            <p className="mb-3 text-sm font-semibold text-[var(--accent-ink)]">Case study (optional)</p>
             <Field label="Full overview">
               <textarea className={input} rows={5} value={form.overview} onChange={(e) => setForm({ ...form, overview: e.target.value })} placeholder="The full project story — problem, what you built, results. Blank lines separate paragraphs." />
             </Field>
@@ -204,14 +204,14 @@ export default function ProjectsManager() {
                 <input className={input} value={form.presentationType === 'file' ? '' : form.presentationUrl} onChange={(e) => setForm({ ...form, presentationUrl: e.target.value, presentationType: e.target.value ? 'link' : '' })} placeholder="https://docs.google.com/presentation/..." />
               </Field>
               <Field label="…or upload a file (PDF / PPT)">
-                <input type="file" accept=".pdf,.ppt,.pptx,application/pdf" onChange={uploadPresentation} disabled={uploadingDeck} className="w-full rounded-lg border border-gray-300 px-3 py-2" />
-                {uploadingDeck && <span className="text-sm text-blue-600">Uploading…</span>}
+                <input type="file" accept=".pdf,.ppt,.pptx,application/pdf" onChange={uploadPresentation} disabled={uploadingDeck} className="w-full rounded-lg border border-[var(--border)] px-3 py-2" />
+                {uploadingDeck && <span className="text-sm text-[var(--accent-ink)]">Uploading…</span>}
               </Field>
             </div>
             {form.presentationUrl && (
-              <p className="mt-2 text-xs text-gray-600">
-                Attached ({form.presentationType}): <a href={form.presentationUrl} target="_blank" rel="noopener noreferrer" className="text-brand-700 underline">view</a>{' '}
-                <button type="button" onClick={() => setForm({ ...form, presentationUrl: '', presentationType: '' })} className="ml-2 text-red-600 underline">remove</button>
+              <p className="mt-2 text-xs text-muted">
+                Attached ({form.presentationType}): <a href={form.presentationUrl} target="_blank" rel="noopener noreferrer" className="text-[var(--accent-ink)] underline">view</a>{' '}
+                <button type="button" onClick={() => setForm({ ...form, presentationUrl: '', presentationType: '' })} className="ml-2 text-muted underline hover:text-[var(--text)]">remove</button>
               </p>
             )}
           </div>
@@ -228,13 +228,13 @@ export default function ProjectsManager() {
           <div className="grid gap-4 md:grid-cols-2">
             <div>
               <GradientPicker value={form.gradient} onChange={(g) => setForm({ ...form, gradient: g })} />
-              <p className="mt-2 text-xs text-gray-500">Used when no thumbnail image is set.</p>
+              <p className="mt-2 text-xs text-muted">Used when no thumbnail image is set.</p>
             </div>
             <Field label="Thumbnail image (optional)">
-              <input type="file" accept="image/*" onChange={upload} disabled={uploading} className="w-full rounded-lg border border-gray-300 px-3 py-2" />
-              {uploading && <span className="text-sm text-blue-600">Uploading…</span>}
+              <input type="file" accept="image/*" onChange={upload} disabled={uploading} className="w-full rounded-lg border border-[var(--border)] px-3 py-2" />
+              {uploading && <span className="text-sm text-[var(--accent-ink)]">Uploading…</span>}
               {form.image && (
-                <button type="button" onClick={() => setForm({ ...form, image: '' })} className="mt-1 text-xs text-red-600 underline">
+                <button type="button" onClick={() => setForm({ ...form, image: '' })} className="mt-1 text-xs text-muted underline hover:text-[var(--text)]">
                   Remove image
                 </button>
               )}
@@ -245,11 +245,11 @@ export default function ProjectsManager() {
             <Field label="Order">
               <input type="number" className={input} value={form.order} onChange={(e) => setForm({ ...form, order: Number(e.target.value) })} />
             </Field>
-            <label className="flex items-center gap-2 pt-8 text-sm font-medium text-gray-700">
+            <label className="flex items-center gap-2 pt-8 text-sm font-medium text-muted">
               <input type="checkbox" checked={form.featured} onChange={(e) => setForm({ ...form, featured: e.target.checked })} />
               Featured (shown on homepage)
             </label>
-            <label className="flex items-center gap-2 pt-8 text-sm font-medium text-gray-700">
+            <label className="flex items-center gap-2 pt-8 text-sm font-medium text-muted">
               <input type="checkbox" checked={form.active} onChange={(e) => setForm({ ...form, active: e.target.checked })} />
               Active (visible on site)
             </label>
@@ -257,18 +257,18 @@ export default function ProjectsManager() {
 
           {/* Live preview */}
           <div>
-            <p className="mb-2 text-sm font-medium text-gray-700">Live preview</p>
+            <p className="mb-2 text-sm font-medium text-muted">Live preview</p>
             <div className="max-w-xs">
               <BrowserMock label={form.name || 'Preview'} gradient={form.gradient} image={form.image || null} />
             </div>
           </div>
 
           <div className="flex gap-2">
-            <button type="submit" className="flex-1 rounded-lg bg-brand-600 px-4 py-2 text-white transition hover:bg-brand-700">
+            <button type="submit" className="flex-1 rounded-full bg-[var(--accent)] px-4 py-2.5 font-semibold text-white transition hover:bg-[var(--accent-ink)]">
               {editingId ? 'Update' : 'Add'} project
             </button>
             {editingId && (
-              <button type="button" onClick={reset} className="flex-1 rounded-lg bg-gray-400 px-4 py-2 text-white transition hover:bg-gray-500">
+              <button type="button" onClick={reset} className="flex-1 rounded-full border border-[var(--border)] px-4 py-2.5 font-medium text-[var(--text)] transition hover:border-[var(--border-strong)]">
                 Cancel
               </button>
             )}
@@ -276,26 +276,26 @@ export default function ProjectsManager() {
         </form>
 
         {isLoading ? (
-          <div className="py-8 text-center text-gray-500">Loading…</div>
+          <div className="py-8 text-center text-muted">Loading…</div>
         ) : items.length === 0 ? (
-          <div className="py-8 text-center text-gray-500">No projects yet — add your first above.</div>
+          <div className="py-8 text-center text-muted">No projects yet — add your first above.</div>
         ) : (
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {items.map((p) => (
-              <div key={p.id} className={`overflow-hidden rounded-lg border transition ${editingId === p.id ? 'border-brand-600 bg-brand-50' : 'border-gray-200'} ${!p.active ? 'opacity-60' : ''}`}>
+              <div key={p.id} className={`overflow-hidden rounded-xl border transition ${editingId === p.id ? 'border-[var(--accent)] ring-1 ring-[var(--accent)]' : 'border-[var(--border)]'} ${!p.active ? 'opacity-60' : ''}`}>
                 <BrowserMock label={p.name} gradient={p.gradient} image={p.image} />
                 <div className="p-4">
                   <div className="mb-1 flex items-center gap-2">
-                    <h3 className="font-semibold text-gray-900">{p.name}</h3>
-                    {p.featured && <span className="rounded bg-brand-100 px-1.5 py-0.5 text-xs text-brand-700">Featured</span>}
-                    {!p.active && <span className="rounded bg-gray-200 px-1.5 py-0.5 text-xs text-gray-600">Hidden</span>}
+                    <h3 className="font-semibold text-[var(--text)]">{p.name}</h3>
+                    {p.featured && <span className="rounded-full bg-[var(--accent-weak)] px-2 py-0.5 text-xs font-medium text-[var(--accent-ink)]">Featured</span>}
+                    {!p.active && <span className="rounded-full border border-[var(--border)] px-2 py-0.5 text-xs text-muted">Hidden</span>}
                   </div>
-                  <p className="mb-2 text-xs font-medium text-gray-500">{p.category}</p>
-                  <p className="mb-3 line-clamp-2 text-sm text-gray-700">{p.description}</p>
+                  <p className="mb-2 text-xs font-medium uppercase tracking-wide text-muted">{p.category}</p>
+                  <p className="mb-3 line-clamp-2 text-sm text-muted">{p.description}</p>
                   <div className="flex flex-wrap gap-2">
-                    <button onClick={() => edit(p)} className="rounded bg-blue-500 px-3 py-1 text-sm text-white hover:bg-blue-600">Edit</button>
-                    <button onClick={() => toggleActive(p)} className="rounded bg-gray-500 px-3 py-1 text-sm text-white hover:bg-gray-600">{p.active ? 'Hide' : 'Show'}</button>
-                    <button onClick={() => remove(p.id)} className="rounded bg-red-500 px-3 py-1 text-sm text-white hover:bg-red-600">Delete</button>
+                    <button onClick={() => edit(p)} className="rounded-full bg-[var(--accent)] px-3 py-1 text-sm font-medium text-white transition hover:bg-[var(--accent-ink)]">Edit</button>
+                    <button onClick={() => toggleActive(p)} className="rounded-full border border-[var(--border)] px-3 py-1 text-sm font-medium text-[var(--text)] transition hover:border-[var(--border-strong)]">{p.active ? 'Hide' : 'Show'}</button>
+                    <button onClick={() => remove(p.id)} className="rounded-full px-3 py-1 text-sm font-medium text-muted transition hover:text-[var(--accent-ink)]">Delete</button>
                   </div>
                 </div>
               </div>
@@ -307,12 +307,12 @@ export default function ProjectsManager() {
   )
 }
 
-const input = 'w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500'
+const input = 'w-full rounded-lg border border-[var(--border)] px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500'
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
-      <label className="mb-2 block text-sm font-medium text-gray-700">{label}</label>
+      <label className="mb-2 block text-sm font-medium text-muted">{label}</label>
       {children}
     </div>
   )

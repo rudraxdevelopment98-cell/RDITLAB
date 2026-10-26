@@ -89,14 +89,14 @@ export default function TestimonialsManager() {
 
   return (
     <div className="space-y-6">
-      <div className="rounded-lg bg-white p-6 shadow-lg">
-        <h2 className="mb-1 text-2xl font-bold text-brand-600">💬 Testimonials</h2>
-        <p className="mb-4 text-sm text-gray-500">
+      <div className="rounded-2xl border border-[var(--border)] bg-[var(--bg-elev)] p-6 shadow-card">
+        <h2 className="font-display text-2xl font-semibold tracking-tight text-[var(--text)]">Testimonials</h2>
+        <p className="mb-4 text-sm text-muted">
           Manage reviews shown on the site. {pending > 0 && <span className="font-semibold text-amber-600">{pending} awaiting approval.</span>}
         </p>
-        {error && <div className="mb-4 rounded border border-red-400 bg-red-100 p-3 text-red-700">{error}</div>}
+        {error && <div className="mb-4 rounded-lg border border-[var(--accent)]/40 bg-[var(--accent-weak)] p-3 text-sm text-[var(--accent-ink)]">{error}</div>}
 
-        <form onSubmit={submit} className="mb-6 grid gap-4 rounded-lg border border-gray-200 bg-gray-50 p-4">
+        <form onSubmit={submit} className="mb-6 grid gap-4 rounded-lg border border-[var(--border)] bg-[var(--bg)] p-4">
           <div className="grid gap-4 md:grid-cols-3">
             <F label="Name *"><input className={inp} value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Client name" /></F>
             <F label="Role"><input className={inp} value={form.role} onChange={(e) => setForm({ ...form, role: e.target.value })} placeholder="Owner" /></F>
@@ -110,8 +110,8 @@ export default function TestimonialsManager() {
               </select>
             </F>
             <F label="Photo / logo (optional)">
-              <input type="file" accept="image/*" onChange={upload} disabled={uploading} className="w-full rounded-lg border border-gray-300 px-3 py-2" />
-              {uploading && <span className="text-sm text-blue-600">Uploading…</span>}
+              <input type="file" accept="image/*" onChange={upload} disabled={uploading} className="w-full rounded-lg border border-[var(--border)] px-3 py-2" />
+              {uploading && <span className="text-sm text-[var(--accent-ink)]">Uploading…</span>}
               {form.photo && <img src={form.photo} alt="" className="mt-1 h-12 w-12 rounded-full object-cover" />}
             </F>
           </div>
@@ -123,30 +123,30 @@ export default function TestimonialsManager() {
           </div>
           <div className="flex gap-2">
             <button type="submit" className="flex-1 rounded-lg bg-brand-600 px-4 py-2 text-white hover:bg-brand-700">{editingId ? 'Update' : 'Add'} testimonial</button>
-            {editingId && <button type="button" onClick={reset} className="flex-1 rounded-lg bg-gray-400 px-4 py-2 text-white hover:bg-gray-500">Cancel</button>}
+            {editingId && <button type="button" onClick={reset} className="flex-1 rounded-full border border-[var(--border)] px-4 py-2 font-medium text-[var(--text)] transition hover:border-[var(--border-strong)]">Cancel</button>}
           </div>
         </form>
 
-        {loading ? <div className="py-8 text-center text-gray-500">Loading…</div> : items.length === 0 ? (
-          <div className="py-8 text-center text-gray-500">No testimonials yet.</div>
+        {loading ? <div className="py-8 text-center text-muted">Loading…</div> : items.length === 0 ? (
+          <div className="py-8 text-center text-muted">No testimonials yet.</div>
         ) : (
           <div className="grid gap-4 md:grid-cols-2">
             {items.map((t) => (
-              <div key={t.id} className={`rounded-lg border p-4 ${editingId === t.id ? 'border-brand-600 bg-brand-50' : 'border-gray-200'} ${!t.active ? 'opacity-60' : ''}`}>
+              <div key={t.id} className={`rounded-lg border p-4 ${editingId === t.id ? 'border-[var(--accent)] ring-1 ring-[var(--accent)]' : 'border-[var(--border)]'} ${!t.active ? 'opacity-60' : ''}`}>
                 <div className="mb-1 flex flex-wrap items-center gap-2">
-                  <h3 className="font-semibold text-gray-900">{t.name}</h3>
+                  <h3 className="font-semibold text-[var(--text)]">{t.name}</h3>
                   <span className="text-amber-500">{'★'.repeat(t.rating)}</span>
-                  {t.source === 'visitor' && <span className="rounded bg-blue-100 px-1.5 py-0.5 text-xs text-blue-700">Visitor</span>}
+                  {t.source === 'visitor' && <span className="rounded-full bg-[var(--accent-weak)] px-2 py-0.5 text-xs font-medium text-[var(--accent-ink)]">Visitor</span>}
                   {!t.approved && <span className="rounded bg-amber-100 px-1.5 py-0.5 text-xs text-amber-700">Pending</span>}
                   {t.featured && <span className="rounded bg-brand-100 px-1.5 py-0.5 text-xs text-brand-700">Featured</span>}
                 </div>
-                {(t.role || t.company) && <p className="mb-1 text-xs text-gray-500">{[t.role, t.company].filter(Boolean).join(' · ')}</p>}
-                <p className="mb-3 line-clamp-3 text-sm text-gray-700">“{t.quote}”</p>
+                {(t.role || t.company) && <p className="mb-1 text-xs text-muted">{[t.role, t.company].filter(Boolean).join(' · ')}</p>}
+                <p className="mb-3 line-clamp-3 text-sm text-muted">“{t.quote}”</p>
                 <div className="flex flex-wrap gap-2">
-                  {!t.approved && <button onClick={() => patch(t.id, { approved: true })} className="rounded bg-green-600 px-3 py-1 text-sm text-white hover:bg-green-700">Approve</button>}
-                  {t.approved && <button onClick={() => patch(t.id, { approved: false })} className="rounded bg-gray-500 px-3 py-1 text-sm text-white hover:bg-gray-600">Unapprove</button>}
-                  <button onClick={() => edit(t)} className="rounded bg-blue-500 px-3 py-1 text-sm text-white hover:bg-blue-600">Edit</button>
-                  <button onClick={() => remove(t.id)} className="rounded bg-red-500 px-3 py-1 text-sm text-white hover:bg-red-600">Delete</button>
+                  {!t.approved && <button onClick={() => patch(t.id, { approved: true })} className="rounded-full bg-[var(--accent)] px-3 py-1 text-sm font-medium text-white transition hover:bg-[var(--accent-ink)]">Approve</button>}
+                  {t.approved && <button onClick={() => patch(t.id, { approved: false })} className="rounded-full border border-[var(--border)] px-3 py-1 text-sm font-medium text-[var(--text)] transition hover:border-[var(--border-strong)]">Unapprove</button>}
+                  <button onClick={() => edit(t)} className="rounded-full bg-[var(--accent)] px-3 py-1 text-sm font-medium text-white transition hover:bg-[var(--accent-ink)]">Edit</button>
+                  <button onClick={() => remove(t.id)} className="rounded-full px-3 py-1 text-sm font-medium text-muted transition hover:text-[var(--accent-ink)]">Delete</button>
                 </div>
               </div>
             ))}
@@ -157,10 +157,10 @@ export default function TestimonialsManager() {
   )
 }
 
-const inp = 'w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500'
+const inp = 'w-full rounded-lg border border-[var(--border)] px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500'
 function F({ label, children }: { label: string; children: React.ReactNode }) {
-  return <div><label className="mb-2 block text-sm font-medium text-gray-700">{label}</label>{children}</div>
+  return <div><label className="mb-2 block text-sm font-medium text-muted">{label}</label>{children}</div>
 }
 function Chk({ label, v, on }: { label: string; v: boolean; on: (v: boolean) => void }) {
-  return <label className="flex items-center gap-2 pt-8 text-sm font-medium text-gray-700"><input type="checkbox" checked={v} onChange={(e) => on(e.target.checked)} />{label}</label>
+  return <label className="flex items-center gap-2 pt-8 text-sm font-medium text-muted"><input type="checkbox" checked={v} onChange={(e) => on(e.target.checked)} />{label}</label>
 }

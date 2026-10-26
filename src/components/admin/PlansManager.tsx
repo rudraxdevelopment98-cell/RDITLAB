@@ -115,13 +115,13 @@ export default function PlansManager() {
 
   return (
     <div className="space-y-6">
-      <div className="rounded-lg bg-white p-6 shadow-lg">
-        <h2 className="mb-1 text-2xl font-bold text-brand-600">💷 Pricing Plans</h2>
-        <p className="mb-4 text-sm text-gray-500">Manage the plans shown on the Web &amp; Software page.</p>
+      <div className="rounded-2xl border border-[var(--border)] bg-[var(--bg-elev)] p-6 shadow-card">
+        <h2 className="font-display text-2xl font-semibold tracking-tight text-[var(--text)]">Plans &amp; pricing</h2>
+        <p className="mb-4 text-sm text-muted">Manage the plans shown on the Web &amp; Software page.</p>
 
-        {error && <div className="mb-4 rounded border border-red-400 bg-red-100 p-3 text-red-700">{error}</div>}
+        {error && <div className="mb-4 rounded-lg border border-[var(--accent)]/40 bg-[var(--accent-weak)] p-3 text-sm text-[var(--accent-ink)]">{error}</div>}
 
-        <form onSubmit={submit} className="mb-6 grid gap-4 rounded-lg border border-gray-200 bg-gray-50 p-4">
+        <form onSubmit={submit} className="mb-6 grid gap-4 rounded-lg border border-[var(--border)] bg-[var(--bg)] p-4">
           <div className="grid gap-4 md:grid-cols-2">
             <Field label="Plan name *">
               <input className={input} value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="e.g. Business" />
@@ -151,11 +151,11 @@ export default function PlansManager() {
             <Field label="Order">
               <input type="number" className={input} value={form.order} onChange={(e) => setForm({ ...form, order: Number(e.target.value) })} />
             </Field>
-            <label className="flex items-center gap-2 pt-8 text-sm font-medium text-gray-700">
+            <label className="flex items-center gap-2 pt-8 text-sm font-medium text-muted">
               <input type="checkbox" checked={form.popular} onChange={(e) => setForm({ ...form, popular: e.target.checked })} />
               Most popular (highlighted)
             </label>
-            <label className="flex items-center gap-2 pt-8 text-sm font-medium text-gray-700">
+            <label className="flex items-center gap-2 pt-8 text-sm font-medium text-muted">
               <input type="checkbox" checked={form.active} onChange={(e) => setForm({ ...form, active: e.target.checked })} />
               Active (visible on site)
             </label>
@@ -166,7 +166,7 @@ export default function PlansManager() {
               {editingId ? 'Update' : 'Add'} plan
             </button>
             {editingId && (
-              <button type="button" onClick={reset} className="flex-1 rounded-lg bg-gray-400 px-4 py-2 text-white transition hover:bg-gray-500">
+              <button type="button" onClick={reset} className="flex-1 rounded-full border border-[var(--border)] px-4 py-2 font-medium text-[var(--text)] transition hover:border-[var(--border-strong)]">
                 Cancel
               </button>
             )}
@@ -174,29 +174,29 @@ export default function PlansManager() {
         </form>
 
         {isLoading ? (
-          <div className="py-8 text-center text-gray-500">Loading…</div>
+          <div className="py-8 text-center text-muted">Loading…</div>
         ) : items.length === 0 ? (
-          <div className="py-8 text-center text-gray-500">No plans yet — add your first above.</div>
+          <div className="py-8 text-center text-muted">No plans yet — add your first above.</div>
         ) : (
           <div className="grid gap-4 md:grid-cols-3">
             {items.map((p) => (
-              <div key={p.id} className={`rounded-lg border p-5 transition ${editingId === p.id ? 'border-brand-600 bg-brand-50' : 'border-gray-200'} ${!p.active ? 'opacity-60' : ''}`}>
+              <div key={p.id} className={`rounded-lg border p-5 transition ${editingId === p.id ? 'border-[var(--accent)] ring-1 ring-[var(--accent)]' : 'border-[var(--border)]'} ${!p.active ? 'opacity-60' : ''}`}>
                 <div className="mb-1 flex items-center gap-2">
-                  <h3 className="text-lg font-semibold text-gray-900">{p.name}</h3>
+                  <h3 className="text-lg font-semibold text-[var(--text)]">{p.name}</h3>
                   {p.popular && <span className="rounded bg-brand-100 px-1.5 py-0.5 text-xs text-brand-700">Popular</span>}
-                  {!p.active && <span className="rounded bg-gray-200 px-1.5 py-0.5 text-xs text-gray-600">Hidden</span>}
+                  {!p.active && <span className="rounded-full border border-[var(--border)] px-2 py-0.5 text-xs text-muted">Hidden</span>}
                 </div>
-                <p className="text-xl font-bold text-brand-600">{p.price} <span className="text-sm font-normal text-gray-500">{p.period}</span></p>
-                <p className="mb-2 mt-1 text-sm text-gray-600">{p.tagline}</p>
-                <ul className="mb-3 space-y-1 text-sm text-gray-700">
+                <p className="text-xl font-semibold text-[var(--text)]">{p.price} <span className="text-sm font-normal text-muted">{p.period}</span></p>
+                <p className="mb-2 mt-1 text-sm text-muted">{p.tagline}</p>
+                <ul className="mb-3 space-y-1 text-sm text-muted">
                   {p.features.split('\n').filter(Boolean).slice(0, 4).map((f, i) => (
                     <li key={i}>• {f}</li>
                   ))}
                 </ul>
                 <div className="flex flex-wrap gap-2">
-                  <button onClick={() => edit(p)} className="rounded bg-blue-500 px-3 py-1 text-sm text-white hover:bg-blue-600">Edit</button>
-                  <button onClick={() => toggleActive(p)} className="rounded bg-gray-500 px-3 py-1 text-sm text-white hover:bg-gray-600">{p.active ? 'Hide' : 'Show'}</button>
-                  <button onClick={() => remove(p.id)} className="rounded bg-red-500 px-3 py-1 text-sm text-white hover:bg-red-600">Delete</button>
+                  <button onClick={() => edit(p)} className="rounded-full bg-[var(--accent)] px-3 py-1 text-sm font-medium text-white transition hover:bg-[var(--accent-ink)]">Edit</button>
+                  <button onClick={() => toggleActive(p)} className="rounded-full border border-[var(--border)] px-3 py-1 text-sm font-medium text-[var(--text)] transition hover:border-[var(--border-strong)]">{p.active ? 'Hide' : 'Show'}</button>
+                  <button onClick={() => remove(p.id)} className="rounded-full px-3 py-1 text-sm font-medium text-muted transition hover:text-[var(--accent-ink)]">Delete</button>
                 </div>
               </div>
             ))}
@@ -207,12 +207,12 @@ export default function PlansManager() {
   )
 }
 
-const input = 'w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500'
+const input = 'w-full rounded-lg border border-[var(--border)] px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500'
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
-      <label className="mb-2 block text-sm font-medium text-gray-700">{label}</label>
+      <label className="mb-2 block text-sm font-medium text-muted">{label}</label>
       {children}
     </div>
   )

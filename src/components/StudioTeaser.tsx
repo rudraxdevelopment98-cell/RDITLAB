@@ -46,14 +46,37 @@ export default function StudioTeaser({ projects }: { projects: ResolvedProject[]
           </Reveal>
 
           <Reveal delay={120} className="space-y-5">
-            {featured.map((project) => (
-              <Link key={project.id} href={`/web-development/${project.id}`} className="block rounded-2xl border border-[var(--border)] bg-[var(--bg-elev)] p-3 shadow-card transition hover:-translate-y-0.5 hover:shadow-card-hover">
-                <BrowserMock label={project.name} gradient={project.gradient} image={project.image} />
-                <p className="mt-3 px-1 text-sm text-muted">
-                  <span className="font-semibold text-[var(--text)]">{project.name}</span> · {project.category}
-                </p>
-              </Link>
-            ))}
+            {featured.length > 0 ? (
+              featured.map((project) => (
+                <Link key={project.id} href={`/web-development/${project.id}`} className="block rounded-2xl border border-[var(--border)] bg-[var(--bg-elev)] p-3 shadow-card transition hover:-translate-y-0.5 hover:shadow-card-hover">
+                  <BrowserMock label={project.name} gradient={project.gradient} image={project.image} />
+                  <p className="mt-3 px-1 text-sm text-muted">
+                    <span className="font-semibold text-[var(--text)]">{project.name}</span> · {project.category}
+                  </p>
+                </Link>
+              ))
+            ) : (
+              <div className="rounded-2xl border border-[var(--border)] bg-[var(--bg-elev)] p-8 shadow-card">
+                <p className="eyebrow">How we work</p>
+                <div className="mt-5 space-y-5">
+                  {[
+                    ['Discovery', 'We map the problem, the users and the outcome before writing a line of code.'],
+                    ['Build', 'Software, AI and automation shipped on a modern, secure stack.'],
+                    ['Run & improve', 'We deploy, measure and keep improving — support included.'],
+                  ].map(([title, body], i) => (
+                    <div key={title} className="flex gap-4">
+                      <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full border border-[var(--border)] font-display text-sm font-semibold text-[var(--accent)]">
+                        {i + 1}
+                      </span>
+                      <div>
+                        <p className="font-semibold text-[var(--text)]">{title}</p>
+                        <p className="mt-0.5 text-sm text-muted">{body}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </Reveal>
         </div>
       </div>

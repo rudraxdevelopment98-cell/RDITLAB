@@ -73,27 +73,23 @@ export default function AuditLogViewer() {
 
   const getActionColor = (action: string) => {
     switch (action) {
-      case 'CREATE':
-        return 'bg-green-100 text-green-800'
-      case 'UPDATE':
-        return 'bg-blue-100 text-blue-800'
       case 'DELETE':
-        return 'bg-red-100 text-red-800'
+        return 'bg-[var(--accent-weak)] text-[var(--accent-ink)] border border-[var(--accent)]/30'
       default:
-        return 'bg-gray-100 text-gray-800'
+        return 'bg-[var(--bg)] text-[var(--text)] border border-[var(--border)]'
     }
   }
 
-  const getActionIcon = (action: string) => {
+  const getActionDot = (action: string) => {
     switch (action) {
       case 'CREATE':
-        return '✨'
+        return 'bg-[var(--accent)]'
       case 'UPDATE':
-        return '✏️'
+        return 'bg-[var(--text)]'
       case 'DELETE':
-        return '🗑️'
+        return 'bg-[var(--accent-ink)]'
       default:
-        return '📝'
+        return 'bg-muted'
     }
   }
 
@@ -108,9 +104,9 @@ export default function AuditLogViewer() {
 
   if (isLoading && logs.length === 0) {
     return (
-      <div className="py-8 text-center">
-        <div className="inline-block animate-spin">⏳</div>
-        <p className="text-gray-600 mt-2">Loading audit logs...</p>
+      <div className="py-16 text-center">
+        <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-[var(--border)] border-t-[var(--accent)]" />
+        <p className="mt-3 text-sm text-muted">Loading activity…</p>
       </div>
     )
   }
@@ -118,11 +114,11 @@ export default function AuditLogViewer() {
   return (
     <div className="space-y-6">
       {/* Filters */}
-      <div className="bg-white p-4 rounded-lg border border-gray-200">
-        <h3 className="font-semibold text-gray-900 mb-4">Filters</h3>
+      <div className="bg-[var(--bg-elev)] p-4 rounded-lg border border-[var(--border)]">
+        <h3 className="font-semibold text-[var(--text)] mb-4">Filters</h3>
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-muted mb-2">
               Action
             </label>
             <select
@@ -131,7 +127,7 @@ export default function AuditLogViewer() {
                 setFilterAction(e.target.value)
                 setCurrentPage(1)
               }}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500"
+              className="w-full px-3 py-2 border border-[var(--border)] rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500"
             >
               {actions.map((action) => (
                 <option key={action} value={action === 'ALL' ? '' : action}>
@@ -141,7 +137,7 @@ export default function AuditLogViewer() {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-muted mb-2">
               Entity
             </label>
             <select
@@ -150,7 +146,7 @@ export default function AuditLogViewer() {
                 setFilterEntity(e.target.value)
                 setCurrentPage(1)
               }}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500"
+              className="w-full px-3 py-2 border border-[var(--border)] rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500"
             >
               <option value="">All Entities</option>
               {entities.map((entity) => (
@@ -165,7 +161,7 @@ export default function AuditLogViewer() {
 
       {/* Error Message */}
       {error && (
-        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+        <div className="rounded-lg border border-[var(--accent)]/40 bg-[var(--accent-weak)] px-4 py-3 text-sm text-[var(--accent-ink)]">
           {error}
         </div>
       )}
@@ -174,56 +170,56 @@ export default function AuditLogViewer() {
       {logs.length > 0 ? (
         <div className="space-y-3">
           {logs.map((log) => (
-            <div key={log.id} className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition">
+            <div key={log.id} className="bg-[var(--bg-elev)] border border-[var(--border)] rounded-lg overflow-hidden hover:shadow-md transition">
               {/* Header Row */}
               <button
                 onClick={() => setExpandedId(expandedId === log.id ? null : log.id)}
-                className="w-full px-4 py-3 flex items-center justify-between hover:bg-gray-50 transition"
+                className="w-full px-4 py-3 flex items-center justify-between hover:bg-[var(--bg)] transition"
               >
                 <div className="flex items-center gap-4 text-left flex-1">
-                  <span className="text-2xl">{getActionIcon(log.action)}</span>
+                  <span className={`h-2.5 w-2.5 flex-shrink-0 rounded-full ${getActionDot(log.action)}`} />
                   <div className="flex-1">
                     <div className="flex items-center gap-2">
-                      <span className={`text-xs font-bold px-2 py-1 rounded ${getActionColor(log.action)}`}>
+                      <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${getActionColor(log.action)}`}>
                         {log.action}
                       </span>
-                      <span className="text-sm font-medium text-gray-900">
+                      <span className="text-sm font-medium text-[var(--text)]">
                         {log.entity}
                       </span>
-                      <span className="text-xs text-gray-500">
+                      <span className="text-xs text-muted">
                         ID: {log.entityId.slice(0, 8)}...
                       </span>
                     </div>
-                    <div className="mt-1 text-xs text-gray-600">
+                    <div className="mt-1 text-xs text-muted">
                       by <strong>{log.admin.name || log.admin.email}</strong> on{' '}
                       {formatDate(log.createdAt)}
                     </div>
                   </div>
                 </div>
-                <span className="text-gray-400 text-lg">
+                <span className="text-muted text-lg">
                   {expandedId === log.id ? '▼' : '▶'}
                 </span>
               </button>
 
               {/* Expanded Details */}
               {expandedId === log.id && (
-                <div className="bg-gray-50 border-t border-gray-200 px-4 py-3 space-y-3">
+                <div className="bg-[var(--bg)] border-t border-[var(--border)] px-4 py-3 space-y-3">
                   {log.oldData && (
                     <div>
-                      <h4 className="text-sm font-semibold text-gray-700 mb-2">
+                      <h4 className="text-sm font-semibold text-muted mb-2">
                         Old Data:
                       </h4>
-                      <pre className="text-xs bg-white p-2 rounded border border-gray-300 overflow-x-auto text-gray-600">
+                      <pre className="text-xs bg-[var(--bg-elev)] p-2 rounded border border-[var(--border)] overflow-x-auto text-muted">
                         {JSON.stringify(parseJson(log.oldData), null, 2)}
                       </pre>
                     </div>
                   )}
                   {log.newData && (
                     <div>
-                      <h4 className="text-sm font-semibold text-gray-700 mb-2">
+                      <h4 className="text-sm font-semibold text-muted mb-2">
                         New Data:
                       </h4>
-                      <pre className="text-xs bg-white p-2 rounded border border-gray-300 overflow-x-auto text-gray-600">
+                      <pre className="text-xs bg-[var(--bg-elev)] p-2 rounded border border-[var(--border)] overflow-x-auto text-muted">
                         {JSON.stringify(parseJson(log.newData), null, 2)}
                       </pre>
                     </div>
@@ -234,29 +230,29 @@ export default function AuditLogViewer() {
           ))}
         </div>
       ) : (
-        <div className="bg-white border border-gray-200 rounded-lg p-8 text-center">
-          <p className="text-gray-600">No audit logs found</p>
+        <div className="bg-[var(--bg-elev)] border border-[var(--border)] rounded-lg p-8 text-center">
+          <p className="text-muted">No audit logs found</p>
         </div>
       )}
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <div className="flex items-center justify-between bg-white p-4 rounded-lg border border-gray-200">
-          <div className="text-sm text-gray-600">
+        <div className="flex items-center justify-between bg-[var(--bg-elev)] p-4 rounded-lg border border-[var(--border)]">
+          <div className="text-sm text-muted">
             Page {currentPage} of {totalPages}
           </div>
           <div className="flex gap-2">
             <button
               onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
               disabled={currentPage === 1}
-              className="px-3 py-2 border border-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+              className="px-3 py-2 border border-[var(--border)] rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[var(--bg)]"
             >
               ← Previous
             </button>
             <button
               onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
               disabled={currentPage === totalPages}
-              className="px-3 py-2 border border-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+              className="px-3 py-2 border border-[var(--border)] rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[var(--bg)]"
             >
               Next →
             </button>
@@ -267,7 +263,7 @@ export default function AuditLogViewer() {
               setPageSize(parseInt(e.target.value))
               setCurrentPage(1)
             }}
-            className="px-3 py-2 border border-gray-300 rounded-lg"
+            className="px-3 py-2 border border-[var(--border)] rounded-lg"
           >
             <option value={10}>10 per page</option>
             <option value={20}>20 per page</option>

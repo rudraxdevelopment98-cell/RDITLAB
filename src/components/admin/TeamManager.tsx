@@ -138,70 +138,70 @@ export default function TeamManager() {
 
   return (
     <div className="space-y-6">
-      <div className="bg-white p-6 rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold mb-4 text-brand-600">Team Members Management</h2>
+      <div className="rounded-2xl border border-[var(--border)] bg-[var(--bg-elev)] p-6 shadow-card">
+        <h2 className="font-display text-2xl font-semibold tracking-tight text-[var(--text)] mb-4">Team Members Management</h2>
 
         {error && (
-          <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+          <div className="mb-4 rounded-lg border border-[var(--accent)]/40 bg-[var(--accent-weak)] p-3 text-sm text-[var(--accent-ink)]">
             {error}
           </div>
         )}
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="mb-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
+        <form onSubmit={handleSubmit} className="mb-6 p-4 bg-[var(--bg)] rounded-lg border border-[var(--border)]">
           <div className="grid gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Name *</label>
+              <label className="block text-sm font-medium text-muted mb-2">Name *</label>
               <input
                 type="text"
                 value={formData.name}
                 onChange={e => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:brand-500"
+                className="w-full px-3 py-2 border border-[var(--border)] rounded-lg focus:outline-none focus:brand-500"
                 placeholder="Enter name"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Role / Position *</label>
+              <label className="block text-sm font-medium text-muted mb-2">Role / Position *</label>
               <input
                 type="text"
                 value={formData.role}
                 onChange={e => setFormData({ ...formData, role: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:brand-500"
+                className="w-full px-3 py-2 border border-[var(--border)] rounded-lg focus:outline-none focus:brand-500"
                 placeholder="e.g., Lead Technician, Support Engineer"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Bio / Description *</label>
+              <label className="block text-sm font-medium text-muted mb-2">Bio / Description *</label>
               <textarea
                 value={formData.bio}
                 onChange={e => setFormData({ ...formData, bio: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:brand-500"
+                className="w-full px-3 py-2 border border-[var(--border)] rounded-lg focus:outline-none focus:brand-500"
                 placeholder="Enter team member bio"
                 rows={4}
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Profile Image *</label>
+              <label className="block text-sm font-medium text-muted mb-2">Profile Image *</label>
               <div className="flex gap-4">
                 <input
                   type="file"
                   accept="image/*"
                   onChange={handleImageUpload}
                   disabled={uploadingImage}
-                  className="flex-1 px-3 py-2 border border-gray-300 rounded-lg"
+                  className="flex-1 px-3 py-2 border border-[var(--border)] rounded-lg"
                 />
-                {uploadingImage && <span className="text-blue-600">Uploading...</span>}
+                {uploadingImage && <span className="text-[var(--accent-ink)]">Uploading...</span>}
               </div>
               {formData.image && (
                 <div className="mt-3">
-                  <p className="text-sm text-gray-600 mb-2">Preview:</p>
+                  <p className="text-sm text-muted mb-2">Preview:</p>
                   <img
                     src={formData.image}
                     alt="Preview"
-                    className="w-32 h-32 object-cover rounded-lg border border-gray-300"
+                    className="w-32 h-32 object-cover rounded-lg border border-[var(--border)]"
                   />
                 </div>
               )}
@@ -218,7 +218,7 @@ export default function TeamManager() {
                 <button
                   type="button"
                   onClick={handleCancel}
-                  className="flex-1 px-4 py-2 bg-gray-400 text-white rounded-lg hover:bg-gray-500 transition"
+                  className="flex-1 rounded-full border border-[var(--border)] px-4 py-2 font-medium text-[var(--text)] transition hover:border-[var(--border-strong)]"
                 >
                   Cancel
                 </button>
@@ -229,9 +229,9 @@ export default function TeamManager() {
 
         {/* Team List */}
         {isLoading ? (
-          <div className="text-center py-8 text-gray-500">Loading team members...</div>
+          <div className="text-center py-8 text-muted">Loading team members...</div>
         ) : team.length === 0 ? (
-          <div className="text-center py-8 text-gray-500">No team members found</div>
+          <div className="text-center py-8 text-muted">No team members found</div>
         ) : (
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {team.map(member => (
@@ -239,8 +239,8 @@ export default function TeamManager() {
                 key={member.id}
                 className={`border rounded-lg overflow-hidden transition ${
                   editingId === member.id
-                    ? 'border-brand-600 bg-brand-50'
-                    : 'border-gray-200 hover:border-brand-300'
+                    ? 'border-[var(--accent)] ring-1 ring-[var(--accent)]'
+                    : 'border-[var(--border)] hover:border-brand-300'
                 }`}
               >
                 {member.image && (
@@ -251,22 +251,22 @@ export default function TeamManager() {
                   />
                 )}
                 <div className="p-4">
-                  <h3 className="font-semibold text-gray-900 text-lg">{member.name}</h3>
+                  <h3 className="font-semibold text-[var(--text)] text-lg">{member.name}</h3>
                   <p className="text-sm text-brand-600 font-medium mb-2">{member.role}</p>
-                  <p className="text-gray-700 text-sm line-clamp-3 mb-3">{member.bio}</p>
-                  <p className="text-xs text-gray-500 mb-4">
+                  <p className="text-muted text-sm line-clamp-3 mb-3">{member.bio}</p>
+                  <p className="text-xs text-muted mb-4">
                     Updated: {new Date(member.updatedAt).toLocaleDateString()}
                   </p>
                   <div className="flex gap-2">
                     <button
                       onClick={() => handleEdit(member)}
-                      className="flex-1 px-3 py-1 bg-blue-500 text-white rounded text-sm hover:bg-blue-600 transition"
+                      className="flex-1 rounded-full bg-[var(--accent)] px-3 py-1 text-sm font-medium text-white transition hover:bg-[var(--accent-ink)]"
                     >
                       Edit
                     </button>
                     <button
                       onClick={() => handleDelete(member.id)}
-                      className="flex-1 px-3 py-1 bg-red-500 text-white rounded text-sm hover:bg-red-600 transition"
+                      className="flex-1 rounded-full px-3 py-1 text-sm font-medium text-muted transition hover:text-[var(--accent-ink)]"
                     >
                       Delete
                     </button>

@@ -68,13 +68,14 @@ export type Project = {
 }
 
 // Only real, PUBLIC, ours-to-share work. No private/client projects here.
-// Add more public projects from the admin once the database is connected.
+// Add real client builds from the admin as they go live.
 export const projects: Project[] = [
   {
-    name: 'RD IT Lab UK',
-    category: 'Business website',
-    description: 'Our own site — editorial design, light/dark themes and a full admin panel to manage content, projects and testimonials.',
-    tags: ['Next.js', 'Tailwind', 'Prisma'],
+    name: 'RD IT Lab Platform',
+    category: 'Web app · CMS',
+    description:
+      'A full-stack business platform we designed, built and run: editorial UI, light/dark theming, Google-secured admin, and a database-backed CMS for projects, plans and testimonials. The kind of system we build for clients.',
+    tags: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL'],
     demo: 'https://rditlabuk.vercel.app',
     gradient: 'from-brand-500 to-brand-700',
   },

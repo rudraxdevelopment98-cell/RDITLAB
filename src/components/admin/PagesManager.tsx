@@ -112,11 +112,11 @@ export default function PagesManager() {
 
   return (
     <div className="space-y-6">
-      <div className="bg-white p-6 rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold mb-4 text-brand-600">Pages Management</h2>
+      <div className="rounded-2xl border border-[var(--border)] bg-[var(--bg-elev)] p-6 shadow-card">
+        <h2 className="font-display text-2xl font-semibold tracking-tight text-[var(--text)] mb-4">Pages Management</h2>
 
         {error && (
-          <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+          <div className="mb-4 rounded-lg border border-[var(--accent)]/40 bg-[var(--accent-weak)] p-3 text-sm text-[var(--accent-ink)]">
             {error}
           </div>
         )}
@@ -131,7 +131,7 @@ export default function PagesManager() {
             className={`px-4 py-2 rounded transition ${
               selectedSection === 'all'
                 ? 'bg-brand-600 text-white'
-                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                : 'border border-[var(--border)] text-muted hover:text-[var(--text)]'
             }`}
           >
             All
@@ -143,7 +143,7 @@ export default function PagesManager() {
               className={`px-4 py-2 rounded transition capitalize ${
                 selectedSection === section
                   ? 'bg-brand-600 text-white'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  : 'border border-[var(--border)] text-muted hover:text-[var(--text)]'
               }`}
             >
               {section}
@@ -152,25 +152,25 @@ export default function PagesManager() {
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="mb-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
+        <form onSubmit={handleSubmit} className="mb-6 p-4 bg-[var(--bg)] rounded-lg border border-[var(--border)]">
           <div className="grid gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Title *</label>
+              <label className="block text-sm font-medium text-muted mb-2">Title *</label>
               <input
                 type="text"
                 value={formData.title}
                 onChange={e => setFormData({ ...formData, title: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:brand-500"
+                className="w-full px-3 py-2 border border-[var(--border)] rounded-lg focus:outline-none focus:brand-500"
                 placeholder="Enter title"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Section *</label>
+              <label className="block text-sm font-medium text-muted mb-2">Section *</label>
               <select
                 value={formData.section}
                 onChange={e => setFormData({ ...formData, section: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:brand-500"
+                className="w-full px-3 py-2 border border-[var(--border)] rounded-lg focus:outline-none focus:brand-500"
               >
                 <option value="">Select section</option>
                 {sections.map(section => (
@@ -182,11 +182,11 @@ export default function PagesManager() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Content *</label>
+              <label className="block text-sm font-medium text-muted mb-2">Content *</label>
               <textarea
                 value={formData.content}
                 onChange={e => setFormData({ ...formData, content: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:brand-500"
+                className="w-full px-3 py-2 border border-[var(--border)] rounded-lg focus:outline-none focus:brand-500"
                 placeholder="Enter content"
                 rows={5}
               />
@@ -203,7 +203,7 @@ export default function PagesManager() {
                 <button
                   type="button"
                   onClick={handleCancel}
-                  className="flex-1 px-4 py-2 bg-gray-400 text-white rounded-lg hover:bg-gray-500 transition"
+                  className="flex-1 rounded-full border border-[var(--border)] px-4 py-2 font-medium text-[var(--text)] transition hover:border-[var(--border-strong)]"
                 >
                   Cancel
                 </button>
@@ -214,9 +214,9 @@ export default function PagesManager() {
 
         {/* Pages List */}
         {isLoading ? (
-          <div className="text-center py-8 text-gray-500">Loading pages...</div>
+          <div className="text-center py-8 text-muted">Loading pages...</div>
         ) : pages.length === 0 ? (
-          <div className="text-center py-8 text-gray-500">No pages found</div>
+          <div className="text-center py-8 text-muted">No pages found</div>
         ) : (
           <div className="space-y-3">
             {pages.map(page => (
@@ -224,31 +224,31 @@ export default function PagesManager() {
                 key={page.id}
                 className={`p-4 border rounded-lg transition ${
                   editingId === page.id
-                    ? 'border-brand-600 bg-brand-50'
-                    : 'border-gray-200 hover:border-brand-300'
+                    ? 'border-[var(--accent)] ring-1 ring-[var(--accent)]'
+                    : 'border-[var(--border)] hover:border-brand-300'
                 }`}
               >
                 <div className="flex justify-between items-start">
                   <div className="flex-1">
-                    <h3 className="font-semibold text-gray-900">{page.title}</h3>
-                    <p className="text-sm text-gray-600 uppercase tracking-wide mb-2">
+                    <h3 className="font-semibold text-[var(--text)]">{page.title}</h3>
+                    <p className="text-sm text-muted uppercase tracking-wide mb-2">
                       Section: <span className="font-medium">{page.section}</span>
                     </p>
-                    <p className="text-gray-700 line-clamp-3">{page.content}</p>
-                    <p className="text-xs text-gray-500 mt-2">
+                    <p className="text-muted line-clamp-3">{page.content}</p>
+                    <p className="text-xs text-muted mt-2">
                       Updated: {new Date(page.updatedAt).toLocaleString()}
                     </p>
                   </div>
                   <div className="flex gap-2 ml-4">
                     <button
                       onClick={() => handleEdit(page)}
-                      className="px-3 py-1 bg-blue-500 text-white rounded text-sm hover:bg-blue-600 transition"
+                      className="rounded-full bg-[var(--accent)] px-3 py-1 text-sm font-medium text-white transition hover:bg-[var(--accent-ink)]"
                     >
                       Edit
                     </button>
                     <button
                       onClick={() => handleDelete(page.id)}
-                      className="px-3 py-1 bg-red-500 text-white rounded text-sm hover:bg-red-600 transition"
+                      className="rounded-full px-3 py-1 text-sm font-medium text-muted transition hover:text-[var(--accent-ink)]"
                     >
                       Delete
                     </button>

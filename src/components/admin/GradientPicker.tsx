@@ -22,7 +22,7 @@ export default function GradientPicker({
 }) {
   return (
     <div>
-      <label className="mb-2 block text-sm font-medium text-gray-700">Card gradient</label>
+      <label className="mb-2 block text-sm font-medium text-muted">Card gradient</label>
       <div className="flex flex-wrap gap-2">
         {GRADIENT_PRESETS.map((g) => (
           <button

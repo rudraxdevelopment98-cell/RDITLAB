@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
 import ProtectedAdmin from '@/components/admin/ProtectedAdmin'
 import PagesManager from '@/components/admin/PagesManager'
 import TeamManager from '@/components/admin/TeamManager'
@@ -15,120 +14,60 @@ import DashboardStats from '@/components/admin/DashboardStats'
 
 type Tab = 'dashboard' | 'pages' | 'team' | 'portfolio' | 'plans' | 'templates' | 'testimonials' | 'audit' | 'settings'
 
+const tabs: { id: Tab; label: string; hint: string }[] = [
+  { id: 'dashboard', label: 'Overview', hint: 'At a glance' },
+  { id: 'portfolio', label: 'Work', hint: 'Projects & case studies' },
+  { id: 'plans', label: 'Plans', hint: 'Packages & pricing' },
+  { id: 'templates', label: 'Templates', hint: 'Starter designs' },
+  { id: 'testimonials', label: 'Testimonials', hint: 'Client reviews' },
+  { id: 'pages', label: 'Content', hint: 'Page copy' },
+  { id: 'team', label: 'Team', hint: 'People' },
+  { id: 'audit', label: 'Activity', hint: 'Audit log' },
+  { id: 'settings', label: 'Settings', hint: 'Account' },
+]
+
 function AdminContent() {
   const [activeTab, setActiveTab] = useState<Tab>('dashboard')
+  const current = tabs.find((t) => t.id === activeTab)
 
   return (
     <div>
-      {/* Navigation Tabs */}
-      <div className="bg-white border-b border-gray-200 sticky top-0 z-30">
+      {/* Page intro */}
+      <div className="border-b border-[var(--border)] bg-[var(--bg-elev)]">
+        <div className="container mx-auto max-w-7xl px-6 pb-5 pt-8">
+          <p className="eyebrow">Studio control</p>
+          <h1 className="mt-3 font-display text-3xl font-semibold tracking-tight text-[var(--text)] md:text-4xl">
+            {current?.label}
+          </h1>
+          <p className="mt-1.5 text-sm text-muted">{current?.hint}</p>
+        </div>
+
+        {/* Navigation Tabs */}
         <div className="container mx-auto max-w-7xl px-6">
-          <div className="flex gap-4 overflow-x-auto pb-px">
-            <button
-              data-tab="dashboard"
-              onClick={() => setActiveTab('dashboard')}
-              className={`py-4 px-3 font-medium transition border-b-2 whitespace-nowrap ${
-                activeTab === 'dashboard'
-                  ? 'text-brand-600 border-brand-600'
-                  : 'text-gray-600 border-transparent hover:text-brand-600'
-              }`}
-            >
-              📊 Dashboard
-            </button>
-            <button
-              data-tab="pages"
-              onClick={() => setActiveTab('pages')}
-              className={`py-4 px-3 font-medium transition border-b-2 whitespace-nowrap ${
-                activeTab === 'pages'
-                  ? 'text-brand-600 border-brand-600'
-                  : 'text-gray-600 border-transparent hover:text-brand-600'
-              }`}
-            >
-              📄 Pages & Content
-            </button>
-            <button
-              data-tab="team"
-              onClick={() => setActiveTab('team')}
-              className={`py-4 px-3 font-medium transition border-b-2 whitespace-nowrap ${
-                activeTab === 'team'
-                  ? 'text-brand-600 border-brand-600'
-                  : 'text-gray-600 border-transparent hover:text-brand-600'
-              }`}
-            >
-              👥 Team Members
-            </button>
-            <button
-              data-tab="portfolio"
-              onClick={() => setActiveTab('portfolio')}
-              className={`py-4 px-3 font-medium transition border-b-2 whitespace-nowrap ${
-                activeTab === 'portfolio'
-                  ? 'text-brand-600 border-brand-600'
-                  : 'text-gray-600 border-transparent hover:text-brand-600'
-              }`}
-            >
-              🚀 Portfolio
-            </button>
-            <button
-              data-tab="plans"
-              onClick={() => setActiveTab('plans')}
-              className={`py-4 px-3 font-medium transition border-b-2 whitespace-nowrap ${
-                activeTab === 'plans'
-                  ? 'text-brand-600 border-brand-600'
-                  : 'text-gray-600 border-transparent hover:text-brand-600'
-              }`}
-            >
-              💷 Plans
-            </button>
-            <button
-              data-tab="templates"
-              onClick={() => setActiveTab('templates')}
-              className={`py-4 px-3 font-medium transition border-b-2 whitespace-nowrap ${
-                activeTab === 'templates'
-                  ? 'text-brand-600 border-brand-600'
-                  : 'text-gray-600 border-transparent hover:text-brand-600'
-              }`}
-            >
-              🧩 Templates
-            </button>
-            <button
-              data-tab="testimonials"
-              onClick={() => setActiveTab('testimonials')}
-              className={`py-4 px-3 font-medium transition border-b-2 whitespace-nowrap ${
-                activeTab === 'testimonials'
-                  ? 'text-brand-600 border-brand-600'
-                  : 'text-gray-600 border-transparent hover:text-brand-600'
-              }`}
-            >
-              💬 Testimonials
-            </button>
-            <button
-              data-tab="audit"
-              onClick={() => setActiveTab('audit')}
-              className={`py-4 px-3 font-medium transition border-b-2 whitespace-nowrap ${
-                activeTab === 'audit'
-                  ? 'text-brand-600 border-brand-600'
-                  : 'text-gray-600 border-transparent hover:text-brand-600'
-              }`}
-            >
-              📋 Audit Logs
-            </button>
-            <button
-              data-tab="settings"
-              onClick={() => setActiveTab('settings')}
-              className={`py-4 px-3 font-medium transition border-b-2 whitespace-nowrap ${
-                activeTab === 'settings'
-                  ? 'text-brand-600 border-brand-600'
-                  : 'text-gray-600 border-transparent hover:text-brand-600'
-              }`}
-            >
-              ⚙️ Settings
-            </button>
+          <div className="flex gap-1 overflow-x-auto">
+            {tabs.map((tab) => {
+              const active = activeTab === tab.id
+              return (
+                <button
+                  key={tab.id}
+                  data-tab={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`whitespace-nowrap border-b-2 px-4 py-3 text-sm font-medium transition ${
+                    active
+                      ? 'border-[var(--accent)] text-[var(--text)]'
+                      : 'border-transparent text-muted hover:text-[var(--text)]'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              )
+            })}
           </div>
         </div>
       </div>
 
       {/* Content */}
-      <main className="container mx-auto max-w-7xl px-6 py-8">
+      <main className="container mx-auto max-w-7xl px-6 py-10">
         {activeTab === 'dashboard' && <DashboardStats />}
         {activeTab === 'pages' && <PagesManager />}
         {activeTab === 'team' && <TeamManager />}
@@ -141,12 +80,10 @@ function AdminContent() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 mt-12">
-        <div className="container mx-auto max-w-7xl px-6 py-6 text-center text-gray-600 text-sm">
-          <p>© 2024 RD IT Lab UK Admin Portal. All rights reserved.</p>
-          <p className="mt-2 text-xs">
-            Secured with JWT Authentication | Database-backed | Audit Logging Enabled
-          </p>
+      <footer className="mt-12 border-t border-[var(--border)] bg-[var(--bg-elev)]">
+        <div className="container mx-auto max-w-7xl px-6 py-6 text-center text-sm text-muted">
+          <p>RD IT Lab UK — Studio workspace</p>
+          <p className="mt-1 text-xs">Secure sign-in · Database-backed · Every change logged</p>
         </div>
       </footer>
     </div>
