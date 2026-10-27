@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import ProtectedAdmin from '@/components/admin/ProtectedAdmin'
-import PagesManager from '@/components/admin/PagesManager'
+import SiteContentManager from '@/components/admin/SiteContentManager'
 import TeamManager from '@/components/admin/TeamManager'
 import ProjectsManager from '@/components/admin/ProjectsManager'
 import PlansManager from '@/components/admin/PlansManager'
@@ -20,7 +20,7 @@ const tabs: { id: Tab; label: string; hint: string }[] = [
   { id: 'plans', label: 'Plans', hint: 'Packages & pricing' },
   { id: 'templates', label: 'Templates', hint: 'Starter designs' },
   { id: 'testimonials', label: 'Testimonials', hint: 'Client reviews' },
-  { id: 'pages', label: 'Content', hint: 'Page copy' },
+  { id: 'pages', label: 'Content', hint: 'Home page copy' },
   { id: 'team', label: 'Team', hint: 'People' },
   { id: 'audit', label: 'Activity', hint: 'Audit log' },
   { id: 'settings', label: 'Settings', hint: 'Account' },
@@ -69,7 +69,7 @@ function AdminContent() {
       {/* Content */}
       <main className="container mx-auto max-w-7xl px-6 py-10">
         {activeTab === 'dashboard' && <DashboardStats />}
-        {activeTab === 'pages' && <PagesManager />}
+        {activeTab === 'pages' && <SiteContentManager />}
         {activeTab === 'team' && <TeamManager />}
         {activeTab === 'portfolio' && <ProjectsManager />}
         {activeTab === 'plans' && <PlansManager />}

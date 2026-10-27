@@ -2,58 +2,56 @@
 
 import { useState } from 'react'
 import Reveal from './Reveal'
+import { defaultContent, type SiteCopy } from '@/lib/content'
 
-export default function About() {
+export default function About({ content }: { content?: SiteCopy['about'] }) {
+  const c = content ?? defaultContent.about
   const [expanded, setExpanded] = useState(0)
-
-  const sections = [
-    { title: 'Our Mission', content: 'Make IT secure and reliable for businesses and people — fast, private, and dependable support that keeps you running.' },
-    { title: 'Our Expertise', content: '4.5 years of hands-on experience across India and the UK: laptop & PC repairs, custom builds, data recovery, networking, and cybersecurity.' },
-    { title: 'Our Approach', content: 'Quick response times, accurate diagnostics, and clear communication. Average turnaround is just 1–4 days.' },
-    { title: 'Our Values', content: 'Trust, reliability, and satisfaction. Transparent pricing, solid warranties (1 month to 1 year), and a genuine long-term partnership.' },
-  ]
-
-  const benefits = [
-    'Certified technicians (Google & MSc Cybersecurity)',
-    'Fast turnaround: 1–4 days for most repairs',
-    'Comprehensive warranty: 1 month to 1 year',
-    '24/7 emergency support available',
-    'Quick response and instant availability',
-    'Transparent pricing and on-site visits',
-  ]
 
   return (
     <section id="about" className="relative px-6 py-24 md:px-12">
-      <div className="container mx-auto max-w-7xl">
-        <Reveal className="mb-14 text-center">
-          <p className="mb-3 eyebrow">about us</p>
-          <h2 className="font-display text-4xl font-bold text-[var(--text)] md:text-5xl">Who we are &amp; what we do</h2>
+      <div className="container mx-auto max-w-6xl">
+        <Reveal className="max-w-3xl">
+          <p className="eyebrow">{c.eyebrow}</p>
+          <h2 className="mt-5 font-display text-4xl font-semibold leading-tight text-[var(--text)] md:text-5xl">
+            {c.heading}
+          </h2>
+          <p className="mt-5 text-lg leading-relaxed text-muted">{c.intro}</p>
         </Reveal>
 
-        <div className="grid items-start gap-8 lg:grid-cols-2">
-          <Reveal className="space-y-3">
-            {sections.map((section, index) => (
-              <div key={section.title} className="glass glass-edge overflow-hidden rounded-2xl">
-                <button onClick={() => setExpanded(expanded === index ? -1 : index)} className="flex w-full items-center justify-between p-6 text-left">
-                  <h3 className="font-display text-lg font-semibold text-[var(--text)]">{section.title}</h3>
-                  <span className={`text-2xl text-gradient-brand transition-transform duration-300 ${expanded === index ? 'rotate-45' : ''}`}>+</span>
-                </button>
-                {expanded === index && (
-                  <div className="animate-fadeIn border-t border-[var(--border)] px-6 pb-6 pt-4">
-                    <p className="leading-relaxed text-muted">{section.content}</p>
-                  </div>
-                )}
-              </div>
-            ))}
+        <div className="mt-14 grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
+          {/* Left — accordion */}
+          <Reveal className="divide-y divide-[var(--border)] border-y border-[var(--border)]">
+            {c.items.map((item, index) => {
+              const open = expanded === index
+              return (
+                <div key={item.title}>
+                  <button
+                    onClick={() => setExpanded(open ? -1 : index)}
+                    className="flex w-full items-center justify-between py-5 text-left"
+                    aria-expanded={open}
+                  >
+                    <h3 className="font-display text-lg font-semibold text-[var(--text)]">{item.title}</h3>
+                    <span className={`ml-4 text-xl text-[var(--accent)] transition-transform duration-300 ${open ? 'rotate-45' : ''}`}>+</span>
+                  </button>
+                  {open && (
+                    <div className="animate-fadeIn pb-6 pr-6">
+                      <p className="leading-relaxed text-muted">{item.content}</p>
+                    </div>
+                  )}
+                </div>
+              )
+            })}
           </Reveal>
 
-          <Reveal delay={120} className="glass glass-edge rounded-[2rem] p-8">
-            <h3 className="mb-2 font-display text-2xl font-bold text-[var(--text)]">Why choose RD IT Lab UK?</h3>
-            <p className="mb-6 text-muted">Technical expertise, reliability, and a genuine commitment to your success.</p>
-            <ul className="space-y-3">
-              {benefits.map((benefit) => (
+          {/* Right — benefits panel */}
+          <Reveal delay={120} className="rounded-2xl border border-[var(--border)] bg-[var(--bg-elev)] p-8 shadow-card">
+            <h3 className="font-display text-2xl font-semibold text-[var(--text)]">{c.benefitsTitle}</h3>
+            <p className="mt-2 text-muted">{c.benefitsIntro}</p>
+            <ul className="mt-6 space-y-3.5">
+              {c.benefits.map((benefit) => (
                 <li key={benefit} className="flex items-start gap-3">
-                  <span className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-500 to-brand-400 text-white">
+                  <span className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[var(--accent-weak)] text-[var(--accent)]">
                     <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>

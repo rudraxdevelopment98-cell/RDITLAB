@@ -15,7 +15,7 @@ export default function Templates({ templates }: { templates: ResolvedTemplate[]
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {templates.map((template, index) => (
             <Reveal key={template.id} delay={(index % 3) * 90}>
-              <div className="glass glass-edge group flex h-full flex-col overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-glow">
+              <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--bg-elev)] shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card-hover">
                 <div className="p-4 pb-0">
                   <BrowserMock label={template.name} gradient={template.gradient} image={template.image} />
                 </div>
@@ -28,7 +28,7 @@ export default function Templates({ templates }: { templates: ResolvedTemplate[]
                   </div>
                   <p className="flex-1 text-sm leading-relaxed text-muted">{template.description}</p>
                   <div className="mt-4 flex items-center justify-between">
-                    <span className="font-mono text-xs uppercase tracking-wide text-muted">{template.category}</span>
+                    <span className="text-xs uppercase tracking-wide text-muted">{template.category}</span>
                     <a
                       href={template.preview || '/contact'}
                       target={template.preview?.startsWith('http') ? '_blank' : undefined}

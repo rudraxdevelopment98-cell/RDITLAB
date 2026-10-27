@@ -21,12 +21,12 @@ export default function Plans({ plans }: { plans: ResolvedPlan[] }) {
           {plans.map((plan, index) => (
             <Reveal key={plan.id} delay={index * 90}>
               <div
-                className={`glass glass-edge relative flex h-full flex-col rounded-3xl p-8 transition-all duration-300 ${
-                  plan.popular ? 'shadow-glow lg:-translate-y-3' : 'hover:-translate-y-1'
+                className={`relative flex h-full flex-col rounded-3xl border bg-[var(--bg-elev)] p-8 shadow-card transition-all duration-300 ${
+                  plan.popular ? 'border-[var(--accent)] ring-1 ring-[var(--accent)] lg:-translate-y-3' : 'border-[var(--border)] hover:-translate-y-1'
                 }`}
               >
                 {plan.popular && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-brand-500 to-brand-500 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-white shadow-lg">
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[var(--accent)] px-4 py-1 text-xs font-semibold uppercase tracking-wide text-white shadow-lg">
                     Most popular
                   </span>
                 )}
@@ -47,7 +47,9 @@ export default function Plans({ plans }: { plans: ResolvedPlan[] }) {
                 <a
                   href="/contact"
                   className={`mt-8 inline-flex items-center justify-center rounded-full px-6 py-3.5 text-sm font-semibold transition active:scale-95 ${
-                    plan.popular ? 'bg-gradient-to-r from-brand-600 to-brand-600 text-white hover:shadow-glow' : 'glass glass-edge text-[var(--text)] hover:scale-[1.02]'
+                    plan.popular
+                      ? 'bg-[var(--accent)] text-white hover:bg-[var(--accent-ink)]'
+                      : 'border border-[var(--border)] text-[var(--text)] hover:border-[var(--border-strong)]'
                   }`}
                 >
                   {plan.cta}

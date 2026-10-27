@@ -1,4 +1,5 @@
 import Reveal from './Reveal'
+import { defaultContent, type SiteCopy } from '@/lib/content'
 
 type IconProps = { className?: string }
 
@@ -34,36 +35,25 @@ const icons: Record<string, (p: IconProps) => JSX.Element> = {
   ),
 }
 
-const services = [
-  { icon: 'ai', title: 'AI Agents', description: 'Custom AI assistants and chatbots wired into your tools, docs and data — answering, triaging and acting for you.' },
-  { icon: 'automation', title: 'Automation & Workflows', description: 'We remove the repetitive work — connect your apps, automate pipelines and let data flow without manual steps.' },
-  { icon: 'software', title: 'Custom Software', description: 'Full-stack web apps, dashboards and internal tools — auth, databases and integrations, built to scale.' },
-  { icon: 'web', title: 'Websites & Web Apps', description: 'Fast, modern, conversion-focused sites — from landing pages to full platforms with a CMS you control.' },
-  { icon: 'digital', title: 'Digitalization', description: 'Take your business paperless — digitise processes, records and operations into one secure system.' },
-]
+export default function Services({ content }: { content?: SiteCopy['services'] }) {
+  const c = content ?? defaultContent.services
 
-const support = ['Laptop & PC repair', 'Custom PC builds', 'Networking & setup', 'Lab setup', 'Security audits', '24/7 emergency support']
-
-export default function Services() {
   return (
     <section id="services" className="relative px-6 py-24 md:px-12">
       <div className="container mx-auto max-w-6xl">
         <Reveal className="max-w-3xl">
-          <p className="eyebrow">What we do</p>
+          <p className="eyebrow">{c.eyebrow}</p>
           <h2 className="mt-5 font-display text-4xl font-semibold leading-tight text-[var(--text)] md:text-5xl">
-            Software, AI &amp; automation — <span className="text-[var(--accent)]">that move your business forward.</span>
+            {c.headingLead} <span className="text-[var(--accent)]">{c.headingAccent}</span>
           </h2>
-          <p className="mt-5 text-lg leading-relaxed text-muted">
-            We design and build the digital tools your business runs on. And when hardware needs attention,
-            our IT team keeps everything running.
-          </p>
+          <p className="mt-5 text-lg leading-relaxed text-muted">{c.body}</p>
         </Reveal>
 
         <div className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--border)] sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service, index) => {
-            const Icon = icons[service.icon]
+          {c.items.map((service, index) => {
+            const Icon = icons[service.icon] ?? icons.software
             return (
-              <Reveal key={service.title} delay={(index % 3) * 70}>
+              <Reveal key={`${service.title}-${index}`} delay={(index % 3) * 70}>
                 <div className="group h-full bg-[var(--bg-elev)] p-8 transition-colors hover:bg-[var(--bg)]">
                   <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-[var(--accent-weak)] text-[var(--accent)]">
                     <Icon className="h-6 w-6" />
@@ -75,10 +65,10 @@ export default function Services() {
             )
           })}
           <Reveal delay={140}>
-            <a href="/contact" className="group flex h-full flex-col justify-between bg-[var(--bg-contrast)] p-8 text-[var(--text-on-contrast)]">
+            <a href={c.ctaLink} className="group flex h-full flex-col justify-between bg-[var(--bg-contrast)] p-8 text-[var(--text-on-contrast)]">
               <div>
-                <h3 className="font-display text-xl font-semibold">Have an idea?</h3>
-                <p className="mt-2 leading-relaxed text-white/70">Tell us the problem — we&apos;ll scope the software, AI or automation to solve it.</p>
+                <h3 className="font-display text-xl font-semibold">{c.ctaTitle}</h3>
+                <p className="mt-2 leading-relaxed text-white/70">{c.ctaBody}</p>
               </div>
               <span className="mt-6 inline-flex items-center gap-2 font-medium text-[var(--accent)]">
                 Start a conversation
@@ -91,22 +81,24 @@ export default function Services() {
         </div>
 
         {/* Secondary — IT support & hardware */}
-        <Reveal className="mt-10 flex flex-col gap-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-elev)] p-6 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-wider text-muted">Also — IT support &amp; hardware</p>
-            <div className="mt-2 flex flex-wrap gap-x-5 gap-y-1 text-sm text-[var(--text)]">
-              {support.map((s) => (
-                <span key={s} className="flex items-center gap-1.5">
-                  <span className="h-1 w-1 rounded-full bg-[var(--accent)]" />
-                  {s}
-                </span>
-              ))}
+        {c.support.length > 0 && (
+          <Reveal className="mt-10 flex flex-col gap-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-elev)] p-6 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wider text-muted">{c.supportLabel}</p>
+              <div className="mt-2 flex flex-wrap gap-x-5 gap-y-1 text-sm text-[var(--text)]">
+                {c.support.map((s) => (
+                  <span key={s} className="flex items-center gap-1.5">
+                    <span className="h-1 w-1 rounded-full bg-[var(--accent)]" />
+                    {s}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
-          <a href="/services" className="shrink-0 text-sm font-semibold text-[var(--accent)] hover:text-[var(--accent-ink)]">
-            All services →
-          </a>
-        </Reveal>
+            <a href="/services" className="shrink-0 text-sm font-semibold text-[var(--accent)] hover:text-[var(--accent-ink)]">
+              All services →
+            </a>
+          </Reveal>
+        )}
       </div>
     </section>
   )
