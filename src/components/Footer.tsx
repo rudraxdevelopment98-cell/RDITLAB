@@ -1,6 +1,28 @@
-import Link from 'next/link'
+'use client'
 
-export default function Footer() {
+import { useEffect, useState } from 'react'
+import Link from 'next/link'
+import { defaultContent, type SiteCopy } from '@/lib/content'
+
+export default function Footer({ content }: { content?: SiteCopy['footer'] }) {
+  const [c, setC] = useState<SiteCopy['footer']>(content ?? defaultContent.footer)
+
+  // On pages that don't pass content (client pages, sub-pages), fetch the live
+  // footer copy so edits made in the admin show everywhere.
+  useEffect(() => {
+    if (content) return
+    let active = true
+    fetch('/api/site-content')
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (active && data?.footer) setC(data.footer)
+      })
+      .catch(() => {})
+    return () => {
+      active = false
+    }
+  }, [content])
+
   return (
     <footer className="relative mt-10 border-t border-[var(--border)] px-6 py-14 md:px-12">
       <div className="container mx-auto max-w-6xl">
@@ -14,22 +36,19 @@ export default function Footer() {
                 IT Lab <span className="text-[var(--accent)]">UK</span>
               </span>
             </div>
-            <p className="mt-4 max-w-sm leading-relaxed text-muted">
-              Your trusted partner for IT services and custom software across the UK — secure, fast,
-              and reliable, with cybersecurity built in.
-            </p>
+            <p className="mt-4 max-w-sm leading-relaxed text-muted">{c.tagline}</p>
             <div className="mt-5 flex gap-3">
-              <a href="https://share.google/nMMOrlyJNoFbICUL5" target="_blank" rel="noopener noreferrer" className="glass glass-edge rounded-full px-4 py-2 text-sm font-medium text-[var(--text)] transition hover:scale-[1.03]">
+              <a href={c.googleUrl} target="_blank" rel="noopener noreferrer" className="rounded-full border border-[var(--border)] px-4 py-2 text-sm font-medium text-[var(--text)] transition hover:border-[var(--border-strong)]">
                 Google Reviews
               </a>
-              <a href="https://www.instagram.com/rditlab.uk" target="_blank" rel="noopener noreferrer" className="glass glass-edge rounded-full px-4 py-2 text-sm font-medium text-[var(--text)] transition hover:scale-[1.03]">
+              <a href={c.instagramUrl} target="_blank" rel="noopener noreferrer" className="rounded-full border border-[var(--border)] px-4 py-2 text-sm font-medium text-[var(--text)] transition hover:border-[var(--border-strong)]">
                 Instagram
               </a>
             </div>
           </div>
 
           <div>
-            <h4 className="mb-4 font-mono text-xs uppercase tracking-wider text-muted">Quick Links</h4>
+            <h4 className="mb-4 text-xs font-semibold uppercase tracking-wider text-muted">Explore</h4>
             <ul className="space-y-2.5">
               {[
                 { href: '/', label: 'Home' },
@@ -49,22 +68,22 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-4 font-mono text-xs uppercase tracking-wider text-muted">Contact</h4>
+            <h4 className="mb-4 text-xs font-semibold uppercase tracking-wider text-muted">Contact</h4>
             <ul className="space-y-2.5 text-muted">
               <li>
-                <a href="mailto:rudraxdevelopment98@gmail.com" className="transition-colors hover:text-[var(--text)]">rudraxdevelopment98@gmail.com</a>
+                <a href={`mailto:${c.email}`} className="transition-colors hover:text-[var(--text)]">{c.email}</a>
               </li>
               <li>
-                <a href="tel:+447823912875" className="transition-colors hover:text-[var(--text)]">+44 7823 912875</a>
+                <a href={`tel:${c.phone.replace(/\s+/g, '')}`} className="transition-colors hover:text-[var(--text)]">{c.phone}</a>
               </li>
-              <li>Harrow, London, UK</li>
+              <li>{c.location}</li>
             </ul>
           </div>
         </div>
 
         <div className="flex flex-col items-center justify-between gap-3 border-t border-[var(--border)] pt-8 text-sm text-muted md:flex-row">
           <p>&copy; {new Date().getFullYear()} RD IT Lab UK. All rights reserved.</p>
-          <p>Built with care in the UK.</p>
+          <p>{c.note}</p>
         </div>
       </div>
     </footer>

@@ -18,7 +18,7 @@ export default function Portfolio({ projects }: { projects: ResolvedProject[] })
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (
             <Reveal key={project.id} delay={(index % 3) * 90}>
-              <div className="glass glass-edge group flex h-full flex-col rounded-2xl p-4 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-glow">
+              <div className="group flex h-full flex-col rounded-2xl border border-[var(--border)] bg-[var(--bg-elev)] p-4 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card-hover">
                 <BrowserMock label={project.name} gradient={project.gradient} image={project.image} />
                 <div className="flex flex-1 flex-col p-2 pt-5">
                   <div className="mb-2 flex items-center justify-between">
@@ -28,7 +28,7 @@ export default function Portfolio({ projects }: { projects: ResolvedProject[] })
                   <p className="flex-1 text-sm leading-relaxed text-muted">{project.description}</p>
                   <div className="mt-4 flex flex-wrap gap-1.5">
                     {project.tags.map((tag) => (
-                      <span key={tag} className="rounded-md border border-[var(--border)] px-2 py-0.5 font-mono text-xs text-muted">{tag}</span>
+                      <span key={tag} className="rounded-md border border-[var(--border)] px-2 py-0.5 text-xs text-muted">{tag}</span>
                     ))}
                   </div>
                   <div className="mt-5 flex items-center gap-4">

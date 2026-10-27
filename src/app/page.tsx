@@ -8,23 +8,28 @@ import Testimonials from '@/components/Testimonials'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 import { getProjects, getTestimonials } from '@/lib/studio'
+import { getSiteContent } from '@/lib/content.server'
 
 export const dynamic = 'force-dynamic'
 
 export default async function Home() {
-  const [projects, testimonials] = await Promise.all([getProjects(), getTestimonials()])
+  const [projects, testimonials, content] = await Promise.all([
+    getProjects(),
+    getTestimonials(),
+    getSiteContent(),
+  ])
 
   return (
     <div className="min-h-screen">
       <Navbar />
-      <Hero />
-      <About />
-      <Services />
+      <Hero content={content.hero} />
+      <About content={content.about} />
+      <Services content={content.services} />
       <LaunchesTeaser />
       <StudioTeaser projects={projects} />
       <Testimonials testimonials={testimonials} />
-      <Contact />
-      <Footer />
+      <Contact content={content.contact} />
+      <Footer content={content.footer} />
     </div>
   )
 }

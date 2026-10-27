@@ -38,6 +38,17 @@ model Page {
   @@unique([title, section])
 }
 
+// Editable site copy for the public home page, keyed by section
+// ('hero' | 'about' | 'services' | 'contact' | 'footer'). Value is a JSON blob
+// matching the shape in src/lib/content.ts, deep-merged over code defaults.
+model SiteContent {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String   // JSON string
+  updatedAt DateTime @updatedAt
+  createdBy String?
+}
+
 model TeamMember {
   id        String   @id @default(cuid())
   name      String
