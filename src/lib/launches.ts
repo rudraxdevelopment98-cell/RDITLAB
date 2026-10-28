@@ -21,6 +21,10 @@ export type Launch = {
   duration: number
   /** Accent used for the card edge and play button. */
   accent: string
+  /** Optional explicit media URLs; when blank, slug-based /products paths are used. */
+  videoUrl?: string
+  previewUrl?: string
+  posterUrl?: string
 }
 
 export const launches: Launch[] = [
@@ -129,5 +133,10 @@ export const launches: Launch[] = [
 export const launchVideo = (slug: string) => `/products/${slug}.mp4`
 export const launchPreview = (slug: string) => `/products/${slug}-preview.mp4`
 export const launchPoster = (slug: string) => `/products/${slug}.jpg`
+
+// Prefer an explicit uploaded/external URL, otherwise fall back to the slug path.
+export const mediaVideo = (l: Launch) => l.videoUrl || launchVideo(l.slug)
+export const mediaPreview = (l: Launch) => l.previewUrl || launchPreview(l.slug)
+export const mediaPoster = (l: Launch) => l.posterUrl || launchPoster(l.slug)
 
 export const formatDuration = (s: number) => `${Math.floor(s / 60)}:${String(Math.round(s % 60)).padStart(2, '0')}`

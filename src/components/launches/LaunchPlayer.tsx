@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { formatDuration, launchPoster, launchPreview, launchVideo, type Launch } from '@/lib/launches'
+import { formatDuration, mediaPoster, mediaPreview, mediaVideo, type Launch } from '@/lib/launches'
 
 /**
  * Shows a product's muted preview loop while it is on screen, and swaps to the
@@ -39,8 +39,8 @@ export default function LaunchPlayer({ launch, compact = false }: { launch: Laun
         <video
           ref={filmRef}
           className="absolute inset-0 h-full w-full"
-          src={launchVideo(launch.slug)}
-          poster={launchPoster(launch.slug)}
+          src={mediaVideo(launch)}
+          poster={mediaPoster(launch)}
           controls
           playsInline
           preload="auto"
@@ -51,8 +51,8 @@ export default function LaunchPlayer({ launch, compact = false }: { launch: Laun
           <video
             ref={previewRef}
             className="absolute inset-0 h-full w-full object-cover"
-            src={launchPreview(launch.slug)}
-            poster={launchPoster(launch.slug)}
+            src={mediaPreview(launch)}
+            poster={mediaPoster(launch)}
             muted
             loop
             playsInline

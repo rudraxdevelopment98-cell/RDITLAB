@@ -1,10 +1,12 @@
 import Link from 'next/link'
 import Reveal from '../Reveal'
 import LaunchPlayer from './LaunchPlayer'
-import { launches } from '@/lib/launches'
+import { getLaunches } from '@/lib/launches.server'
 
 /** Home-page strip of launched products, each with its preview loop. */
-export default function LaunchesTeaser() {
+export default async function LaunchesTeaser() {
+  const launches = await getLaunches()
+  if (launches.length === 0) return null
   return (
     <section id="products" className="relative px-6 py-24 md:px-12">
       <div className="container mx-auto max-w-6xl">

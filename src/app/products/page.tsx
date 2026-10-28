@@ -4,15 +4,18 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Reveal from '@/components/Reveal'
 import LaunchPlayer from '@/components/launches/LaunchPlayer'
-import { launches } from '@/lib/launches'
+import { getLaunches } from '@/lib/launches.server'
+
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'Products we’ve launched',
   description:
-    'Watch the launch films for products built by RD IT Lab: Mahadev APF, JAYKAVI, MOBILE ICU and DUDAO — every page, feature and function, shown with demo data.',
+    'Watch the launch films for products built by RD IT Lab — every page, feature and function, shown with demo data.',
 }
 
-export default function ProductsPage() {
+export default async function ProductsPage() {
+  const launches = await getLaunches()
   return (
     <div className="min-h-screen">
       <Navbar />
