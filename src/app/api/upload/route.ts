@@ -12,8 +12,9 @@ const ALLOWED = [
   'application/pdf',
   'application/vnd.ms-powerpoint',
   'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+  'video/mp4', 'video/webm',
 ]
-const MAX_BYTES = 25 * 1024 * 1024 // 25 MB (presentations can be large)
+const MAX_BYTES = 45 * 1024 * 1024 // 45 MB (presentations / short clips can be large)
 
 export async function POST(request: NextRequest) {
   try {

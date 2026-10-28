@@ -5,6 +5,7 @@ import ProtectedAdmin from '@/components/admin/ProtectedAdmin'
 import SiteContentManager from '@/components/admin/SiteContentManager'
 import TeamManager from '@/components/admin/TeamManager'
 import ProjectsManager from '@/components/admin/ProjectsManager'
+import LaunchesManager from '@/components/admin/LaunchesManager'
 import PlansManager from '@/components/admin/PlansManager'
 import TemplatesManager from '@/components/admin/TemplatesManager'
 import TestimonialsManager from '@/components/admin/TestimonialsManager'
@@ -12,10 +13,11 @@ import AuditLogViewer from '@/components/admin/AuditLogViewer'
 import AdminSettings from '@/components/admin/AdminSettings'
 import DashboardStats from '@/components/admin/DashboardStats'
 
-type Tab = 'dashboard' | 'pages' | 'team' | 'portfolio' | 'plans' | 'templates' | 'testimonials' | 'audit' | 'settings'
+type Tab = 'dashboard' | 'pages' | 'team' | 'portfolio' | 'launches' | 'plans' | 'templates' | 'testimonials' | 'audit' | 'settings'
 
 const tabs: { id: Tab; label: string; hint: string }[] = [
   { id: 'dashboard', label: 'Overview', hint: 'At a glance' },
+  { id: 'launches', label: 'Products', hint: 'Launched products & films' },
   { id: 'portfolio', label: 'Work', hint: 'Projects & case studies' },
   { id: 'plans', label: 'Plans', hint: 'Packages & pricing' },
   { id: 'templates', label: 'Templates', hint: 'Starter designs' },
@@ -71,6 +73,7 @@ function AdminContent() {
         {activeTab === 'dashboard' && <DashboardStats />}
         {activeTab === 'pages' && <SiteContentManager />}
         {activeTab === 'team' && <TeamManager />}
+        {activeTab === 'launches' && <LaunchesManager />}
         {activeTab === 'portfolio' && <ProjectsManager />}
         {activeTab === 'plans' && <PlansManager />}
         {activeTab === 'templates' && <TemplatesManager />}

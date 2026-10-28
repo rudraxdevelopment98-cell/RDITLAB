@@ -49,6 +49,32 @@ model SiteContent {
   createdBy String?
 }
 
+// Launched products shown on the Products page & home teaser (admin-managed).
+// Media (film / preview / poster) default to /public/products/<slug>.* but can
+// be overridden with explicit URLs (e.g. uploaded blobs or external hosts).
+model Launch {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  category    String
+  tagline     String
+  description String
+  features    String   @default("") // newline-separated
+  stack       String   @default("") // comma-separated
+  liveUrl     String   @default("") // empty = private tool
+  liveLabel   String   @default("")
+  duration    Int      @default(0)  // seconds, shown on the play button
+  accent      String   @default("#b45309")
+  videoUrl    String   @default("") // overrides slug-based film path
+  previewUrl  String   @default("") // overrides slug-based preview path
+  posterUrl   String   @default("") // overrides slug-based poster path
+  order       Int      @default(0)
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  createdBy   String?
+}
+
 model TeamMember {
   id        String   @id @default(cuid())
   name      String
